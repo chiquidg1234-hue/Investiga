@@ -1,0 +1,19 @@
+{
+  "$id": "ledger.schema.json",
+  "description": "Una línea JSONL por URL vista alguna vez. Es la caché negativa y el anti-duplicado. NUNCA se re-investiga una URL presente aquí.",
+  "type": "object",
+  "required": ["key", "url", "first_seen_block", "stage", "verdict", "ts"],
+  "properties": {
+    "key":   {"type": "string", "description": "owner/repo en minúsculas, o dominio+path normalizado si no es GitHub"},
+    "url":   {"type": "string"},
+    "aliases": {"type": "array", "items": {"type": "string"}, "description": "renombres, forks canónicos, mirrors"},
+    "first_seen_block": {"enum": ["B1","B2","B3","B4","B5","B6","B7","B8","B9","B10","B11"]},
+    "tags":  {"type": "array", "items": {"type": "string"}},
+    "stage": {"enum": ["discovered","triaged","shallow","deep","finalist"]},
+    "verdict": {"enum": ["ALIVE","KILL","PARKED","FINALIST"]},
+    "kill_code": {"enum": ["K1","K2","K3","K4","K5","K6","K7","K8","K9","K10",""]},
+    "kill_note": {"type": "string", "maxLength": 160},
+    "tokens_spent": {"type": "integer"},
+    "ts": {"type": "string", "description": "ISO8601 de la última actualización"}
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$id": "cluster.schema.json",
+  "description": "Grupo de proyectos que resuelven el mismo problema. FABLE construye la tabla; OPUS elige ganador salvo dominancia mecánica.",
+  "type": "object",
+  "required": ["cluster_id","problem","members","axes","dominance"],
+  "properties": {
+    "cluster_id": {"type": "string"},
+    "problem": {"type": "string", "maxLength": 200, "description": "el problema exacto que todos resuelven"},
+    "members": {"type": "array", "items": {"type": "string"}, "description": "repo keys"},
+    "axes": {
+      "type": "object",
+      "description": "Para cada eje del §25 del doc: valor por miembro + evidence_id discriminante.",
+      "properties": {
+        "capability": {"type": "object"}, "security": {"type": "object"}, "architecture": {"type": "object"},
+        "maintenance": {"type": "object"}, "performance": {"type": "object"}, "documentation": {"type": "object"},
+        "integration": {"type": "object"}, "complexity": {"type": "object"}, "windows": {"type": "object"}
+      }
+    },
+    "dominance": {
+      "type": "object",
+      "properties": {
+        "mechanical_winner": {"type": ["string","null"], "description": "solo si un miembro domina en TODOS los ejes; si no, null y decide OPUS"},
+        "eliminated": {"type": "array", "items": {"type": "object", "properties": {"key": {"type": "string"}, "reason": {"type": "string"}}}},
+        "escalate_to_opus": {"type": "boolean"},
+        "tradeoff_summary": {"type": "string", "maxLength": 400, "description": "en qué escenario gana cada uno"}
+      }
+    },
+    "complementarity": {"type": "array", "items": {
+      "type": "object",
+      "properties": {
+        "pair": {"type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": 2},
+        "match": {"type": "string", "description": "provides de A ∩ consumes de B"},
+        "role_overlap": {"type": "number", "description": "0 = complementarios puros, 1 = redundantes"},
+        "runtime_compatible": {"type": "boolean"},
+        "license_compatible": {"type": "boolean"},
+        "evidence_of_joint_use": {"type": "string", "description": "evidence_id de integración real documentada, o UNVERIFIED"}
+      }}}
+  }
+}

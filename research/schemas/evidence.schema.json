@@ -1,0 +1,22 @@
+{
+  "$id": "evidence.schema.json",
+  "description": "Unidad atómica de evidencia. Todo dato factual de una ficha apunta a uno o varios de estos ids.",
+  "type": "object",
+  "required": ["id", "repo_key", "claim", "class", "source_url", "fetched_at"],
+  "properties": {
+    "id": {"type": "string", "description": "<repo_slug>-E<nn>"},
+    "repo_key": {"type": "string"},
+    "claim": {"type": "string", "maxLength": 200, "description": "La afirmación concreta que esta evidencia sostiene o refuta"},
+    "class": {
+      "enum": ["E0","E1","E2","E3","E4"],
+      "description": "E0 afirmación de marketing/README sin verificar | E1 documentación que describe el mecanismo | E2 artefacto de código verificado (ruta+línea+sha) | E3 verificación independiente (tercero, paper, issue de no-mantenedor, auditoría) | E4 resultado medido reproducible (benchmark con harness+fecha, run de CI)"
+    },
+    "supports": {"enum": ["SUPPORTS","REFUTES","PARTIAL"]},
+    "source_url": {"type": "string"},
+    "locator": {"type": "string", "description": "path:line, o sección/ancla del documento, o id del benchmark"},
+    "commit_sha": {"type": "string", "description": "obligatorio para E2"},
+    "quote": {"type": "string", "maxLength": 400, "description": "cita literal mínima que sostiene la afirmación"},
+    "fetched_at": {"type": "string"},
+    "notes": {"type": "string", "maxLength": 200}
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$id": "candidate.schema.json",
+  "description": "Salida del Gate 2 (triage) y Gate 3 (shallow). Barato, sin lecturas profundas.",
+  "type": "object",
+  "required": ["key","url","block","stage","one_liner","last_push","license","verdict"],
+  "properties": {
+    "key": {"type": "string"},
+    "url": {"type": "string"},
+    "block": {"type": "string"},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "archetype": {"type": "string", "description": "slot de la matriz de cobertura que ocupa (ver RUNBOOK)"},
+    "stage": {"enum": ["triaged","shallow"]},
+    "one_liner": {"type": "string", "maxLength": 160},
+    "stars": {"type": "integer"},
+    "forks": {"type": "integer"},
+    "last_push": {"type": "string"},
+    "created_at": {"type": "string"},
+    "license": {"type": "string"},
+    "primary_language": {"type": "string"},
+    "archived": {"type": "boolean"},
+    "windows_level_guess": {"enum": ["W1","W2","W3","W4","W5","W6","UNVERIFIED"]},
+    "activity": {
+      "type": "object",
+      "properties": {
+        "days_since_substantive_commit": {"type": "integer"},
+        "human_committers_90d": {"type": "integer"},
+        "releases_365d": {"type": "integer"},
+        "open_issues": {"type": "integer"},
+        "docs_only_commit_ratio_90d": {"type": "number"}
+      }
+    },
+    "provisional_interest": {"enum": ["HIGH","MED","LOW"]},
+    "verdict": {"enum": ["ALIVE","KILL","PARKED","PROMOTE"]},
+    "kill_code": {"type": "string"},
+    "why": {"type": "string", "maxLength": 240},
+    "evidence_ids": {"type": "array", "items": {"type": "string"}}
+  }
+}

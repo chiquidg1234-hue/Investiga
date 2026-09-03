@@ -1,0 +1,194 @@
+{
+  "$id": "card.schema.json",
+  "description": "Ficha profunda (Gate 4). Un fichero por finalista: research/cards/<slug>.json. Máx 8 KB.",
+  "type": "object",
+  "required": ["key","url","block","what_it_does","problem_solved","capabilities","windows","security","maturity","scores","evidence_ids","open_questions"],
+  "properties": {
+    "key": {"type": "string"},
+    "name": {"type": "string"},
+    "url": {"type": "string"},
+    "homepage": {"type": "string"},
+    "block": {"type": "string"},
+    "category": {"type": "string"},
+    "archetype": {"type": "string"},
+    "commit_sha_reviewed": {"type": "string", "description": "SHA exacto sobre el que se hizo la revisión"},
+    "reviewed_at": {"type": "string"},
+
+    "what_it_does": {"type": "string", "maxLength": 400},
+    "problem_solved": {"type": "string", "maxLength": 300},
+    "how_it_could_be_used": {"type": "string", "maxLength": 400, "description": "uso concreto dentro del agente personal; sin recomendar arquitectura"},
+
+    "capabilities": {
+      "type": "object",
+      "description": "Cada campo: NONE | PARTIAL | FULL + evidence_ids. PARTIAL/FULL sin E2 es inválido.",
+      "properties": {
+        "computer_use": {"type": "string"},
+        "screen_perception": {"type": "string"},
+        "gui_grounding": {"type": "string"},
+        "input_actuation": {"type": "string"},
+        "multimodal": {"type": "string"},
+        "multi_agent": {"type": "string"},
+        "memory": {"type": "string"},
+        "research": {"type": "string"},
+        "mcp_server": {"type": "string"},
+        "mcp_client": {"type": "string"},
+        "browser_automation": {"type": "string"},
+        "desktop_automation": {"type": "string"},
+        "hitl_approval": {"type": "string"},
+        "observability": {"type": "string"},
+        "eval_harness": {"type": "string"}
+      }
+    },
+
+    "perception_mechanism": {"enum": ["vision_vlm","ocr","accessibility_uia","dom","hybrid","none","UNVERIFIED"]},
+    "actuation_mechanism": {"enum": ["input_injection","uia_invoke","cdp_dom","shell","api","none","UNVERIFIED"]},
+    "verification_mechanism": {"type": "string", "maxLength": 200, "description": "cómo comprueba que su acción funcionó; 'none' si no lo hace"},
+
+    "models": {
+      "type": "object",
+      "properties": {
+        "model_agnostic": {"type": "boolean"},
+        "required_models": {"type": "array", "items": {"type": "string"}},
+        "min_vram_gb": {"type": ["number","string"]},
+        "min_ram_gb": {"type": ["number","string"]},
+        "requires_cuda": {"type": ["boolean","string"]},
+        "cpu_viable": {"type": ["boolean","string"]},
+        "local_cloud": {"enum": ["local","cloud","hybrid","UNVERIFIED"]}
+      }
+    },
+
+    "windows": {
+      "type": "object",
+      "required": ["level","evidence_ids"],
+      "properties": {
+        "level": {"enum": ["W1","W2","W3","W4","W5","W6","UNVERIFIED"]},
+        "ci_windows": {"type": ["boolean","string"], "description": "¿hay job windows-latest en CI?"},
+        "windows_deps": {"type": "array", "items": {"type": "string"}, "description": "pywin32, uiautomation, comtypes, win32gui..."},
+        "powershell": {"type": ["boolean","string"]},
+        "uia_support": {"type": ["boolean","string"]},
+        "win32_support": {"type": ["boolean","string"]},
+        "multi_monitor": {"type": ["boolean","string"]},
+        "dpi_scaling": {"type": ["boolean","string"]},
+        "screenshot_on_windows": {"type": ["boolean","string"]},
+        "requires_admin": {"type": ["boolean","string"]},
+        "wsl_dependency": {"type": ["boolean","string"]},
+        "docker_dependency": {"type": ["boolean","string"]},
+        "vm_dependency": {"type": ["boolean","string"]},
+        "windows_open_issues": {"type": "integer", "description": "issues abiertas que mencionan windows"},
+        "windows_issue_ratio": {"type": "number", "description": "abiertas / (abiertas+cerradas) que mencionan windows"},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+
+    "security": {
+      "type": "object",
+      "required": ["permissions","risk_tier"],
+      "properties": {
+        "permissions": {"type": "array", "items": {"type": "string"}, "description": "de la lista de superficie de capacidad de SCORING.md §4"},
+        "risk_tier": {"enum": ["R0","R1","R2","R3","R4"]},
+        "isolation": {"type": "string", "maxLength": 200},
+        "approval_mechanism": {"type": "string", "maxLength": 200},
+        "secret_handling": {"type": "string", "maxLength": 200},
+        "prompt_injection_defense": {"type": "string", "maxLength": 240},
+        "supply_chain": {
+          "type": "object",
+          "properties": {
+            "direct_deps": {"type": ["integer","string"]},
+            "lockfile": {"type": ["boolean","string"]},
+            "postinstall_scripts": {"type": ["boolean","string"]},
+            "install_method": {"type": "string"},
+            "curl_bash_install": {"type": ["boolean","string"]},
+            "signed_releases": {"type": ["boolean","string"]},
+            "advisories": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "data_exfiltration_paths": {"type": "array", "items": {"type": "string"}, "description": "qué sale del PC y hacia dónde"},
+        "what_could_go_wrong": {"type": "string", "maxLength": 400},
+        "how_to_isolate": {"type": "string", "maxLength": 300},
+        "how_to_revoke": {"type": "string", "maxLength": 200},
+        "how_to_uninstall": {"type": "string", "maxLength": 200},
+        "vetoes": {"type": "array", "items": {"type": "string"}, "description": "V1..V8"}
+      }
+    },
+
+    "maturity": {
+      "type": "object",
+      "properties": {
+        "age_days": {"type": "integer"},
+        "days_since_substantive_commit": {"type": "integer"},
+        "human_committers_90d": {"type": "integer"},
+        "bus_factor_top_share": {"type": "number"},
+        "releases_365d": {"type": "integer"},
+        "median_issue_first_response_days": {"type": ["number","string"]},
+        "open_issue_growth_90d": {"type": ["number","string"]},
+        "tests_in_ci": {"type": ["boolean","string"]},
+        "breaking_change_frequency": {"type": "string", "maxLength": 120}
+      }
+    },
+
+    "benchmarks": {"type": "array", "items": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"}, "metric": {"type": "string"}, "value": {"type": "string"},
+        "date": {"type": "string"}, "self_reported": {"type": "boolean"}, "evidence_id": {"type": "string"}
+      }}},
+
+    "interfaces": {
+      "type": "object",
+      "description": "Base mecánica para el análisis de combinaciones. OPUS compone; FABLE solo rellena.",
+      "properties": {
+        "provides": {"type": "array", "items": {"type": "string"},
+          "description": "mcp_server | screenshot_source | action_executor | vlm_inference | llm_client | memory_store | trace_sink | approval_gate | sandbox | browser_driver | scheduler | skill_registry | eval_harness"},
+        "consumes": {"type": "array", "items": {"type": "string"}},
+        "runtime": {"type": "string", "description": "python3.x | node | rust | dotnet | go"},
+        "transport": {"type": "array", "items": {"type": "string"}, "description": "stdio | http | ws | grpc | in-process"},
+        "license_spdx": {"type": "string"},
+        "integration_effort": {"enum": ["drop_in","adapter","fork_required","incompatible","UNVERIFIED"]}
+      }
+    },
+
+    "impact": {
+      "type": "object",
+      "description": "Impacto AISLADO del componente, -2..+3 por eje. El impacto marginal en el stack lo calcula OPUS.",
+      "properties": {
+        "calidad": {"type": "integer"}, "autonomia": {"type": "integer"}, "precision": {"type": "integer"},
+        "computer_use": {"type": "integer"}, "percepcion": {"type": "integer"}, "investigacion": {"type": "integer"},
+        "memoria": {"type": "integer"}, "multi_agent": {"type": "integer"}, "mcp": {"type": "integer"},
+        "contexto": {"type": "integer"}, "prompting": {"type": "integer"}, "claude_code": {"type": "integer"},
+        "seguridad": {"type": "integer"}, "observabilidad": {"type": "integer"}, "coste": {"type": "integer"},
+        "tokens": {"type": "integer"}
+      }
+    },
+
+    "claims": {"type": "array", "items": {
+      "type": "object",
+      "properties": {"claim": {"type": "string", "maxLength": 160}, "max_evidence_class": {"type": "string"}, "evidence_ids": {"type": "array", "items": {"type": "string"}}}
+    }},
+    "hype_index": {"type": "number"},
+    "flags": {"type": "array", "items": {"enum": ["HYPE_FLAG","HIDDEN_GEM","PAPER_ONLY","ABANDONMENT_RISK","SECURITY_VETO","WINDOWS_BLOCKER","DUPLICATE_OF"]}},
+
+    "scores": {
+      "type": "object",
+      "required": ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10","score_global","score_track"],
+      "properties": {
+        "A1": {"type": "integer"}, "A2": {"type": "integer"}, "A3": {"type": "integer"}, "A4": {"type": "integer"},
+        "A5": {"type": "integer"}, "A6": {"type": "integer"}, "A7": {"type": "integer"}, "A8": {"type": "integer"},
+        "A9": {"type": "integer"}, "A10": {"type": "integer"},
+        "caps_applied": {"type": "array", "items": {"type": "string"}},
+        "score_global": {"type": "number"},
+        "score_track": {"type": "number"},
+        "low_confidence_axes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+
+    "pros": {"type": "array", "items": {"type": "string", "maxLength": 160}, "maxItems": 5},
+    "cons": {"type": "array", "items": {"type": "string", "maxLength": 160}, "maxItems": 5},
+    "contradictions": {"type": "array", "items": {"type": "string", "maxLength": 240},
+      "description": "afirmaciones enfrentadas entre fuentes; NO resolver, escalar a OPUS"},
+    "open_questions": {"type": "array", "items": {"type": "string", "maxLength": 200}},
+    "verdict_factual": {"type": "string", "maxLength": 300,
+      "description": "Resumen FACTUAL, no recomendación. 'Hace X, verificado en Y, no hace Z.'"},
+    "evidence_ids": {"type": "array", "items": {"type": "string"}},
+    "tokens_spent": {"type": "integer"}
+  }
+}
