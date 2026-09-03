@@ -10,3 +10,9 @@
 FABLE **no** debe leer `AI-AGENT-RESEARCH.md` ni `PHASE1-STRATEGY.md`.
 
 Regla vigente en las tres fases: **no se instala nada, no se ejecuta nada de terceros, no se modifica el equipo.**
+
+## Estado FASE 2 (2026-09-03)
+Artefactos generados: `ledger.jsonl`, `triage.jsonl`, `rejected.md`, `cards/` (41), `evidence/` (41), `clusters.json`, `models.json`, `ecosystem-map.json`, `coverage.json`, `windows-matrix.md`, `contradictions.md`, `open-questions.md`, `papers.jsonl`, `commercial.jsonl`, `queries.jsonl`, `SUMMARY.jsonl`, `HANDOFF.md`.
+Regenerables con `python3 research/tools/build_artifacts.py && python3 research/tools/build_meta.py` (sin red). Datos brutos en `raw/`.
+
+Separación pedida por el usuario: ecosystem → `ecosystem-map.json`; candidates → `triage.jsonl`; computer-use/multi-agent/memory/research/MCP/Claude Code → `cards/` por `block` (B2/B4/B6/B5/B7/B8) y `SUMMARY.jsonl`; Windows → `windows-matrix.md`; security → `cards/*.security` + `clusters.json` C3/C6; evaluation → `models.json` + `papers.jsonl`; evidence → `evidence/`; rejected → `rejected.md`.

@@ -1,0 +1,193 @@
+{
+ "key": "trycua/cua",
+ "name": "Cua (c/ua)",
+ "url": "https://github.com/trycua/cua",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "cu_harness_sandbox",
+ "commit_sha_reviewed": "986b6f257b1afddef0cbd4815bb2744eab7eadba",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Plataforma CU: drivers de escritorio en segundo plano para macOS/Windows/Linux, sandboxes (contenedor/VM), agente multi-modelo, MCP server, y benchmarks (OSWorld, ScreenSpot, WAA).",
+ "problem_solved": "Ejecutar agentes CU en entornos aislados y en background sin robar el foco.",
+ "how_it_could_be_used": "Su driver Windows 'background' y el servidor MCP podrían dar acción sin bloquear al usuario; su sandbox exige VM/Docker.",
+ "perception_mechanism": "hybrid",
+ "actuation_mechanism": "input_injection",
+ "verification_mechanism": "UNVERIFIED",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "multi-proveedor"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "Driver Windows nativo (win32: 35 hits, UIA: 19) + CI windows-latest; el sandbox completo requiere Docker/VM (W4/W5). 12 hits de curl|bash en docs.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 11,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "trycua__cua-E01",
+   "trycua__cua-E02",
+   "trycua__cua-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_write",
+   "screen_capture",
+   "input_injection",
+   "net_out",
+   "credentials",
+   "telemetry"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Sandboxes propios (contenedor/VM) para el agente; el driver host corre sin aislar.",
+  "approval_mechanism": "Configurable (UNVERIFIED por defecto).",
+  "secret_handling": "Env/.env",
+  "prompt_injection_defense": "UNVERIFIED",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 12,
+   "telemetry_hits": 249
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_write, screen_capture, input_injection, net_out, credentials, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 4,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.68,
+  "tags_total": 798,
+  "tests_files": 455,
+  "tests_in_ci": true,
+  "loc": 703058
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "action_executor",
+   "sandbox",
+   "mcp_server",
+   "eval_harness"
+  ],
+  "consumes": [
+   "vlm_inference"
+  ],
+  "runtime": "python3.11+",
+  "transport": [
+   "stdio",
+   "http"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "computer_use": 2,
+  "seguridad": 1,
+  "observabilidad": 1,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Drivers de escritorio en background en Windows",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "trycua__cua-E01",
+    "trycua__cua-E02",
+    "trycua__cua-E03"
+   ]
+  },
+  {
+   "claim": "Evalúa en OSWorld/ScreenSpot/WAA",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "trycua__cua-E17"
+   ]
+  },
+  {
+   "claim": "Sandboxes Windows",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "trycua__cua-E17"
+   ]
+  }
+ ],
+ "hype_index": 0.67,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 4,
+  "A4": 2,
+  "A5": 4,
+  "A6": 3,
+  "A7": 3,
+  "A8": 4,
+  "A9": 3,
+  "A10": 2,
+  "caps_applied": [],
+  "score_global": 65.6,
+  "score_track": 63.1,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Activo (60 commits/90d), 455 tests, CI Windows",
+  "Une driver + sandbox + evaluación"
+ ],
+ "cons": [
+  "703k LOC: complejidad alta",
+  "Telemetría (249 hits) y curl|bash en docs",
+  "Producto comercial con nube propia (lock-in potencial)"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Stars no verificadas; comportamiento del driver Windows 'background' con apps DirectX."
+ ],
+ "verdict_factual": "Plataforma CU amplia y activa con driver Windows real; complejidad y telemetría altas; el aislamiento fuerte exige VM/Docker.",
+ "evidence_ids": [
+  "trycua__cua-E01",
+  "trycua__cua-E02",
+  "trycua__cua-E03",
+  "trycua__cua-E04",
+  "trycua__cua-E05",
+  "trycua__cua-E06",
+  "trycua__cua-E07",
+  "trycua__cua-E08",
+  "trycua__cua-E09",
+  "trycua__cua-E10",
+  "trycua__cua-E11",
+  "trycua__cua-E12",
+  "trycua__cua-E13",
+  "trycua__cua-E14",
+  "trycua__cua-E15",
+  "trycua__cua-E16",
+  "trycua__cua-E17"
+ ],
+ "tokens_spent": 9000
+}

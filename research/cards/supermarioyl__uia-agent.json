@@ -1,0 +1,177 @@
+{
+ "key": "supermarioyl/uia-agent",
+ "name": "uia-agent",
+ "url": "https://github.com/supermarioyl/uia-agent",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "windows_agent_uia",
+ "commit_sha_reviewed": "927ee4e5a60fe19643adaf800b17c13f28cc66fb",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 1,
+ "what_it_does": "Agente mínimo (~4k LOC) que usa el árbol UIA de Windows como action space: observe (UIA podado ≤400 nodos) → think (Anthropic tool-use u OpenAI JSON) → act (patrones UIA Invoke/Value/SelectionItem) → verify (re-snapshot). Fallback OCR opcional; adaptadores LangChain; servidor MCP.",
+ "problem_solved": "Controlar software Windows legado por UIA con coste de tokens bajo (3-6k por paso) y sin selectores humanos.",
+ "how_it_could_be_used": "Patrón de referencia para un COMPUTER AGENT determinista y barato; su poda del árbol UIA es reutilizable.",
+ "perception_mechanism": "accessibility_uia",
+ "actuation_mechanism": "uia_invoke",
+ "verification_mechanism": "Re-snapshot del árbol tras cada acción (paso 'verify' en el bucle).",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "Anthropic o OpenAI API"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "cloud"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Solo Windows por diseño; sesión interactiva; CI windows-latest con tests (12 tests).",
+  "ci_windows": true,
+  "windows_deps": [
+   "win_uia"
+  ],
+  "readme_windows_mentions": 17,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "supermarioyl__uia-agent-E01",
+   "supermarioyl__uia-agent-E02",
+   "supermarioyl__uia-agent-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "input_injection",
+   "screen_capture",
+   "net_out",
+   "env_vars"
+  ],
+  "risk_tier": "R2",
+  "isolation": "Ninguna.",
+  "approval_mechanism": "Ninguna (presupuesto de 25 pasos).",
+  "secret_handling": "API keys por env.",
+  "prompt_injection_defense": "Ninguna.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 3
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con input_injection, screen_capture, net_out, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 3,
+  "commits_90d": 30,
+  "bus_factor_top_share": 0.67,
+  "tags_total": 9,
+  "tests_files": 12,
+  "tests_in_ci": true,
+  "loc": 4137
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "action_executor",
+   "mcp_server"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python3.12+",
+  "transport": [
+   "stdio",
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "computer_use": 2,
+  "percepcion": 2,
+  "precision": 1,
+  "tokens": 2,
+  "coste": 2
+ },
+ "claims": [
+  {
+   "claim": "Bucle observe→think→act→verify sobre UIA",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "supermarioyl__uia-agent-E01",
+    "supermarioyl__uia-agent-E02",
+    "supermarioyl__uia-agent-E03"
+   ]
+  },
+  {
+   "claim": "Hit-rate 83% en BENCHMARK.md",
+   "max_evidence_class": "E0",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "supermarioyl__uia-agent-E08"
+   ]
+  },
+  {
+   "claim": "~50x menos tokens que agentes de píxeles",
+   "max_evidence_class": "E0",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "supermarioyl__uia-agent-E08"
+   ]
+  }
+ ],
+ "hype_index": 0.67,
+ "flags": [],
+ "scores": {
+  "A1": 3,
+  "A2": 3,
+  "A3": 4,
+  "A4": 3,
+  "A5": 3,
+  "A6": 4,
+  "A7": 1,
+  "A8": 3,
+  "A9": 0,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 59.6,
+  "score_track": 56.0,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Diseño limpio y verificable, sin shell ni filesystem",
+  "Verificación explícita",
+  "Activo hoy (30 commits/90d)"
+ ],
+ "cons": [
+  "1 estrella, 3 committers: riesgo de abandono",
+  "Benchmark declarado como 'valor objetivo', no medido",
+  "No hace nada fuera de UIA salvo OCR fallback"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "BENCHMARK.md declara que el 83% es un target no medido: confirmar si ya hay medición real."
+ ],
+ "verdict_factual": "HIDDEN_GEM candidato: agente UIA Windows pequeño, con verificación y MCP, activo; sin comunidad ni benchmark medido; superficie de permisos baja (R2).",
+ "evidence_ids": [
+  "supermarioyl__uia-agent-E01",
+  "supermarioyl__uia-agent-E02",
+  "supermarioyl__uia-agent-E03",
+  "supermarioyl__uia-agent-E04",
+  "supermarioyl__uia-agent-E05",
+  "supermarioyl__uia-agent-E06",
+  "supermarioyl__uia-agent-E07",
+  "supermarioyl__uia-agent-E08"
+ ],
+ "tokens_spent": 9000
+}

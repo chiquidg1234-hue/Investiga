@@ -1,0 +1,674 @@
+{
+ "generated": "2026-09-03",
+ "taxonomia": [
+  {
+   "cat": "Computer-use / GUI agents",
+   "frontera": "Perciben pantalla (visión o accesibilidad) y actúan con mouse/teclado sobre cualquier app.",
+   "ejemplos": [
+    "microsoft/UFO",
+    "simular-ai/Agent-S",
+    "CursorTouch/Windows-MCP",
+    "trycua/cua"
+   ]
+  },
+  {
+   "cat": "Modelos de GUI grounding",
+   "frontera": "Pesos que mapean instrucción→coordenadas; no son agentes.",
+   "ejemplos": [
+    "UI-TARS-1.5",
+    "Holo2",
+    "POINTS-GUI-G",
+    "ZonUI-3B",
+    "GUI-Owl-1.5",
+    "Qwen3-VL"
+   ]
+  },
+  {
+   "cat": "Parsers/percepción de pantalla",
+   "frontera": "Convierten screenshot en elementos estructurados; sin acción.",
+   "ejemplos": [
+    "microsoft/OmniParser",
+    "screenpipe (OCR continuo)",
+    "Windows OCR API",
+    "RapidOCR"
+   ]
+  },
+  {
+   "cat": "Substrato de automatización",
+   "frontera": "Librerías sin LLM: UIA, input, captura, navegador.",
+   "ejemplos": [
+    "uiautomation",
+    "pywinauto",
+    "FlaUI",
+    "pyautogui",
+    "mss/dxcam",
+    "Playwright"
+   ]
+  },
+  {
+   "cat": "Agentes/herramientas de navegador",
+   "frontera": "DOM/CDP o accesibilidad del navegador.",
+   "ejemplos": [
+    "playwright-mcp",
+    "browser-use",
+    "stagehand",
+    "skyvern"
+   ]
+  },
+  {
+   "cat": "Supervisores visuales (guía, no acción)",
+   "frontera": "Observan la pantalla y guían al usuario; opcionalmente actúan acotado.",
+   "ejemplos": [
+    "Blinky",
+    "OpenGuider",
+    "screen.vision"
+   ]
+  },
+  {
+   "cat": "Frameworks de orquestación / multi-agente",
+   "frontera": "Bucle, handoffs, estado, HITL; agnósticos del dominio.",
+   "ejemplos": [
+    "LangGraph",
+    "OpenAI Agents SDK",
+    "Pydantic AI",
+    "Claude Agent SDK",
+    "AutoGen (en declive)"
+   ]
+  },
+  {
+   "cat": "Asistentes personales 'todo en uno'",
+   "frontera": "Producto completo con skills/marketplace; superficie de permisos máxima.",
+   "ejemplos": [
+    "OpenClaw",
+    "Hermes Agent",
+    "Dex",
+    "nanobot"
+   ]
+  },
+  {
+   "cat": "Research agents",
+   "frontera": "Búsqueda multi-fuente + informe con citas.",
+   "ejemplos": [
+    "gpt-researcher",
+    "deer-flow",
+    "open_deep_research"
+   ]
+  },
+  {
+   "cat": "Memoria",
+   "frontera": "Capas (vector/grafo/verbatim/markdown) vs runtimes con memoria integrada (Letta).",
+   "ejemplos": [
+    "mem0",
+    "graphiti",
+    "MemPalace",
+    "basic-memory",
+    "Letta"
+   ]
+  },
+  {
+   "cat": "MCP: SDKs, servidores, gateways, runtimes, escáneres",
+   "frontera": "Protocolo; la seguridad vive en gateways (protocolo) o runtimes (proceso).",
+   "ejemplos": [
+    "fastmcp",
+    "modelcontextprotocol/servers",
+    "mcpgate",
+    "mcp-doorman",
+    "toolhive",
+    "mcp-scan"
+   ]
+  },
+  {
+   "cat": "Claude Code: skills/hooks/subagentes y optimización",
+   "frontera": "Nativo (hooks con deny, subagentes con modelo/tools, skills con carga perezosa) vs colecciones de terceros (superpowers, BMAD) vs optimizadores con eval (DSPy, promptfoo).",
+   "ejemplos": [
+    "anthropics/skills",
+    "obra/superpowers",
+    "dspy",
+    "promptfoo",
+    "ccusage"
+   ]
+  },
+  {
+   "cat": "Seguridad: sandbox SO, ACL, guardrails, benchmarks de injection",
+   "frontera": "Proceso (sandbox-runtime, AppContainer) vs fichero (Phylax) vs protocolo (gateways) vs evaluación (AgentDojo).",
+   "ejemplos": [
+    "sandbox-runtime",
+    "sandboxrs-windows",
+    "Phylax",
+    "AgentDojo",
+    "openai/codex (referencia)"
+   ]
+  },
+  {
+   "cat": "Observabilidad y evaluación",
+   "frontera": "Trazas/coste (Langfuse, Phoenix, Opik) vs benchmarks (OSWorld, WAA, ScreenSpot-Pro, OSWorld-MCP).",
+   "ejemplos": [
+    "langfuse",
+    "OSWorld",
+    "ScreenSpot-Pro",
+    "WindowsAgentArena (muerto)"
+   ]
+  },
+  {
+   "cat": "Modelos y runtimes locales",
+   "frontera": "Ollama/llama.cpp + pesos cuantizados; techo 2 GB VRAM.",
+   "ejemplos": [
+    "ollama",
+    "llama.cpp",
+    "Qwen3-VL-2B/4B",
+    "RapidOCR"
+   ]
+  }
+ ],
+ "fuentes_meta": {
+  "e2b-dev/awesome-ai-agents": {
+   "url": "https://github.com/e2b-dev/awesome-ai-agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 116,
+   "chars": 211936,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 12,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "kyrolabs/awesome-agents": {
+   "url": "https://github.com/kyrolabs/awesome-agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 165,
+   "chars": 45785,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "punkpeye/awesome-mcp-servers": {
+   "url": "https://github.com/punkpeye/awesome-mcp-servers",
+   "tipo": "awesome/lista",
+   "items_estimados": 3493,
+   "chars": 1362624,
+   "curada_o_volcado": "volcado",
+   "ultima_actualizacion_dias": 1,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "wong2/awesome-mcp-servers": {
+   "url": "https://github.com/wong2/awesome-mcp-servers",
+   "tipo": "awesome/lista",
+   "items_estimados": 487,
+   "chars": 98998,
+   "curada_o_volcado": "volcado",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "appcypher/awesome-mcp-servers": {
+   "url": "https://github.com/appcypher/awesome-mcp-servers",
+   "tipo": "awesome/lista",
+   "items_estimados": 177,
+   "chars": 62396,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "modelcontextprotocol/servers": {
+   "url": "https://github.com/modelcontextprotocol/servers",
+   "tipo": "awesome/lista",
+   "items_estimados": 13,
+   "chars": 8674,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 0,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "showlab/Awesome-GUI-Agent": {
+   "url": "https://github.com/showlab/Awesome-GUI-Agent",
+   "tipo": "awesome/lista",
+   "items_estimados": 114,
+   "chars": 61322,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 381,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "OSU-NLP-Group/GUI-Agents-Paper-List": {
+   "url": "https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List",
+   "tipo": "awesome/lista",
+   "items_estimados": 1,
+   "chars": 432580,
+   "curada_o_volcado": "volcado",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "francedot/acu": {
+   "url": "https://github.com/francedot/acu",
+   "tipo": "awesome/lista",
+   "items_estimados": 67,
+   "chars": 26362,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 341,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "Jenqyang/Awesome-AI-Agents": {
+   "url": "https://github.com/Jenqyang/Awesome-AI-Agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 244,
+   "chars": 77699,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "slavakurilyak/awesome-ai-agents": {
+   "url": "https://github.com/slavakurilyak/awesome-ai-agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 145,
+   "chars": 172504,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "Shubhamsaboo/awesome-llm-apps": {
+   "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+   "tipo": "awesome/lista",
+   "items_estimados": 4,
+   "chars": 24261,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "vince-lam/awesome-local-llms": {
+   "url": "https://github.com/vince-lam/awesome-local-llms",
+   "tipo": "awesome/lista",
+   "items_estimados": 108,
+   "chars": 38150,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "zjunlp/LLMAgentPapers": {
+   "url": "https://github.com/zjunlp/LLMAgentPapers",
+   "tipo": "awesome/lista",
+   "items_estimados": 42,
+   "chars": 65673,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "AGI-Edgerunners/LLM-Agents-Papers": {
+   "url": "https://github.com/AGI-Edgerunners/LLM-Agents-Papers",
+   "tipo": "awesome/lista",
+   "items_estimados": 56,
+   "chars": 309966,
+   "curada_o_volcado": "volcado",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "tensorchord/Awesome-LLMOps": {
+   "url": "https://github.com/tensorchord/Awesome-LLMOps",
+   "tipo": "awesome/lista",
+   "items_estimados": 342,
+   "chars": 197169,
+   "curada_o_volcado": "volcado",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "hesreallyhim/awesome-claude-code": {
+   "url": "https://github.com/hesreallyhim/awesome-claude-code",
+   "tipo": "awesome/lista",
+   "items_estimados": 140,
+   "chars": 145907,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 0,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "Paitesanshi/LLM-Agent-Survey": {
+   "url": "https://github.com/Paitesanshi/LLM-Agent-Survey",
+   "tipo": "awesome/lista",
+   "items_estimados": 50,
+   "chars": 63256,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "kaushikb11/awesome-llm-agents": {
+   "url": "https://github.com/kaushikb11/awesome-llm-agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 110,
+   "chars": 18311,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "nuster1128/LLM_Agent_Memory_Survey": {
+   "url": "https://github.com/nuster1128/LLM_Agent_Memory_Survey",
+   "tipo": "awesome/lista",
+   "items_estimados": 0,
+   "chars": 7008,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "corca-ai/awesome-llm-security": {
+   "url": "https://github.com/corca-ai/awesome-llm-security",
+   "tipo": "awesome/lista",
+   "items_estimados": 47,
+   "chars": 21121,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "DavidZWZ/Awesome-Deep-Research": {
+   "url": "https://github.com/DavidZWZ/Awesome-Deep-Research",
+   "tipo": "awesome/lista",
+   "items_estimados": 116,
+   "chars": 66267,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "vyokky/LLM-Brained-GUI-Agents-Survey": {
+   "url": "https://github.com/vyokky/LLM-Brained-GUI-Agents-Survey",
+   "tipo": "awesome/lista",
+   "items_estimados": 6,
+   "chars": 5332,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "promptslab/Awesome-Prompt-Engineering": {
+   "url": "https://github.com/promptslab/Awesome-Prompt-Engineering",
+   "tipo": "awesome/lista",
+   "items_estimados": 185,
+   "chars": 95256,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "Meirtz/Awesome-Context-Engineering": {
+   "url": "https://github.com/Meirtz/Awesome-Context-Engineering",
+   "tipo": "awesome/lista",
+   "items_estimados": 164,
+   "chars": 167010,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "punkpeye/awesome-mcp-clients": {
+   "url": "https://github.com/punkpeye/awesome-mcp-clients",
+   "tipo": "awesome/lista",
+   "items_estimados": 81,
+   "chars": 91003,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "jamesmurdza/awesome-ai-devtools": {
+   "url": "https://github.com/jamesmurdza/awesome-ai-devtools",
+   "tipo": "awesome/lista",
+   "items_estimados": 89,
+   "chars": 60460,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "sourcegraph/awesome-code-ai": {
+   "url": "https://github.com/sourcegraph/awesome-code-ai",
+   "tipo": "awesome/lista",
+   "items_estimados": 25,
+   "chars": 10203,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "anthropics/skills": {
+   "url": "https://github.com/anthropics/skills",
+   "tipo": "awesome/lista",
+   "items_estimados": 0,
+   "chars": 5552,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 0,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "VoltAgent/awesome-claude-skills": {
+   "url": "https://github.com/VoltAgent/awesome-claude-skills",
+   "tipo": "awesome/lista",
+   "items_estimados": 208,
+   "chars": 251514,
+   "curada_o_volcado": "volcado",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "travisvn/awesome-claude-skills": {
+   "url": "https://github.com/travisvn/awesome-claude-skills",
+   "tipo": "awesome/lista",
+   "items_estimados": 19,
+   "chars": 21700,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "restyler/awesome-sandbox": {
+   "url": "https://github.com/restyler/awesome-sandbox",
+   "tipo": "awesome/lista",
+   "items_estimados": 25,
+   "chars": 97359,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "philfung/awesome-computer-use": {
+   "url": "https://github.com/philfung/awesome-computer-use",
+   "tipo": "awesome/lista",
+   "items_estimados": 16,
+   "chars": 3391,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "0russwest0/Awesome-Agent-RL": {
+   "url": "https://github.com/0russwest0/Awesome-Agent-RL",
+   "tipo": "awesome/lista",
+   "items_estimados": 21,
+   "chars": 8177,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "rohitg00/awesome-claude-code": {
+   "url": "https://github.com/rohitg00/awesome-claude-code",
+   "tipo": "awesome/lista",
+   "items_estimados": 169,
+   "chars": 71753,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "awesome-agents/awesome-agents": {
+   "url": "https://github.com/awesome-agents/awesome-agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 11,
+   "chars": 2316,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "anthropics/anthropic-cookbook": {
+   "url": "https://github.com/anthropics/anthropic-cookbook",
+   "tipo": "awesome/lista",
+   "items_estimados": 3,
+   "chars": 6083,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "TsinghuaC3I/Awesome-Memory-for-Agents": {
+   "url": "https://github.com/TsinghuaC3I/Awesome-Memory-for-Agents",
+   "tipo": "awesome/lista",
+   "items_estimados": 71,
+   "chars": 75456,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 0,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "aviskaar/awesome-agentic-memory": {
+   "url": "https://github.com/aviskaar/awesome-agentic-memory",
+   "tipo": "awesome/lista",
+   "items_estimados": 133,
+   "chars": 83102,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "natnew/Awesome-Agentic-AI-Security": {
+   "url": "https://github.com/natnew/Awesome-Agentic-AI-Security",
+   "tipo": "awesome/lista",
+   "items_estimados": 9,
+   "chars": 22979,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "Ridgeio/awesome-ai-agents-2027": {
+   "url": "https://github.com/Ridgeio/awesome-ai-agents-2027",
+   "tipo": "awesome/lista",
+   "items_estimados": 111,
+   "chars": 79045,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": "UNVERIFIED",
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  },
+  "CursorTouch/Windows-MCP": {
+   "url": "https://github.com/CursorTouch/Windows-MCP",
+   "tipo": "awesome/lista",
+   "items_estimados": 6,
+   "chars": 31146,
+   "curada_o_volcado": "curada",
+   "ultima_actualizacion_dias": 1,
+   "criterio_inclusion_declarado": "UNVERIFIED",
+   "ha_eliminado_entradas": "UNVERIFIED",
+   "nota": "Test de curación aplicado parcialmente: tamaño + actualización; eliminación de entradas no verificada (sin API de historial)."
+  }
+ },
+ "fuentes_meta_no_github": [
+  {
+   "url": "https://gui-agent.github.io/grounding-leaderboard/",
+   "tipo": "leaderboard",
+   "nota": "ScreenSpot-Pro oficial; actualizado 2026-08-13"
+  },
+  {
+   "url": "https://os-world.github.io/",
+   "tipo": "leaderboard",
+   "nota": "OSWorld-Verified oficial (no descargado; citado por terceros)"
+  },
+  {
+   "url": "https://leaderboard.steel.dev/leaderboards/osworld/",
+   "tipo": "agregador",
+   "nota": "Mirror con fuentes; 2026-05-28"
+  },
+  {
+   "url": "https://benchlm.ai/benchmarks/osworld-verified",
+   "tipo": "agregador",
+   "nota": "2026-09-02; discrepa con Steel"
+  },
+  {
+   "url": "https://osworld-mcp.github.io/",
+   "tipo": "leaderboard",
+   "nota": "GUI + MCP; TIR/ACS"
+  },
+  {
+   "url": "https://snorkel.ai/leaderboard/os-world-2-0/",
+   "tipo": "leaderboard",
+   "nota": "OSWorld 2.0 con coste por run"
+  },
+  {
+   "url": "https://gentic.news/computer-use",
+   "tipo": "agregador",
+   "nota": "14 agentes / 13 benchmarks; cifras difieren de Steel/BenchLM"
+  },
+  {
+   "url": "https://huggingface.co",
+   "tipo": "hub de modelos",
+   "nota": "cards de Qwen3-VL, UI-TARS-1.5, Holo2, OmniParser"
+  },
+  {
+   "url": "https://code.claude.com/docs",
+   "tipo": "docs oficiales",
+   "nota": "hooks, sub-agents, skills"
+  }
+ ]
+}

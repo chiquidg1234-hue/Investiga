@@ -1,0 +1,150 @@
+{
+ "key": "langfuse/langfuse",
+ "name": "Langfuse",
+ "url": "https://github.com/langfuse/langfuse",
+ "block": "B10",
+ "category": "B10",
+ "archetype": "tracing",
+ "commit_sha_reviewed": "6cb4f245336aca7aa1f1e3afb72127dcf0be41a2",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 34200,
+ "what_it_does": "Plataforma open source de trazas, coste, prompts y evals para LLM apps; self-host por Docker; OTel.",
+ "problem_solved": "Responder '¿por qué hizo esto, qué vio, cuánto costó?'.",
+ "how_it_could_be_used": "Sumidero de trazas del agente (con screenshots como adjuntos).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W4",
+  "notes": "Self-host = Docker Compose; SDK Python/JS nativo.",
+  "ci_windows": false,
+  "windows_deps": [],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "langfuse__langfuse-E01",
+   "langfuse__langfuse-E02",
+   "langfuse__langfuse-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out",
+   "fs_write",
+   "telemetry"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "Trazas pueden contener prompts/secretos.",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": true,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 2,
+   "telemetry_hits": 513
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out, fs_write, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 14,
+  "commits_90d": 56,
+  "bus_factor_top_share": 0.18,
+  "tags_total": 684,
+  "tests_files": 642,
+  "tests_in_ci": true,
+  "loc": 662441
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "trace_sink"
+  ],
+  "consumes": [],
+  "runtime": "ts + python sdk",
+  "transport": [
+   "http"
+  ],
+  "license_spdx": "OTHER",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "observabilidad": 3,
+  "coste": 1,
+  "tokens": 1
+ },
+ "claims": [
+  {
+   "claim": "Trazas + coste + evals",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "langfuse__langfuse-E01",
+    "langfuse__langfuse-E02",
+    "langfuse__langfuse-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 1,
+  "A4": 3,
+  "A5": 5,
+  "A6": 3,
+  "A7": 2,
+  "A8": 5,
+  "A9": 5,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 68.2,
+  "score_track": 76.7,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "14 humanos/90d, 642 tests"
+ ],
+ "cons": [
+  "Servidor requiere Docker (W4); licencia OTHER (MIT + EE)"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Observabilidad madura; servidor vía Docker en Windows.",
+ "evidence_ids": [
+  "langfuse__langfuse-E01",
+  "langfuse__langfuse-E02",
+  "langfuse__langfuse-E03",
+  "langfuse__langfuse-E04",
+  "langfuse__langfuse-E05",
+  "langfuse__langfuse-E06",
+  "langfuse__langfuse-E07",
+  "langfuse__langfuse-E08",
+  "langfuse__langfuse-E09",
+  "langfuse__langfuse-E10",
+  "langfuse__langfuse-E11",
+  "langfuse__langfuse-E12",
+  "langfuse__langfuse-E13"
+ ],
+ "tokens_spent": 9000
+}

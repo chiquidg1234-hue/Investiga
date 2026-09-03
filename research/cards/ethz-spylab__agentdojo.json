@@ -1,0 +1,146 @@
+{
+ "key": "ethz-spylab/agentdojo",
+ "name": "AgentDojo",
+ "url": "https://github.com/ethz-spylab/agentdojo",
+ "block": "B9",
+ "category": "B9",
+ "archetype": "injection_bench",
+ "commit_sha_reviewed": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Benchmark dinámico de prompt injection para agentes con tools (ETH Zürich).",
+ "problem_solved": "Medir robustez del agente frente a injection.",
+ "how_it_could_be_used": "Evaluar el agente/gateway antes de darle acceso real.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Python.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "ethz-spylab__agentdojo-E01",
+   "ethz-spylab__agentdojo-E02",
+   "ethz-spylab__agentdojo-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out"
+  ],
+  "risk_tier": "R0",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Benchmark.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 1
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 92,
+  "human_committers_90d": 0,
+  "commits_90d": 0,
+  "bus_factor_top_share": 0.38,
+  "tags_total": 36,
+  "tests_files": 11,
+  "tests_in_ci": true,
+  "loc": 19835
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "eval_harness"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "seguridad": 2,
+  "precision": 1
+ },
+ "claims": [
+  {
+   "claim": "Benchmark académico revisado",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": []
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 0,
+  "A4": 5,
+  "A5": 2,
+  "A6": 4,
+  "A7": 5,
+  "A8": 3,
+  "A9": 3,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 64.4,
+  "score_track": 75.8,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Académico, citado"
+ ],
+ "cons": [
+  "92 días sin commits"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Benchmark académico de injection; poco activo.",
+ "evidence_ids": [
+  "ethz-spylab__agentdojo-E01",
+  "ethz-spylab__agentdojo-E02",
+  "ethz-spylab__agentdojo-E03",
+  "ethz-spylab__agentdojo-E04",
+  "ethz-spylab__agentdojo-E05",
+  "ethz-spylab__agentdojo-E06",
+  "ethz-spylab__agentdojo-E07",
+  "ethz-spylab__agentdojo-E08",
+  "ethz-spylab__agentdojo-E09",
+  "ethz-spylab__agentdojo-E10",
+  "ethz-spylab__agentdojo-E11"
+ ],
+ "tokens_spent": 9000
+}

@@ -1,0 +1,155 @@
+{
+ "key": "stanfordnlp/dspy",
+ "name": "DSPy",
+ "url": "https://github.com/stanfordnlp/dspy",
+ "block": "B8",
+ "category": "B8",
+ "archetype": "prompt_optimizer_eval",
+ "commit_sha_reviewed": "59ce7601ec40cd2160ac64f476f9053efdc1599e",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Framework de programación declarativa de LLMs con optimizadores (MIPROv2, GEPA) que mejoran prompts contra métricas medidas.",
+ "problem_solved": "Optimización de prompts con evaluación, no 'embellecimiento'.",
+ "how_it_could_be_used": "Optimizar las instrucciones de subagentes/skills contra evals propios (categoría 'prompt optimizer + evaluator').",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "Métrica de eval.",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "cualquiera"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Python.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "stanfordnlp__dspy-E01",
+   "stanfordnlp__dspy-E02",
+   "stanfordnlp__dspy-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out",
+   "fs_write"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 1
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out, fs_write: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 2,
+  "human_committers_90d": 18,
+  "commits_90d": 42,
+  "bus_factor_top_share": 0.52,
+  "tags_total": 115,
+  "tests_files": 118,
+  "tests_in_ci": true,
+  "loc": 73735
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "eval_harness"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "prompting": 3,
+  "precision": 2,
+  "calidad": 2,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Optimizadores con métricas",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "stanfordnlp__dspy-E01",
+    "stanfordnlp__dspy-E02",
+    "stanfordnlp__dspy-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 0,
+  "A4": 4,
+  "A5": 5,
+  "A6": 4,
+  "A7": 4,
+  "A8": 4,
+  "A9": 5,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 73.2,
+  "score_track": 86.1,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "18 humanos/90d, papers"
+ ],
+ "cons": [
+  "Requiere dataset/eval; coste de optimización"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Único optimizador de prompts con evaluación rigurosa entre los candidatos.",
+ "evidence_ids": [
+  "stanfordnlp__dspy-E01",
+  "stanfordnlp__dspy-E02",
+  "stanfordnlp__dspy-E03",
+  "stanfordnlp__dspy-E04",
+  "stanfordnlp__dspy-E05",
+  "stanfordnlp__dspy-E06",
+  "stanfordnlp__dspy-E07",
+  "stanfordnlp__dspy-E08",
+  "stanfordnlp__dspy-E09",
+  "stanfordnlp__dspy-E10",
+  "stanfordnlp__dspy-E11",
+  "stanfordnlp__dspy-E12",
+  "stanfordnlp__dspy-E13"
+ ],
+ "tokens_spent": 9000
+}

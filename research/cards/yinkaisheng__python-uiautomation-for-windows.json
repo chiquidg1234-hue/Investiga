@@ -1,0 +1,149 @@
+{
+ "key": "yinkaisheng/python-uiautomation-for-windows",
+ "name": "uiautomation (Python-UIAutomation-for-Windows)",
+ "url": "https://github.com/yinkaisheng/python-uiautomation-for-windows",
+ "block": "B3",
+ "category": "B3",
+ "archetype": "uia_driver",
+ "commit_sha_reviewed": "05cab1972d6e08216eae5c5183f9b3d47e26266d",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Binding Python del API UI Automation de Windows (COM); base de UFO, Windows-Use, Windows-MCP y uia-agent.",
+ "problem_solved": "Leer/invocar controles Windows por accesibilidad.",
+ "how_it_could_be_used": "Dependencia transversal del substrato Windows; su salud condiciona a los cuatro agentes anteriores.",
+ "perception_mechanism": "accessibility_uia",
+ "actuation_mechanism": "uia_invoke",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Solo Windows.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 35,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "yinkaisheng__python-uiautomation-for-windows-E01",
+   "yinkaisheng__python-uiautomation-for-windows-E02",
+   "yinkaisheng__python-uiautomation-for-windows-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "input_injection",
+   "screen_capture"
+  ],
+  "risk_tier": "R2",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 0
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con input_injection, screen_capture: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 92,
+  "human_committers_90d": 0,
+  "commits_90d": 0,
+  "bus_factor_top_share": 1.0,
+  "tags_total": 0,
+  "tests_files": 5,
+  "tests_in_ci": false,
+  "loc": 12933
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "action_executor"
+  ],
+  "consumes": [],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "percepcion": 2,
+  "computer_use": 2,
+  "tokens": 1
+ },
+ "claims": [
+  {
+   "claim": "Binding completo de UIA",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "yinkaisheng__python-uiautomation-for-windows-E01",
+    "yinkaisheng__python-uiautomation-for-windows-E02",
+    "yinkaisheng__python-uiautomation-for-windows-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 2,
+  "A3": 3,
+  "A4": 4,
+  "A5": 2,
+  "A6": 5,
+  "A7": 2,
+  "A8": 3,
+  "A9": 4,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 64.4,
+  "score_track": 65.2,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Estándar de facto (4 finalistas dependen de él)"
+ ],
+ "cons": [
+  "1 autor (bus 1.0), 92 días sin commit, 5 tests, sin CI"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Dependencia crítica del stack Windows-UIA mantenida por una sola persona; riesgo de abandono a vigilar.",
+ "evidence_ids": [
+  "yinkaisheng__python-uiautomation-for-windows-E01",
+  "yinkaisheng__python-uiautomation-for-windows-E02",
+  "yinkaisheng__python-uiautomation-for-windows-E03",
+  "yinkaisheng__python-uiautomation-for-windows-E04",
+  "yinkaisheng__python-uiautomation-for-windows-E05",
+  "yinkaisheng__python-uiautomation-for-windows-E06",
+  "yinkaisheng__python-uiautomation-for-windows-E07",
+  "yinkaisheng__python-uiautomation-for-windows-E08",
+  "yinkaisheng__python-uiautomation-for-windows-E09"
+ ],
+ "tokens_spent": 9000
+}

@@ -1,0 +1,193 @@
+{
+ "key": "openclaw/openclaw",
+ "name": "OpenClaw",
+ "url": "https://github.com/openclaw/openclaw",
+ "block": "B4",
+ "category": "B4",
+ "archetype": "personal_assistant",
+ "commit_sha_reviewed": "34128683c359d4867815429477f9e3ee984cf9d3",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Plataforma de asistente personal autónomo (Node) con marketplace de skills/plugins (ClawHub), gateway MCP loopback, sandbox OpenShell. Aparece en 5 listas curadas.",
+ "problem_solved": "Asistente personal extensible por skills.",
+ "how_it_could_be_used": "Base de Dex (Windows-first) y de muchos forks; pero historial de seguridad grave documentado (véase evidencias).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "shell",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "multi-proveedor"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "CI windows-latest; postinstall script en package.json; 6 instaladores.",
+  "ci_windows": true,
+  "windows_deps": [
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 4,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "openclaw__openclaw-E01",
+   "openclaw__openclaw-E02",
+   "openclaw__openclaw-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_write",
+   "net_out",
+   "credentials",
+   "env_vars",
+   "telemetry",
+   "net_listen"
+  ],
+  "risk_tier": "R4",
+  "isolation": "OpenShell (vulnerado por CVE-2026-44112/44113 TOCTOU).",
+  "approval_mechanism": "Allowlist de comandos (evadida por CVE-2026-44115).",
+  "secret_handling": "Env; exfiltradas en varios CVEs.",
+  "prompt_injection_defense": "UNVERIFIED",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": true,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 11,
+   "telemetry_hits": 323
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_write, net_out, credentials, env_vars, telemetry, net_listen: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": [
+   "V3",
+   "V6"
+  ]
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 12,
+  "commits_90d": 57,
+  "bus_factor_top_share": 0.7,
+  "tags_total": 412,
+  "tests_files": 13398,
+  "tests_in_ci": true,
+  "loc": 850550
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler",
+   "skill_registry",
+   "memory_store"
+  ],
+  "consumes": [
+   "llm_client",
+   "mcp_server"
+  ],
+  "runtime": "node",
+  "transport": [
+   "http",
+   "ws"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "fork_required"
+ },
+ "impact": {
+  "autonomia": 2,
+  "seguridad": -2,
+  "mcp": 1
+ },
+ "claims": [
+  {
+   "claim": "Sandbox OpenShell aísla al agente",
+   "max_evidence_class": "E3",
+   "supports": "REFUTES",
+   "evidence_ids": [
+    "openclaw__openclaw-E16",
+    "openclaw__openclaw-E17"
+   ]
+  },
+  {
+   "claim": "Marketplace de skills seguro",
+   "max_evidence_class": "E3",
+   "supports": "REFUTES",
+   "evidence_ids": [
+    "openclaw__openclaw-E16",
+    "openclaw__openclaw-E17"
+   ]
+  }
+ ],
+ "hype_index": 1.0,
+ "flags": [
+  "SECURITY_VETO",
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 2,
+  "A4": 0,
+  "A5": 5,
+  "A6": 3,
+  "A7": 2,
+  "A8": 3,
+  "A9": 4,
+  "A10": 3,
+  "caps_applied": [
+   "V3",
+   "V6"
+  ],
+  "score_global": 40,
+  "score_track": 40,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Muy activo (12 humanos/90d, 13k tests)",
+  "Ecosistema grande"
+ ],
+ "cons": [
+  "Cadena de 4 CVEs (mayo 2026) que rompe el sandbox, CVSS 9.6",
+  "Campaña de 341 skills maliciosas (12% de 2.857 auditadas) en ClawHub",
+  "RCE en instalación de plugins (GHSA-m3mh-3mpg-37hw) y bypass de metadata (CVE-2026-53810)"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Estado de parches en la versión actual."
+ ],
+ "verdict_factual": "Proyecto muy activo y popular con historial de seguridad 2026 grave y repetido (sandbox roto, marketplace infectado, RCE en instalación). Capado por V6/V3.",
+ "evidence_ids": [
+  "openclaw__openclaw-E01",
+  "openclaw__openclaw-E02",
+  "openclaw__openclaw-E03",
+  "openclaw__openclaw-E04",
+  "openclaw__openclaw-E05",
+  "openclaw__openclaw-E06",
+  "openclaw__openclaw-E07",
+  "openclaw__openclaw-E08",
+  "openclaw__openclaw-E09",
+  "openclaw__openclaw-E10",
+  "openclaw__openclaw-E11",
+  "openclaw__openclaw-E12",
+  "openclaw__openclaw-E13",
+  "openclaw__openclaw-E14",
+  "openclaw__openclaw-E15",
+  "openclaw__openclaw-E16",
+  "openclaw__openclaw-E17",
+  "openclaw__openclaw-E18",
+  "openclaw__openclaw-E19"
+ ],
+ "tokens_spent": 9000
+}

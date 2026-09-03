@@ -1,0 +1,172 @@
+{
+ "key": "pydantic/pydantic-ai",
+ "name": "Pydantic AI",
+ "url": "https://github.com/pydantic/pydantic-ai",
+ "block": "B4",
+ "category": "B4",
+ "archetype": "typed",
+ "commit_sha_reviewed": "b1ffb6e8d4e7f6e3fbf0753d78ebc35b93386472",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Framework de agentes tipado (salidas validadas), multi-proveedor, con MCP, human-in-the-loop, evals y observabilidad (Logfire/OTel).",
+ "problem_solved": "Agentes fiables por tipado estricto y evaluación integrada.",
+ "how_it_could_be_used": "Base alternativa del orquestador con validación de salidas y OTel nativo.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "Anthropic/OpenAI/Gemini/Ollama..."
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Python puro.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32",
+   "screenshot"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "pydantic__pydantic-ai-E01",
+   "pydantic__pydantic-ai-E02",
+   "pydantic__pydantic-ai-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "Deferred tools / approval (E2 approval 346 hits)",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Validación por tipos (parcial).",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 103
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 12,
+  "commits_90d": 58,
+  "bus_factor_top_share": 0.57,
+  "tags_total": 321,
+  "tests_files": 326,
+  "tests_in_ci": true,
+  "loc": 493003
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler",
+   "approval_gate",
+   "trace_sink",
+   "eval_harness"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "multi_agent": 2,
+  "precision": 2,
+  "observabilidad": 2,
+  "mcp": 2,
+  "calidad": 2
+ },
+ "claims": [
+  {
+   "claim": "Salidas tipadas y validadas",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "pydantic__pydantic-ai-E01",
+    "pydantic__pydantic-ai-E02",
+    "pydantic__pydantic-ai-E03"
+   ]
+  },
+  {
+   "claim": "OTel integrado",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "pydantic__pydantic-ai-E01",
+    "pydantic__pydantic-ai-E02",
+    "pydantic__pydantic-ai-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 5,
+  "A3": 2,
+  "A4": 4,
+  "A5": 5,
+  "A6": 4,
+  "A7": 3,
+  "A8": 5,
+  "A9": 4,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 78.0,
+  "score_track": 84.7,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "12 humanos/90d, 326 tests",
+  "Multi-proveedor real"
+ ],
+ "cons": [
+  "Sin Windows CI (no crítico: Python puro)"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Framework tipado, activo y multi-proveedor con HITL, evals y OTel verificados por sondas.",
+ "evidence_ids": [
+  "pydantic__pydantic-ai-E01",
+  "pydantic__pydantic-ai-E02",
+  "pydantic__pydantic-ai-E03",
+  "pydantic__pydantic-ai-E04",
+  "pydantic__pydantic-ai-E05",
+  "pydantic__pydantic-ai-E06",
+  "pydantic__pydantic-ai-E07",
+  "pydantic__pydantic-ai-E08",
+  "pydantic__pydantic-ai-E09",
+  "pydantic__pydantic-ai-E10",
+  "pydantic__pydantic-ai-E11",
+  "pydantic__pydantic-ai-E12",
+  "pydantic__pydantic-ai-E13",
+  "pydantic__pydantic-ai-E14"
+ ],
+ "tokens_spent": 9000
+}

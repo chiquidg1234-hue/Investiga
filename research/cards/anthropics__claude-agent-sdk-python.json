@@ -1,0 +1,172 @@
+{
+ "key": "anthropics/claude-agent-sdk-python",
+ "name": "Claude Agent SDK (Python)",
+ "url": "https://github.com/anthropics/claude-agent-sdk-python",
+ "block": "B4",
+ "category": "B4",
+ "archetype": "runtime",
+ "commit_sha_reviewed": "a8b1e285f97f8dbcb7b10226d74ba0d551b493f4",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Claude Code empaquetado como librería: bucle, tools integradas (Read/Write/Bash/Grep/Web), hooks, subagentes, permisos, MCP y sesiones.",
+ "problem_solved": "Reutilizar el harness de Claude Code (permisos, hooks, MCP) como núcleo del agente personal.",
+ "how_it_could_be_used": "Candidato a MAIN AGENT si el usuario quiere que su agente sea 'Claude Code con manos': permisos por tool, hooks PreToolUse para aprobación, MCP para Windows-MCP/playwright-mcp.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "shell",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "Claude (Anthropic API o suscripción)"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "cloud"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest con tests; requiere Claude Code CLI (Node).",
+  "ci_windows": true,
+  "windows_deps": [],
+  "readme_windows_mentions": 1,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "anthropics__claude-agent-sdk-python-E01",
+   "anthropics__claude-agent-sdk-python-E02",
+   "anthropics__claude-agent-sdk-python-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_read",
+   "fs_write",
+   "net_out",
+   "credentials"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Sandbox opcional (sandbox-runtime, Windows alpha).",
+  "approval_mechanism": "Sistema de permisos + hooks PreToolUse con deny (E3 docs).",
+  "secret_handling": "ANTHROPIC_API_KEY / OAuth.",
+  "prompt_injection_defense": "Sin filtro de contenido; hooks permiten añadirlo.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 2,
+   "telemetry_hits": 3
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_read, fs_write, net_out, credentials: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 3,
+  "commits_90d": 28,
+  "bus_factor_top_share": 0.82,
+  "tags_total": 160,
+  "tests_files": 51,
+  "tests_in_ci": true,
+  "loc": 44259
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler",
+   "approval_gate",
+   "skill_registry"
+  ],
+  "consumes": [
+   "mcp_server",
+   "llm_client"
+  ],
+  "runtime": "python + node",
+  "transport": [
+   "in-process",
+   "stdio"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "claude_code": 3,
+  "mcp": 3,
+  "seguridad": 2,
+  "multi_agent": 2,
+  "prompting": 2,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Hooks pueden bloquear tools en Windows",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "anthropics__claude-agent-sdk-python-E12",
+    "anthropics__claude-agent-sdk-python-E13"
+   ]
+  },
+  {
+   "claim": "Subagentes con modelo y tools propios",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "anthropics__claude-agent-sdk-python-E12",
+    "anthropics__claude-agent-sdk-python-E13"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 4,
+  "A3": 2,
+  "A4": 4,
+  "A5": 4,
+  "A6": 5,
+  "A7": 2,
+  "A8": 4,
+  "A9": 3,
+  "A10": 2,
+  "caps_applied": [],
+  "score_global": 70.6,
+  "score_track": 76.0,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Permisos y hooks ya construidos y documentados",
+  "CI Windows"
+ ],
+ "cons": [
+  "Lock-in a Claude; bus factor 0.82",
+  "Coste: modelos Anthropic únicamente"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Harness con permisos/hooks/MCP/subagentes documentados y CI Windows; dependiente de Claude.",
+ "evidence_ids": [
+  "anthropics__claude-agent-sdk-python-E01",
+  "anthropics__claude-agent-sdk-python-E02",
+  "anthropics__claude-agent-sdk-python-E03",
+  "anthropics__claude-agent-sdk-python-E04",
+  "anthropics__claude-agent-sdk-python-E05",
+  "anthropics__claude-agent-sdk-python-E06",
+  "anthropics__claude-agent-sdk-python-E07",
+  "anthropics__claude-agent-sdk-python-E08",
+  "anthropics__claude-agent-sdk-python-E09",
+  "anthropics__claude-agent-sdk-python-E10",
+  "anthropics__claude-agent-sdk-python-E11",
+  "anthropics__claude-agent-sdk-python-E12",
+  "anthropics__claude-agent-sdk-python-E13"
+ ],
+ "tokens_spent": 9000
+}

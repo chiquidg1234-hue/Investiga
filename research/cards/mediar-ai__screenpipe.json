@@ -1,0 +1,191 @@
+{
+ "key": "mediar-ai/screenpipe",
+ "name": "screenpipe",
+ "url": "https://github.com/mediar-ai/screenpipe",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "screen_recorder_ocr",
+ "commit_sha_reviewed": "c9ad9210e6f2f49378a60eb66aec86e22510396b",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Grabación continua 24/7 de pantalla y audio en local (Rust), con OCR (Windows OCR nativo en Windows) y transcripción, indexado en SQLite y expuesto por API/MCP para agentes; 'memoria visual' del PC.",
+ "problem_solved": "Memoria episódica de lo que el usuario vio/hizo, consultable por el agente.",
+ "how_it_could_be_used": "Fuente de contexto para el MEMORY AGENT y para 'detectar si estoy haciendo bien una tarea' con historial; alto riesgo de privacidad.",
+ "perception_mechanism": "ocr",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "OCR nativo; Whisper local opcional"
+  ],
+  "min_vram_gb": "0 (CPU) ; Whisper opcional",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Rust nativo, CI windows-latest, UIA/win32 hits; instalador Windows.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 10,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "mediar-ai__screenpipe-E01",
+   "mediar-ai__screenpipe-E02",
+   "mediar-ai__screenpipe-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "screen_capture",
+   "fs_write",
+   "net_out",
+   "telemetry",
+   "autostart"
+  ],
+  "risk_tier": "R2",
+  "isolation": "Datos en SQLite local.",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Texto OCR de cualquier ventana llega al agente: superficie de prompt injection indirecta.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 7,
+   "telemetry_hits": 384
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con screen_capture, fs_write, net_out, telemetry, autostart: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 6,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.38,
+  "tags_total": 538,
+  "tests_files": 747,
+  "tests_in_ci": true,
+  "loc": 1053629
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "memory_store",
+   "screenshot_source",
+   "mcp_server"
+  ],
+  "consumes": [],
+  "runtime": "rust + node",
+  "transport": [
+   "http",
+   "stdio"
+  ],
+  "license_spdx": "OTHER",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "memoria": 3,
+  "percepcion": 2,
+  "contexto": 2,
+  "seguridad": -2,
+  "observabilidad": 1
+ },
+ "claims": [
+  {
+   "claim": "Graba pantalla 24/7 en local",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "mediar-ai__screenpipe-E01",
+    "mediar-ai__screenpipe-E02",
+    "mediar-ai__screenpipe-E03"
+   ]
+  },
+  {
+   "claim": "OCR nativo Windows",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "mediar-ai__screenpipe-E01",
+    "mediar-ai__screenpipe-E02",
+    "mediar-ai__screenpipe-E03"
+   ]
+  },
+  {
+   "claim": "Expone MCP",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "mediar-ai__screenpipe-E01",
+    "mediar-ai__screenpipe-E02",
+    "mediar-ai__screenpipe-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 2,
+  "A4": 2,
+  "A5": 4,
+  "A6": 4,
+  "A7": 1,
+  "A8": 3,
+  "A9": 3,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 57.0,
+  "score_track": 60.0,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Nativo Windows, activo (60 commits/90d), 747 tests",
+  "Memoria episódica visual sin cloud"
+ ],
+ "cons": [
+  "Telemetría (384 hits) y licencia 'OTHER' (verificar términos)",
+  "1M LOC",
+  "Graba todo: credenciales en pantalla acaban en SQLite"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Términos exactos de la licencia; telemetría por defecto."
+ ],
+ "verdict_factual": "Grabador de pantalla local y activo con OCR nativo Windows y MCP; riesgo de privacidad estructural (captura todo) y licencia/telemetría a verificar.",
+ "evidence_ids": [
+  "mediar-ai__screenpipe-E01",
+  "mediar-ai__screenpipe-E02",
+  "mediar-ai__screenpipe-E03",
+  "mediar-ai__screenpipe-E04",
+  "mediar-ai__screenpipe-E05",
+  "mediar-ai__screenpipe-E06",
+  "mediar-ai__screenpipe-E07",
+  "mediar-ai__screenpipe-E08",
+  "mediar-ai__screenpipe-E09",
+  "mediar-ai__screenpipe-E10",
+  "mediar-ai__screenpipe-E11",
+  "mediar-ai__screenpipe-E12",
+  "mediar-ai__screenpipe-E13",
+  "mediar-ai__screenpipe-E14",
+  "mediar-ai__screenpipe-E15",
+  "mediar-ai__screenpipe-E16"
+ ],
+ "tokens_spent": 9000
+}

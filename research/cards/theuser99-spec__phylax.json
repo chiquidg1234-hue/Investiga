@@ -1,0 +1,158 @@
+{
+ "key": "theuser99-spec/phylax",
+ "name": "Phylax",
+ "url": "https://github.com/theuser99-spec/phylax",
+ "block": "B9",
+ "category": "B9",
+ "archetype": "windows_acl",
+ "commit_sha_reviewed": "4917daf80033203f53fd9ef2752fc09e28bd4df4",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Daemon Windows (Rust) que aplica ACLs DENY + etiquetas MIC a ficheros protegidos (.env, claves) para que el kernel bloquee a procesos de agentes; dashboard y auditoría; fase 2 (minifilter) en desarrollo.",
+ "problem_solved": "Impedir que el agente lea secretos aunque tenga shell.",
+ "how_it_could_be_used": "Complemento a un sandbox: protección de secretos a nivel NTFS.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Windows-first; CI windows-latest.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32",
+   "screenshot"
+  ],
+  "readme_windows_mentions": 9,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "theuser99-spec__phylax-E01",
+   "theuser99-spec__phylax-E02",
+   "theuser99-spec__phylax-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_write",
+   "elevated_admin"
+  ],
+  "risk_tier": "R2",
+  "isolation": "ACL/MIC.",
+  "approval_mechanism": "Bucket [ask].",
+  "secret_handling": "Protege.",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 3,
+   "telemetry_hits": 15
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con fs_write, elevated_admin: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 85,
+  "human_committers_90d": 2,
+  "commits_90d": 14,
+  "bus_factor_top_share": 0.97,
+  "tags_total": 3,
+  "tests_files": 2,
+  "tests_in_ci": true,
+  "loc": 18337
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "sandbox"
+  ],
+  "consumes": [],
+  "runtime": "rust",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "seguridad": 2
+ },
+ "claims": [
+  {
+   "claim": "Kernel bloquea acceso vía ACL/MIC",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": []
+  },
+  {
+   "claim": "Zero telemetry",
+   "max_evidence_class": "E0",
+   "supports": "SUPPORTS",
+   "evidence_ids": []
+  }
+ ],
+ "hype_index": 1.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 3,
+  "A2": 2,
+  "A3": 1,
+  "A4": 4,
+  "A5": 2,
+  "A6": 4,
+  "A7": 1,
+  "A8": 3,
+  "A9": 0,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 49.0,
+  "score_track": 54.1,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Mecanismo real del SO"
+ ],
+ "cons": [
+  "2 tests, bus 0.97, 85 días",
+  "Requiere admin para MIC High; 'seeking technical review' (auto-declarado)"
+ ],
+ "contradictions": [
+  "README: 'zero telemetry'; sonda encontró 15 hits de 'telemetry' (probablemente docs/compliance): UNVERIFIED."
+ ],
+ "open_questions": [
+  "Auditoría externa."
+ ],
+ "verdict_factual": "Protección de secretos por ACL en Windows, inmadura (2 tests) y de un autor.",
+ "evidence_ids": [
+  "theuser99-spec__phylax-E01",
+  "theuser99-spec__phylax-E02",
+  "theuser99-spec__phylax-E03",
+  "theuser99-spec__phylax-E04",
+  "theuser99-spec__phylax-E05",
+  "theuser99-spec__phylax-E06",
+  "theuser99-spec__phylax-E07",
+  "theuser99-spec__phylax-E08",
+  "theuser99-spec__phylax-E09",
+  "theuser99-spec__phylax-E10",
+  "theuser99-spec__phylax-E11",
+  "theuser99-spec__phylax-E12",
+  "theuser99-spec__phylax-E13"
+ ],
+ "tokens_spent": 9000
+}

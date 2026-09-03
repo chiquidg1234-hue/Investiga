@@ -1,0 +1,159 @@
+{
+ "key": "xlang-ai/osworld",
+ "name": "OSWorld / OSWorld-Verified",
+ "url": "https://github.com/xlang-ai/osworld",
+ "block": "B10",
+ "category": "B10",
+ "archetype": "benchmark",
+ "commit_sha_reviewed": "fc31a9049664292fcb35d6e501ee1dc839f2cf6d",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Benchmark de referencia de computer use (369 tareas, evaluación por ejecución) con leaderboard; OSWorld 2.0 (108 workflows largos).",
+ "problem_solved": "Medir agentes CU de forma reproducible.",
+ "how_it_could_be_used": "Fuente de verdad para elegir modelo/harness; no se ejecuta localmente (VMs).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "Evaluadores por ejecución.",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W5",
+  "notes": "Requiere VMs (VMware/Docker); tareas Ubuntu; variante Windows en WAA (muerto: 651 días).",
+  "ci_windows": false,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 3,
+  "wsl_dependency": false,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "xlang-ai__osworld-E01",
+   "xlang-ai__osworld-E02",
+   "xlang-ai__osworld-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_code"
+  ],
+  "risk_tier": "R1",
+  "isolation": "VM.",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 2
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con exec_code: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 12,
+  "human_committers_90d": 16,
+  "commits_90d": 22,
+  "bus_factor_top_share": 0.15,
+  "tags_total": 2,
+  "tests_files": 14,
+  "tests_in_ci": false,
+  "loc": 188150
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "eval_harness"
+  ],
+  "consumes": [],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "precision": 2,
+  "computer_use": 1,
+  "observabilidad": 1
+ },
+ "claims": [
+  {
+   "claim": "Leaderboard con verificación",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "xlang-ai__osworld-E16",
+    "xlang-ai__osworld-E17"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "WINDOWS_BLOCKER"
+ ],
+ "scores": {
+  "A1": 5,
+  "A2": 3,
+  "A3": 3,
+  "A4": 4,
+  "A5": 5,
+  "A6": 1,
+  "A7": 5,
+  "A8": 4,
+  "A9": 5,
+  "A10": 2,
+  "caps_applied": [],
+  "score_global": 74.8,
+  "score_track": 77.4,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "16 humanos/90d; estándar de facto"
+ ],
+ "cons": [
+  "No ejecutable en el hardware objetivo",
+  "Leaderboards de terceros discrepan (véase contradicciones)"
+ ],
+ "contradictions": [
+  "Steel.dev: Mythos Preview 85.4% (mayo 2026); gentic.news: 79.6% (junio 2026); BenchLM: Qwen3.8 Max 86.1% (sept 2026) — harness/versiones distintas."
+ ],
+ "open_questions": [],
+ "verdict_factual": "Benchmark de referencia activo; los leaderboards de terceros no coinciden entre sí por harness/fechas.",
+ "evidence_ids": [
+  "xlang-ai__osworld-E01",
+  "xlang-ai__osworld-E02",
+  "xlang-ai__osworld-E03",
+  "xlang-ai__osworld-E04",
+  "xlang-ai__osworld-E05",
+  "xlang-ai__osworld-E06",
+  "xlang-ai__osworld-E07",
+  "xlang-ai__osworld-E08",
+  "xlang-ai__osworld-E09",
+  "xlang-ai__osworld-E10",
+  "xlang-ai__osworld-E11",
+  "xlang-ai__osworld-E12",
+  "xlang-ai__osworld-E13",
+  "xlang-ai__osworld-E14",
+  "xlang-ai__osworld-E15",
+  "xlang-ai__osworld-E16",
+  "xlang-ai__osworld-E17",
+  "xlang-ai__osworld-E18"
+ ],
+ "tokens_spent": 9000
+}

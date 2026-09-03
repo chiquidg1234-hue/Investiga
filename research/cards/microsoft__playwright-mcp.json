@@ -1,0 +1,161 @@
+{
+ "key": "microsoft/playwright-mcp",
+ "name": "Playwright MCP",
+ "url": "https://github.com/microsoft/playwright-mcp",
+ "block": "B3",
+ "category": "B3",
+ "archetype": "browser_mcp",
+ "commit_sha_reviewed": "8a13ef8e9f7385a0f89477922127f31cbfde9761",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 36800,
+ "what_it_does": "Servidor MCP oficial de Playwright: expone el navegador vía árbol de accesibilidad (snapshot estructurado) en lugar de píxeles; acciones por referencia de elemento.",
+ "problem_solved": "Automatización de navegador determinista y barata en tokens para clientes MCP.",
+ "how_it_could_be_used": "Capa de navegador del agente (research + tareas web) conectada a Claude Code; complementaria a Windows-MCP (escritorio).",
+ "perception_mechanism": "dom",
+ "actuation_mechanism": "cdp_dom",
+ "verification_mechanism": "Devuelve snapshot posterior; sin juez semántico.",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "cualquiera"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Node; CI windows-latest con tests; Docker opcional.",
+  "ci_windows": true,
+  "windows_deps": [],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "microsoft__playwright-mcp-E01",
+   "microsoft__playwright-mcp-E02",
+   "microsoft__playwright-mcp-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "browser_profile",
+   "net_out",
+   "fs_write"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Perfil de navegador aislado por defecto (UNVERIFIED si persistente por defecto).",
+  "approval_mechanism": "Delegada al host MCP.",
+  "secret_handling": "Cookies del perfil.",
+  "prompt_injection_defense": "Contenido web llega al modelo sin filtro.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 0
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con browser_profile, net_out, fs_write: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 6,
+  "commits_90d": 20,
+  "bus_factor_top_share": 0.79,
+  "tags_total": 73,
+  "tests_files": 7,
+  "tests_in_ci": true,
+  "loc": 1346
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "mcp_server",
+   "browser_driver"
+  ],
+  "consumes": [],
+  "runtime": "node",
+  "transport": [
+   "stdio",
+   "http"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "investigacion": 2,
+  "computer_use": 1,
+  "mcp": 3,
+  "claude_code": 2,
+  "tokens": 2,
+  "coste": 1
+ },
+ "claims": [
+  {
+   "claim": "Automatiza navegador por accesibilidad, no por screenshots",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__playwright-mcp-E01",
+    "microsoft__playwright-mcp-E02",
+    "microsoft__playwright-mcp-E03"
+   ]
+  },
+  {
+   "claim": "Oficial Microsoft",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__playwright-mcp-E10"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 4,
+  "A3": 3,
+  "A4": 3,
+  "A5": 5,
+  "A6": 5,
+  "A7": 2,
+  "A8": 4,
+  "A9": 5,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 75.0,
+  "score_track": 77.6,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Oficial, activo, 1 issue abierta, CI Windows",
+  "Barato en tokens (texto, no imágenes)"
+ ],
+ "cons": [
+  "Sin benchmark propio",
+  "Sin política de permisos interna"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Capa de navegador MCP oficial, madura y Windows-nativa; la seguridad depende del host.",
+ "evidence_ids": [
+  "microsoft__playwright-mcp-E01",
+  "microsoft__playwright-mcp-E02",
+  "microsoft__playwright-mcp-E03",
+  "microsoft__playwright-mcp-E04",
+  "microsoft__playwright-mcp-E05",
+  "microsoft__playwright-mcp-E06",
+  "microsoft__playwright-mcp-E07",
+  "microsoft__playwright-mcp-E08",
+  "microsoft__playwright-mcp-E09",
+  "microsoft__playwright-mcp-E10"
+ ],
+ "tokens_spent": 9000
+}

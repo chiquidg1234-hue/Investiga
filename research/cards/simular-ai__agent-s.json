@@ -1,0 +1,189 @@
+{
+ "key": "simular-ai/agent-s",
+ "name": "Agent S3 (gui-agents)",
+ "url": "https://github.com/simular-ai/agent-s",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "cu_harness",
+ "commit_sha_reviewed": "bffdb59c60cbbb38c3a190b2e91da12039e4063c",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 12200,
+ "what_it_does": "Framework agente CU (Linux/Mac/Windows) con planificación, memoria narrativa/episódica, grounding por modelo externo y 'Behavior Best-of-N'; SOTA declarado en OSWorld (72.6%) y WAA (56.6%).",
+ "problem_solved": "Harness CU de investigación con resultados publicados y reproducibles en OSWorld.",
+ "how_it_could_be_used": "Referencia de arquitectura (planner + grounding + memoria de experiencia) y fuente de técnicas; menos apto como base Windows que UFO.",
+ "perception_mechanism": "vision_vlm",
+ "actuation_mechanism": "input_injection",
+ "verification_mechanism": "Reflexión por LLM entre pasos; Best-of-N con juez.",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [
+   "GPT-5/Claude para razonamiento",
+   "UI-TARS-1.5-7B u otro grounding"
+  ],
+  "min_vram_gb": "0 (grounding en cloud) / 7B si local",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "cloud"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "README: soporta Windows; usa pyautogui; requiere tesseract; sin CI Windows; solo 1 test.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "input"
+  ],
+  "readme_windows_mentions": 10,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "simular-ai__agent-s-E01",
+   "simular-ai__agent-s-E02",
+   "simular-ai__agent-s-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_write",
+   "screen_capture",
+   "input_injection",
+   "net_out",
+   "env_vars"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Ninguna (pensado para VMs de benchmark).",
+  "approval_mechanism": "Ninguna.",
+  "secret_handling": "Env.",
+  "prompt_injection_defense": "Ninguna.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 0
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_write, screen_capture, input_injection, net_out, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 112,
+  "human_committers_90d": 1,
+  "commits_90d": 2,
+  "bus_factor_top_share": 0.3,
+  "tags_total": 12,
+  "tests_files": 1,
+  "tests_in_ci": false,
+  "loc": 19831
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "action_executor"
+  ],
+  "consumes": [
+   "vlm_inference",
+   "llm_client"
+  ],
+  "runtime": "python3.12",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "fork_required"
+ },
+ "impact": {
+  "computer_use": 2,
+  "autonomia": 2,
+  "precision": 2,
+  "coste": -2,
+  "seguridad": -2
+ },
+ "claims": [
+  {
+   "claim": "72.6% OSWorld (100 pasos, Best-of-N)",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "simular-ai__agent-s-E13",
+    "simular-ai__agent-s-E14"
+   ]
+  },
+  {
+   "claim": "56.6% Windows Agent Arena",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "simular-ai__agent-s-E13"
+   ]
+  },
+  {
+   "claim": "Soporta Windows",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "simular-ai__agent-s-E13"
+   ]
+  }
+ ],
+ "hype_index": 0.67,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 2,
+  "A3": 4,
+  "A4": 1,
+  "A5": 2,
+  "A6": 3,
+  "A7": 5,
+  "A8": 3,
+  "A9": 3,
+  "A10": 1,
+  "caps_applied": [],
+  "score_global": 58.2,
+  "score_track": 54.4,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Mejor evidencia pública de rendimiento entre harnesses abiertos",
+  "Técnicas transferibles (memoria de experiencia, Best-of-N)"
+ ],
+ "cons": [
+  "Actividad baja (2 commits/90d, 1 humano)",
+  "Best-of-N multiplica coste x3",
+  "Sin seguridad ni tests"
+ ],
+ "contradictions": [
+  "Leaderboard Steel.dev lista 'Agent S2 + Claude 3.7' en 34.5% (50 pasos) mientras README de S3 declara 72.6% (100 pasos, BoN): no comparables por configuración."
+ ],
+ "open_questions": [
+  "Reproducción independiente del 72.6%."
+ ],
+ "verdict_factual": "Harness de investigación con los mejores números públicos entre abiertos, pero poco activo, caro y sin seguridad; valor como referencia técnica más que como componente.",
+ "evidence_ids": [
+  "simular-ai__agent-s-E01",
+  "simular-ai__agent-s-E02",
+  "simular-ai__agent-s-E03",
+  "simular-ai__agent-s-E04",
+  "simular-ai__agent-s-E05",
+  "simular-ai__agent-s-E06",
+  "simular-ai__agent-s-E07",
+  "simular-ai__agent-s-E08",
+  "simular-ai__agent-s-E09",
+  "simular-ai__agent-s-E10",
+  "simular-ai__agent-s-E11",
+  "simular-ai__agent-s-E12",
+  "simular-ai__agent-s-E13",
+  "simular-ai__agent-s-E14"
+ ],
+ "tokens_spent": 9000
+}

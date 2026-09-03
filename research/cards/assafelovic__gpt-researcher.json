@@ -1,0 +1,170 @@
+{
+ "key": "assafelovic/gpt-researcher",
+ "name": "GPT Researcher",
+ "url": "https://github.com/assafelovic/gpt-researcher",
+ "block": "B5",
+ "category": "B5",
+ "archetype": "deep_research",
+ "commit_sha_reviewed": "6f998577d547b1e54ec662dac63583aa11e3b84b",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Agente de investigación profunda: planificador + sub-agentes de búsqueda, scraping, citas, informes; MCP; multi-proveedor; Docker opcional.",
+ "problem_solved": "Investigación web autónoma con fuentes citadas.",
+ "how_it_could_be_used": "RESEARCH AGENT listo, integrable por MCP o librería.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "Verificación cruzada de fuentes por LLM (E1).",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "multi-proveedor"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Python; Docker solo opcional (12 menciones).",
+  "ci_windows": false,
+  "windows_deps": [
+   "screenshot"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "assafelovic__gpt-researcher-E01",
+   "assafelovic__gpt-researcher-E02",
+   "assafelovic__gpt-researcher-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out",
+   "fs_write",
+   "env_vars",
+   "telemetry"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "Env",
+  "prompt_injection_defense": "Contenido web al modelo sin filtro.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 1,
+   "telemetry_hits": 11
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out, fs_write, env_vars, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 10,
+  "human_committers_90d": 6,
+  "commits_90d": 53,
+  "bus_factor_top_share": 0.49,
+  "tags_total": 73,
+  "tests_files": 128,
+  "tests_in_ci": true,
+  "loc": 45785
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "mcp_server"
+  ],
+  "consumes": [
+   "llm_client",
+   "browser_driver"
+  ],
+  "runtime": "python",
+  "transport": [
+   "stdio",
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "investigacion": 3,
+  "autonomia": 1,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Genera informes con citas",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "assafelovic__gpt-researcher-E01",
+    "assafelovic__gpt-researcher-E02",
+    "assafelovic__gpt-researcher-E03"
+   ]
+  },
+  {
+   "claim": "Aparece en 6 listas curadas",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": []
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 1,
+  "A4": 3,
+  "A5": 4,
+  "A6": 4,
+  "A7": 2,
+  "A8": 4,
+  "A9": 4,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 60.6,
+  "score_track": 67.8,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Activo (6 humanos/90d), 128 tests",
+  "6 listas curadas"
+ ],
+ "cons": [
+  "Sin benchmark tipo BrowseComp",
+  "Telemetría (11 hits) a verificar"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Telemetría por defecto."
+ ],
+ "verdict_factual": "Agente de research maduro, activo y modelo-agnóstico; sin evidencia de benchmark.",
+ "evidence_ids": [
+  "assafelovic__gpt-researcher-E01",
+  "assafelovic__gpt-researcher-E02",
+  "assafelovic__gpt-researcher-E03",
+  "assafelovic__gpt-researcher-E04",
+  "assafelovic__gpt-researcher-E05",
+  "assafelovic__gpt-researcher-E06",
+  "assafelovic__gpt-researcher-E07",
+  "assafelovic__gpt-researcher-E08",
+  "assafelovic__gpt-researcher-E09",
+  "assafelovic__gpt-researcher-E10",
+  "assafelovic__gpt-researcher-E11",
+  "assafelovic__gpt-researcher-E12",
+  "assafelovic__gpt-researcher-E13",
+  "assafelovic__gpt-researcher-E14"
+ ],
+ "tokens_spent": 9000
+}

@@ -1,0 +1,173 @@
+{
+ "key": "getzep/graphiti",
+ "name": "Graphiti (Zep)",
+ "url": "https://github.com/getzep/graphiti",
+ "block": "B6",
+ "category": "B6",
+ "archetype": "graph_memory",
+ "commit_sha_reviewed": "a6e026f8fca27af9c1fc4cfe359c3834dc9655bb",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 30600,
+ "what_it_does": "Motor de grafo de conocimiento temporal (hechos con validez en el tiempo) para agentes; open source; la plataforma Zep completa es SaaS.",
+ "problem_solved": "Memoria que modela cambios de estado ('antes X, ahora Y').",
+ "how_it_could_be_used": "Memoria de conocimiento del usuario/proyecto cuando importa 'qué cambió cuándo'; requiere Neo4j/FalkorDB.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "LLM + embeddings"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "Requiere base de grafos (Neo4j Desktop en Windows o Docker).",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 3,
+  "wsl_dependency": false,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "getzep__graphiti-E01",
+   "getzep__graphiti-E02",
+   "getzep__graphiti-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out",
+   "fs_write",
+   "telemetry"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "LLM keys",
+  "prompt_injection_defense": "Hechos envenenables.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 18
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out, fs_write, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 15,
+  "commits_90d": 27,
+  "bus_factor_top_share": 0.22,
+  "tags_total": 200,
+  "tests_files": 67,
+  "tests_in_ci": true,
+  "loc": 61507
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "memory_store",
+   "mcp_server"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process",
+   "stdio"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "memoria": 3,
+  "contexto": 1,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Grafo temporal",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "getzep__graphiti-E01",
+    "getzep__graphiti-E02",
+    "getzep__graphiti-E03"
+   ]
+  },
+  {
+   "claim": "~84% LoCoMo",
+   "max_evidence_class": "E3",
+   "supports": "REFUTES",
+   "evidence_ids": [
+    "getzep__graphiti-E13"
+   ]
+  }
+ ],
+ "hype_index": 0.5,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 4,
+  "A3": 1,
+  "A4": 3,
+  "A5": 5,
+  "A6": 3,
+  "A7": 2,
+  "A8": 4,
+  "A9": 4,
+  "A10": 2,
+  "caps_applied": [],
+  "score_global": 63.2,
+  "score_track": 70.8,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "15 humanos/90d, bus 0.22",
+  "Mejor en preguntas temporales/relacionales (E3)"
+ ],
+ "cons": [
+  "Zep corrigió su propio LoCoMo de ~84% a 58.44%",
+  "Coste en tokens/latencia ~2-3x vs Mem0 (E3)",
+  "Necesita servidor de grafos"
+ ],
+ "contradictions": [
+  "Zep 84% → 58.44% tras corrección; Mem0 replicó 58.44%; Zep rebate 75.14%."
+ ],
+ "open_questions": [],
+ "verdict_factual": "Motor de grafo temporal activo y verificado; precisión superior solo en preguntas temporales; benchmarks propios corregidos a la baja.",
+ "evidence_ids": [
+  "getzep__graphiti-E01",
+  "getzep__graphiti-E02",
+  "getzep__graphiti-E03",
+  "getzep__graphiti-E04",
+  "getzep__graphiti-E05",
+  "getzep__graphiti-E06",
+  "getzep__graphiti-E07",
+  "getzep__graphiti-E08",
+  "getzep__graphiti-E09",
+  "getzep__graphiti-E10",
+  "getzep__graphiti-E11",
+  "getzep__graphiti-E12",
+  "getzep__graphiti-E13"
+ ],
+ "tokens_spent": 9000
+}

@@ -1,0 +1,3329 @@
+{
+"e2b-dev/e2b": {
+"n": 4,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-sandbox"
+]
+},
+"humansignal/adala": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"reworkd/agentgpt": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"aiwaves-cn/agents": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"openbmb/agentverse": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"eumemic/ai-legion": {
+"n": 2,
+"lists": [
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"paul-gauthier/aider": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"microsoft/autogen": {
+"n": 9,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"Awesome-Prompt-Eng",
+"acu",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"significant-gravitas/auto-gpt": {
+"n": 5,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agent-Survey",
+"LLMAgentPapers",
+"acu",
+"awesome-ai-agents"
+]
+},
+"stepanogil/autonomous-hr-chatbot": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"yoheinakajima/babyagi": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"seahyinghang8/blinky": {
+"n": 2,
+"lists": [
+"awesome-ai-agents",
+"awesome-code-ai"
+]
+},
+"bloopai/bloop": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"calcom/cal.com": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"camel-ai/camel": {
+"n": 8,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"LLM-Agent-Survey",
+"LLM-Agents-Papers",
+"LLMAgentPapers",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"farama-foundation/chatarena": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"openbmb/chatdev": {
+"n": 6,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"LLM-Agent-Survey",
+"LLM-Agents-Papers",
+"awesome-ai-agents"
+]
+},
+"ur-whitelab/chemcrow-public": {
+"n": 2,
+"lists": [
+"LLM-Agent-Survey",
+"awesome-ai-agents"
+]
+},
+"continuedev/continue": {
+"n": 6,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-ai-agents",
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"joaomdmoura/crewai": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"technion-kishony-lab/data-to-paper": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"gmpetrov/databerry": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"melih-unsal/demogpt": {
+"n": 3,
+"lists": [
+"LLM-Agent-Survey",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"stitionai/devika": {
+"n": 4,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"entropy-research/devon": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-ai-agents"
+]
+},
+"kuafuai/devopsgpt": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"flowiseai/flowise": {
+"n": 4,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"antonosika/gpt-engineer": {
+"n": 3,
+"lists": [
+"LLM-Agent-Survey",
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"pythagora-io/gpt-pilot": {
+"n": 3,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"assafelovic/gpt-researcher": {
+"n": 6,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Deep-Resea",
+"LLMAgentPapers",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"metauto-ai/gptswarm": {
+"n": 2,
+"lists": [
+"LLM-Agents-Papers",
+"awesome-ai-agents"
+]
+},
+"kreneskyp/ix": {
+"n": 3,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"microsoft/jarvis": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"langroid/langroid": {
+"n": 2,
+"lists": [
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"mpaepper/llm_agents": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"promtengineer/localgpt": {
+"n": 3,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"farizrahman4u/loopgpt": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"samholt/l2mac": {
+"n": 2,
+"lists": [
+"LLM-Agent-Survey",
+"awesome-ai-agents"
+]
+},
+"cpacker/memgpt": {
+"n": 2,
+"lists": [
+"awesome-ai-agents"
+]
+},
+"geekan/metagpt": {
+"n": 7,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"LLM-Agent-Survey",
+"LLM-Agents-Papers",
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"xlang-ai/openagents": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-GUI-Agent",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"agiresearch/openagi": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agent-Survey",
+"awesome-ai-agents"
+]
+},
+"opendevin/opendevin": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"pezzolabs/pezzo": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-agents"
+]
+},
+"othersideai/self-operating-computer": {
+"n": 3,
+"lists": [
+"acu",
+"awesome-ai-agents"
+]
+},
+"smol-ai/developer": {
+"n": 2,
+"lists": [
+"LLM-Agent-Survey",
+"awesome-ai-agents"
+]
+},
+"homanp/superagent": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"princeton-nlp/swe-agent": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"microsoft/ufo": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-GUI-Agent",
+"acu",
+"awesome-ai-agents"
+]
+},
+"minedojo/voyager": {
+"n": 3,
+"lists": [
+"LLM-Agent-Survey",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"team-openpm/workgpt": {
+"n": 2,
+"lists": [
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"openbmb/xagent": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"getcursor/cursor": {
+"n": 3,
+"lists": [
+"awesome-ai-agents",
+"awesome-mcp-client"
+]
+},
+"101dotxyz/gpteam": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers",
+"awesome-ai-agents"
+]
+},
+"openclaw/openclaw": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents",
+"awesome-local-llms",
+"awesome-mcp-client"
+]
+},
+"nousresearch/hermes-agent": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-local-llms"
+]
+},
+"run-llama/llama_index": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"langchain-ai/langchain": {
+"n": 6,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents",
+"awesome-local-llms"
+]
+},
+"deepset-ai/haystack": {
+"n": 5,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"microsoft/semantic-kernel": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"josh-xt/agixt": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"foundationagents/metagpt": {
+"n": 3,
+"lists": [
+"Awesome-Context-En",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"internlm/lagent": {
+"n": 2,
+"lists": [
+"LLMAgentPapers",
+"awesome-agents"
+]
+},
+"ag2ai/ag2": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"crewaiinc/crewai": {
+"n": 5,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-llm-agents",
+"awesome-local-llms"
+]
+},
+"openai/swarm": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-mcp-client"
+]
+},
+"vrsen/agency-swarm": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"upsonic/upsonic": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"acu",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"mastra-ai/mastra": {
+"n": 6,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-llm-agents",
+"awesome-mcp-server"
+]
+},
+"kyegomez/swarms": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"voltagent/voltagent": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-claude-ski"
+]
+},
+"mervinpraison/praisonai": {
+"n": 8,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Deep-Resea",
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents",
+"awesome-mcp-client"
+]
+},
+"agent-field/agentfield": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-LLMOps",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"aannoo/hcom": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"aden-hive/hive": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"openonion/connectonion": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"swarmclawai/swarmclaw": {
+"n": 6,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-LLMOps",
+"awesome-agents",
+"awesome-ai-devtool",
+"awesome-llm-agents",
+"awesome-mcp-client"
+]
+},
+"huggingface/smolagents": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"open-multi-agent/open-multi-agent": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"aeonfun/aeon": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-claude-ski",
+"awesome-llm-agents"
+]
+},
+"cordum-io/cordum": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"trpc-group/trpc-agent-go": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"agentlas-ai/agentlas-os": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"fzkuji/openprogram": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"desplega-ai/agent-swarm": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"saharmor/voice-lab": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"arize-ai/phoenix": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"vostride/agent-qa": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-computer-u"
+]
+},
+"openhands/openhands": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-local-llms"
+]
+},
+"aider-ai/aider": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"stanfordnlp/dspy": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"transformeroptimus/superagi": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-ai-agents",
+"awesome-llm-agents"
+]
+},
+"plandex-ai/plandex": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-code-ai"
+]
+},
+"semanser/codel": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"eosphoros-ai/db-gpt": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"swe-agent/swe-agent": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"cline/cline": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-mcp-client"
+]
+},
+"anomalyco/opencode": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-local-llms"
+]
+},
+"charlie85270/dorothy": {
+"n": 4,
+"lists": [
+"awesome-agents",
+"awesome-ai-devtool",
+"awesome-claude-ski",
+"awesome-llm-agents"
+]
+},
+"greyhavenhq/greywall": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"josstei/maestro-orchestrate": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"agentsmesh/agentsmesh": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-agents"
+]
+},
+"kubestellar/console": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-LLMOps",
+"awesome-agents",
+"awesome-ai-devtool"
+]
+},
+"sipyourdrink-ltd/bernstein": {
+"n": 4,
+"lists": [
+"Awesome-Context-En",
+"Awesome-LLMOps",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"runmaestro/maestro": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"0-ai-ug/cate": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-claude-cod"
+]
+},
+"h5i-dev/h5i": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"paperclipai/paperclip": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-local-llms"
+]
+},
+"777genius/agent-teams-ai": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"tura-ai/tura": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"plasma-ai/fractal": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-claude-ski"
+]
+},
+"gcwing/bitfun": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"compozy/compozy": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"atomicbot-ai/atomic-agent": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"sakanaai/ai-scientist": {
+"n": 3,
+"lists": [
+"Awesome-Context-En",
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"stanford-oval/storm": {
+"n": 2,
+"lists": [
+"LLMAgentPapers",
+"awesome-agents"
+]
+},
+"jarrycyx/openlens-ai": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"ruc-datalab/deepanalyze": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"wecoai/aideml": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"cynative/cynative": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"hpcaitech/colossalai": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-agents"
+]
+},
+"superagent-ai/superagent": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"letta-ai/letta": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"awesome-agents"
+]
+},
+"the-open-agent/openagent": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"orkas-ai/orkas": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"razzant/ouroboros": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"5dive-ai/5dive": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"zylon-ai/private-gpt": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"vectorize-io/hindsight": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"caura-ai/caura": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-llm-agents"
+]
+},
+"smaramwbc/statewave": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-LLMOps",
+"awesome-agents"
+]
+},
+"iwe-org/iwe": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-devtool"
+]
+},
+"yifan-song793/restgpt": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"fetchai/uagents": {
+"n": 2,
+"lists": [
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"agno-agi/agno": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"shengranhu/adas": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"giselles-ai/giselle": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents",
+"awesome-claude-cod"
+]
+},
+"steel-dev/steel-browser": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-agents"
+]
+},
+"modelcontextprotocol/servers": {
+"n": 4,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-local-llms",
+"awesome-mcp-server"
+]
+},
+"apify/actors-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"bucketco/bucket-javascript-sdk": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"campertunity/mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"phononx/cv-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"chargebee/agentkit": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"antvis/mcp-server-chart": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"chronulusai/chronulus-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"cloudflare/mcp-server-cloudflare": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"comet-ml/opik-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"comet-ml/opik": {
+"n": 5,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"LLMAgentPapers",
+"awesome-mcp-server"
+]
+},
+"couchbase-ecosystem/mcp-server-couchbase": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"crawlbase/crawlbase-mcp": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-mcp-server"
+]
+},
+"currents-dev/currents-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"coinpaprika/dexpaprika-mcp": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-mcp-server"
+]
+},
+"e2b-dev/mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"hustcc/mcp-echarts": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"tencentedgeone/edgeone-pages-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"exa-labs/exa-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"github/github-mcp-server": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-mcp-server"
+]
+},
+"gitkraken/gk-cli": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"jsdelivr/globalping-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"ip2location/mcp-ip2location-io": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"iplocate/mcp-server-iplocate": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"keboola/keboola-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"line/line-bot-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"integromat/make-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"metoro-io/metoro-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"neondatabase/mcp-server-neon": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"nottelabs/notte": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"acu",
+"awesome-mcp-server"
+]
+},
+"octagonai/octagon-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"bgauryy/octocode-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"paypal/agent-toolkit": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"hypersequent/qasphere-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"qdrant/mcp-server-qdrant": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"mindscapehq/mcp-server-raygun": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"fatwang2/search1api-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"scrapeless-ai/scrapeless-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"semgrep/mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"shopsavvy/shopsavvy-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"stripe/agent-toolkit": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"taskade/mcp": {
+"n": 3,
+"lists": [
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"tinybirdco/mcp-tinybird": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"video-db/agent-toolkit": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"zenml-io/mcp-zenml": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"domdomegg/airtable-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"agentset-ai/mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"pyroprompts/any-chat-completions-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"recursechat/mcp-server-apple-shortcuts": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"hexitex/mcp-backup-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"lucashild/mcp-server-bigquery": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"ergut/mcp-bigquery-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"keturiosakys/bluesky-context-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"tsavo/creatify-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"quantgeekdev/docker-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"mamertofabian/mcp-everything-search": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"efforthye/fast-filesystem-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"haris-musa/excel-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"gomarble-ai/facebook-ads-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"mackenly/mcp-fathom-analytics": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"gomarble-ai/google-ads-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"feuerdev/keep-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"chanmeng666/server-google-news": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"kurdin/github-repos-manager-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"evalstate/mcp-hfspace": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"aymericzip/intlayer": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"ac3xx/mcp-servers-kagi": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"cyberchitta/llm-context.py": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"arvindand/maven-tools-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"mcpjungle/mcpjungle": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"softeria/ms-365-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"hieuttmmo/entraid-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"strowk/mcp-k8s-go": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"stackloklabs/mkp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"8ensmith/mcp-open-library": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"hustcc/mcp-mermaid": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"kiliczsh/mcp-mongo-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"furey/mongodb-lens": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"designcomputer/mysql_mcp_server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"edwinbernadus/nocodb-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"danhilse/notion_mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"gitmotion/ntfy-me-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"markuspfundstein/mcp-obsidian": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"stackloklabs/osv-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"pierrebrunelle/mcp-server-openai": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"kadykov/mcp-openapi-schema-explorer": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"tanigami/mcp-server-perplexity": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"baba786/phabricator-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"apinetwork/piapi-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"executeautomation/mcp-playwright": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"jjsantos01/qgis_mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"ihor-sokoliuk/mcp-searxng": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"korotovsky/slack-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"fajarmf/slite-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"isaacwasserman/mcp-snowflake-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"skyvern-ai/skyvern": {
+"n": 3,
+"lists": [
+"acu",
+"awesome-mcp-server"
+]
+},
+"seym0n/tiktok-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"gorosun/unified-diff-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"codergamester/mcp-unity": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"isaacwasserman/mcp-vegalite-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"mnhlt/websearch-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"weibaohui/k8m": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"simonb97/win-cli-mcp-server": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"cheffromspace/nutjs-windows-control": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"anaisbetts/mcp-youtube": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"3choff/mcp-chatbot": {
+"n": 2,
+"lists": [
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"zed-industries/zed": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"upsonic/gpt-computer-assistant": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"marimo-team/codemirror-mcp": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"evilsocket/nerve": {
+"n": 3,
+"lists": [
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"centralmind/gateway": {
+"n": 2,
+"lists": [
+"awesome-mcp-server"
+]
+},
+"stacklok/toolhive": {
+"n": 2,
+"lists": [
+"awesome-code-ai",
+"awesome-mcp-server"
+]
+},
+"user-attachments/assets": {
+"n": 4,
+"lists": [
+"awesome-claude-ski",
+"awesome-computer-u",
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"microsandbox/microsandbox": {
+"n": 2,
+"lists": [
+"awesome-mcp-server",
+"awesome-sandbox"
+]
+},
+"rusiaaman/wcgw": {
+"n": 2,
+"lists": [
+"awesome-mcp-client",
+"awesome-mcp-server"
+]
+},
+"sindresorhus/awesome": {
+"n": 4,
+"lists": [
+"Awesome-GUI-Agent",
+"awesome-code-ai",
+"awesome-llm-agents",
+"awesome-llm-securi"
+]
+},
+"princeton-nlp/webshop": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agent-Survey",
+"acu"
+]
+},
+"posgnu/rci-agent": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agent-Survey"
+]
+},
+"x-lance/mobile-env": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agent-Survey",
+"acu"
+]
+},
+"osu-nlp-group/mind2web": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agent-Survey",
+"acu"
+]
+},
+"google-research/google-research": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"Awesome-GUI-Agent"
+]
+},
+"web-arena-x/webarena": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agent-Survey",
+"LLMAgentPapers"
+]
+},
+"magicgh/self-map": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"xlang-ai/osworld": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-GUI-Agent",
+"acu",
+"awesome-computer-u"
+]
+},
+"shulin16/mmina": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agents-Papers"
+]
+},
+"yiye3/guicourse": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agents-Papers"
+]
+},
+"mobileagentbench/mobile-agent-bench": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"google-research/android_world": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"xlang-ai/spider2-v": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"microsoft/windowsagentarena": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"thudm/cogvlm": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"minorjerry/webvoyager": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"os-copilot/os-copilot": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"thudm/autowebglm": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agents-Papers"
+]
+},
+"mnotgod96/appagent": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-GUI-Agent",
+"acu",
+"awesome-ai-agents",
+"awesome-computer-u"
+]
+},
+"njucckevin/seeclick": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"osu-nlp-group/seeact": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"acu",
+"awesome-computer-u"
+]
+},
+"digirl-agent/digirl": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"niuzaisheng/screenagent": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"apple/ml-ferret": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"acu",
+"awesome-computer-u"
+]
+},
+"baai-agents/cradle": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"imnearth/coat": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"x-plug/mobileagent": {
+"n": 3,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Agents-Papers",
+"acu"
+]
+},
+"emergenceai/agent-e": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-GUI-Agent"
+]
+},
+"zorazrw/agent-workflow-memory": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"osu-nlp-group/uground": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"os-copilot/os-atlas": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"salt-nlp/popupattack": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"thudm/cogagent": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"Awesome-GUI-Agent"
+]
+},
+"os-copilot/os-genesis": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"os-agent-survey/os-agent-survey": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Brained-GUI-Ag"
+]
+},
+"asweigart/pyautogui": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"nut-tree/nut.js": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"onuratakan/gpt-computer-assistant": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"awesome-ai-agents"
+]
+},
+"nat/natbot": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"lavague-ai/lavague": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"openadaptai/openadapt": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"agentsea/surfkit": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"james4ever0/agi_computer_control": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"openinterpreter/open-interpreter": {
+"n": 4,
+"lists": [
+"Awesome-GUI-Agent",
+"acu",
+"awesome-ai-agents",
+"awesome-local-llms"
+]
+},
+"reidbarber/webmarker": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"showlab/computer_use_ootb": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"acu"
+]
+},
+"hyp1231/awesome-llm-powered-agent": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-GUI-Agent"
+]
+},
+"albzni/awesome-llm-based-web-agent-and-tools": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Brained-GUI-Ag"
+]
+},
+"opendilab/awesome-ui-agents": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"LLM-Brained-GUI-Ag"
+]
+},
+"osu-nlp-group/gui-agents-paper-list": {
+"n": 2,
+"lists": [
+"Awesome-GUI-Agent",
+"GUI-Agents-Paper-L"
+]
+},
+"microsoft/omniparser": {
+"n": 2,
+"lists": [
+"acu",
+"awesome-computer-u"
+]
+},
+"stonybrooknlp/appworld": {
+"n": 3,
+"lists": [
+"LLM-Agent-Survey",
+"LLM-Agents-Papers",
+"acu"
+]
+},
+"browser-use/browser-use": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"acu",
+"awesome-local-llms"
+]
+},
+"significant-gravitas/autogpt": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents",
+"awesome-llm-agents",
+"awesome-local-llms"
+]
+},
+"gpt-engineer-org/gpt-engineer": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"rayventura/shortgpt": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"m13v/fazm": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-computer-u"
+]
+},
+"omxyz/lumen": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En"
+]
+},
+"barun-saha/kodeagent": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"daxaur/openpaw": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"awesome-llm-agents"
+]
+},
+"marlburrow/hivekeep": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"autohandai/code-cli": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"Awesome-Prompt-Eng",
+"awesome-mcp-client"
+]
+},
+"santifer/career-ops": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"ascit31/dark-moon": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"looptroop-ai/looptroop": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-devtool"
+]
+},
+"liu-hy/genomas": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"LLMAgentPapers",
+"awesome-llm-agents"
+]
+},
+"evoagentx/evoagentx": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"chernistry/bernstein": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-devtool"
+]
+},
+"sandydasari/openacme": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"joonspk-research/generative_agents": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agent-Survey"
+]
+},
+"thu-nics/c2c": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"mem0ai/mem0": {
+"n": 5,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"awesome-ai-agents",
+"awesome-llm-agents",
+"awesome-local-llms"
+]
+},
+"composiohq/composio": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng"
+]
+},
+"agentrhq/authsome": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-claude-cod"
+]
+},
+"splx-ai/agentic-radar": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents",
+"awesome-llm-securi"
+]
+},
+"connerlambden/bgpt-mcp": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers"
+]
+},
+"aporthq/aport-agent-guardrails": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"intelligent-internet/commonground": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"luoyuctl/agenttrace": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-devtool"
+]
+},
+"necmttn/ax": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng"
+]
+},
+"wanxingai/lightagent": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"lupantech/agentflow": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"forethought-technologies/autochain": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers"
+]
+},
+"lastmile-ai/mcp-agent": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-mcp-client"
+]
+},
+"openai/openai-agents-python": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng"
+]
+},
+"tsinghua-fib-lab/agentsquare": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agent-Survey",
+"LLM-Agents-Papers",
+"awesome-llm-agents"
+]
+},
+"openagents-org/openagents": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-llm-agents"
+]
+},
+"thudm/agentbench": {
+"n": 4,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Prompt-Eng",
+"LLM-Agent-Survey",
+"awesome-ai-agents"
+]
+},
+"agentops-ai/agentops": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"openbmb/toolbench": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agent-Survey",
+"LLMAgentPapers"
+]
+},
+"liu-hy/genotex": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"LLMAgentPapers"
+]
+},
+"tiger-ai-lab/clawbench": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLMAgentPapers"
+]
+},
+"future-agi/future-agi": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-LLMOps"
+]
+},
+"paitesanshi/llm-agent-survey": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agents-Papers"
+]
+},
+"woooodyy/llm-agent-paper-list": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agents-Papers"
+]
+},
+"henrypengzou/awesome-llm-based-human-agent-system-papers": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agents-Papers"
+]
+},
+"xhyumiracle/awesome-agenticllm-rl-papers": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"Awesome-Context-En",
+"LLMAgentPapers"
+]
+},
+"zjunlp/llmagentpapers": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"LLM-Agents-Papers",
+"LLMAgentPapers"
+]
+},
+"e2b-dev/awesome-ai-agents": {
+"n": 3,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-code-ai",
+"awesome-local-llms"
+]
+},
+"slavakurilyak/awesome-ai-agents": {
+"n": 2,
+"lists": [
+"Awesome-AI-Agents",
+"awesome-ai-agents"
+]
+},
+"ollama/ollama": {
+"n": 2,
+"lists": [
+"awesome-ai-agents",
+"awesome-local-llms"
+]
+},
+"lobehub/lobe-chat": {
+"n": 3,
+"lists": [
+"awesome-ai-agents",
+"awesome-local-llms",
+"awesome-mcp-client"
+]
+},
+"lm-sys/fastchat": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-agents"
+]
+},
+"helicone/helicone": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-agents"
+]
+},
+"langfuse/langfuse": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-ai-agents"
+]
+},
+"langchain-ai/langgraph": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"langchain-ai/langgraphjs": {
+"n": 2,
+"lists": [
+"awesome-ai-agents",
+"awesome-claude-cod"
+]
+},
+"berriai/litellm": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-agents",
+"awesome-local-llms"
+]
+},
+"eth-sri/lmql": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-ai-agents"
+]
+},
+"nvidia/nemo-guardrails": {
+"n": 3,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-ai-agents"
+]
+},
+"tabbyml/tabby": {
+"n": 4,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-ai-agents",
+"awesome-code-ai"
+]
+},
+"shubhamsaboo/awesome-llm-apps": {
+"n": 2,
+"lists": [
+"awesome-llm-apps",
+"awesome-local-llms"
+]
+},
+"accomplish-ai/coworker": {
+"n": 2,
+"lists": [
+"awesome-llm-agents",
+"awesome-llm-apps"
+]
+},
+"obra/superpowers": {
+"n": 5,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"mattpocock/skills": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"n8n-io/n8n": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-local-llms"
+]
+},
+"anthropics/skills": {
+"n": 3,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"langgenius/dify": {
+"n": 4,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-llm-agents",
+"awesome-local-llms"
+]
+},
+"langflow-ai/langflow": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-local-llms"
+]
+},
+"anthropics/claude-code": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-local-llms"
+]
+},
+"garrytan/gstack": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-local-llms"
+]
+},
+"ggerganov/llama.cpp": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-local-llms"
+]
+},
+"nextlevelbuilder/ui-ux-pro-max-skill": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"openai/codex": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-local-llms"
+]
+},
+"google-gemini/gemini-cli": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-local-llms"
+]
+},
+"juliusbrussee/caveman": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-local-llms"
+]
+},
+"punkpeye/awesome-mcp-servers": {
+"n": 4,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents",
+"awesome-local-llms",
+"awesome-mcp-client"
+]
+},
+"thedotmack/claude-mem": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"vllm-project/vllm": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-local-llms"
+]
+},
+"leonxlnx/taste-skill": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"bytedance/deer-flow": {
+"n": 2,
+"lists": [
+"Awesome-Deep-Resea",
+"awesome-local-llms"
+]
+},
+"egonex-ai/understand-anything": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"panniantong/agent-reach": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"shareai-lab/learn-claude-code": {
+"n": 3,
+"lists": [
+"awesome-claude-cod",
+"awesome-local-llms"
+]
+},
+"ruvnet/ruflo": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-local-llms"
+]
+},
+"mintplex-labs/anything-llm": {
+"n": 2,
+"lists": [
+"awesome-local-llms",
+"awesome-mcp-client"
+]
+},
+"upstash/context7": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-local-llms"
+]
+},
+"mvanhorn/last30days-skill": {
+"n": 2,
+"lists": [
+"awesome-claude-ski",
+"awesome-local-llms"
+]
+},
+"pathwaycom/llm-app": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-local-llms"
+]
+},
+"langfengq/verl-agent": {
+"n": 2,
+"lists": [
+"Awesome-Agent-RL",
+"LLMAgentPapers"
+]
+},
+"wanghanlinhenry/spa-rl-agent": {
+"n": 2,
+"lists": [
+"LLM-Agents-Papers",
+"LLMAgentPapers"
+]
+},
+"human-agent-society/coral": {
+"n": 3,
+"lists": [
+"Awesome-Deep-Resea",
+"Awesome-Prompt-Eng",
+"LLMAgentPapers"
+]
+},
+"autoresearch-factory/agon": {
+"n": 4,
+"lists": [
+"Awesome-Deep-Resea",
+"Awesome-Prompt-Eng",
+"LLMAgentPapers",
+"awesome-llm-agents"
+]
+},
+"hwchase17/langchain": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"LLMAgentPapers"
+]
+},
+"craftjarvis/jarvis-1": {
+"n": 2,
+"lists": [
+"LLM-Agent-Survey",
+"LLM-Agents-Papers"
+]
+},
+"zhao-ht/learnact": {
+"n": 2,
+"lists": [
+"LLM-Agent-Survey",
+"LLM-Agents-Papers"
+]
+},
+"stacklok/brood-box": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-devtool",
+"awesome-claude-cod"
+]
+},
+"kortex-labs/plexiglass": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-llm-securi"
+]
+},
+"hidai25/eval-view": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng"
+]
+},
+"onllm-dev/onwatch": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-ai-devtool"
+]
+},
+"agenta-ai/agenta": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng"
+]
+},
+"embedchain/embedchain": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng"
+]
+},
+"juspay/neurolink": {
+"n": 3,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng",
+"awesome-llm-agents"
+]
+},
+"askbudi/roundtable": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-code-ai"
+]
+},
+"salesforce/codegen": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-code-ai"
+]
+},
+"fauxpilot/fauxpilot": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-code-ai"
+]
+},
+"1broseidon/promptext": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"Awesome-Prompt-Eng"
+]
+},
+"zenml-io/kitaru": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-llm-agents"
+]
+},
+"juyterman1000/entroly": {
+"n": 3,
+"lists": [
+"Awesome-Context-En",
+"Awesome-LLMOps",
+"awesome-ai-devtool"
+]
+},
+"future-agi/agent-opt": {
+"n": 2,
+"lists": [
+"Awesome-LLMOps",
+"awesome-llm-agents"
+]
+},
+"anthropics/claude-code-action": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"thibautmelen/agentic-workflow-patterns": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"tjboudreaux/cc-thinking-skills": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski"
+]
+},
+"danielrosehill/claude-code-repos-index": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"piebald-ai/claude-code-system-prompts": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"costiash/claude-code-docs": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"cheukyin175/learn-faster-kit": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"antonbabenko/terraform-skill": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski"
+]
+},
+"ayoubben18/ab-method": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"harperreed/dotfiles": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"tony/claude-code-riper-5": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"frankbria/ralph-claude-code": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"mikeyobrien/ralph-orchestrator": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"diet103/claude-code-infrastructure-showcase": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"wolfe-jam/faf-cli": {
+"n": 2,
+"lists": [
+"awesome-ai-devtool",
+"awesome-claude-cod"
+]
+},
+"agent-sh/agnix": {
+"n": 2,
+"lists": [
+"awesome-claude-cod"
+]
+},
+"ysymyth/react": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"LLM-Agent-Survey"
+]
+},
+"zhongwanjun/memorybank-siliconfriend": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"LLM-Agent-Survey"
+]
+},
+"google/adk-python": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-llm-agents"
+]
+},
+"pydantic/pydantic-ai": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-llm-agents"
+]
+},
+"tambo-ai/tambo": {
+"n": 2,
+"lists": [
+"awesome-llm-agents",
+"awesome-mcp-client"
+]
+},
+"muvon/octomind": {
+"n": 3,
+"lists": [
+"awesome-ai-devtool",
+"awesome-llm-agents",
+"awesome-mcp-client"
+]
+},
+"oxgeneral/orch": {
+"n": 2,
+"lists": [
+"awesome-ai-devtool",
+"awesome-llm-agents"
+]
+},
+"foundationagents/openmanus": {
+"n": 2,
+"lists": [
+"Awesome-Deep-Resea",
+"awesome-llm-agents"
+]
+},
+"sherdencooper/gptfuzz": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-llm-securi"
+]
+},
+"protectai/rebuff": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-llm-securi"
+]
+},
+"anthropics/anthropic-cookbook": {
+"n": 2,
+"lists": [
+"Awesome-Deep-Resea",
+"anthropic-cookbook"
+]
+},
+"evolvinglmms-lab/multimodal-search-r1": {
+"n": 2,
+"lists": [
+"Awesome-Agent-RL",
+"Awesome-Deep-Resea"
+]
+},
+"alibaba-nlp/zerosearch": {
+"n": 2,
+"lists": [
+"Awesome-Agent-RL",
+"Awesome-Deep-Resea"
+]
+},
+"petergriffinjin/search-r1": {
+"n": 2,
+"lists": [
+"Awesome-Agent-RL",
+"Awesome-Deep-Resea"
+]
+},
+"rucaibox/r1-searcher": {
+"n": 2,
+"lists": [
+"Awesome-Agent-RL",
+"Awesome-Deep-Resea"
+]
+},
+"geiserx/lynxprompt": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-ai-devtool"
+]
+},
+"meta-llama/purplellama": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"modelcontextprotocol/modelcontextprotocol": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"Awesome-Prompt-Eng"
+]
+},
+"jlowin/fastmcp": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-agents"
+]
+},
+"block/goose": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-mcp-client"
+]
+},
+"davidkimai/context-engineering": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"Awesome-Prompt-Eng"
+]
+},
+"orchestra-research/ai-research-skills": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-claude-ski"
+]
+},
+"wanshuiyin/auto-claude-code-research-in-sleep": {
+"n": 2,
+"lists": [
+"Awesome-Prompt-Eng",
+"awesome-claude-ski"
+]
+},
+"fastxyz/skill-optimizer": {
+"n": 2,
+"lists": [
+"Awesome-Context-En",
+"awesome-ai-devtool"
+]
+},
+"jamesmurdza/awesome-ai-devtools": {
+"n": 2,
+"lists": [
+"awesome-ai-devtool",
+"awesome-code-ai"
+]
+},
+"nayjest/gito": {
+"n": 2,
+"lists": [
+"awesome-ai-devtool",
+"awesome-code-ai"
+]
+},
+"metalbear-co/skills": {
+"n": 2,
+"lists": [
+"awesome-ai-devtool",
+"awesome-claude-ski"
+]
+},
+"zarazhangrui/frontend-slides": {
+"n": 2,
+"lists": [
+"awesome-claude-ski"
+]
+},
+"obra/superpowers-lab": {
+"n": 2,
+"lists": [
+"awesome-claude-ski"
+]
+},
+"neolabhq/context-engineering-kit": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski"
+]
+},
+"conorluddy/ios-simulator-skill": {
+"n": 2,
+"lists": [
+"awesome-claude-ski"
+]
+},
+"jthack/ffuf_claude_skill": {
+"n": 2,
+"lists": [
+"awesome-claude-ski"
+]
+},
+"lackeyjb/playwright-skill": {
+"n": 2,
+"lists": [
+"awesome-claude-ski"
+]
+},
+"yusufkaraaslan/skill_seekers": {
+"n": 2,
+"lists": [
+"awesome-claude-ski"
+]
+},
+"k-dense-ai/claude-scientific-skills": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski"
+]
+},
+"alonw0/web-asset-generator": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski"
+]
+},
+"trailofbits/skills": {
+"n": 2,
+"lists": [
+"awesome-claude-cod",
+"awesome-claude-ski"
+]
+}
+}

@@ -1,0 +1,144 @@
+{
+ "key": "modelcontextprotocol/servers",
+ "name": "MCP reference servers",
+ "url": "https://github.com/modelcontextprotocol/servers",
+ "block": "B7",
+ "category": "B7",
+ "archetype": "official_mcp",
+ "commit_sha_reviewed": "d73f99efbfd40c3aa1b61e88728b3d49fb52608f",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Servidores de referencia oficiales (filesystem, git, memory, fetch, time...).",
+ "problem_solved": "Herramientas MCP básicas auditables.",
+ "how_it_could_be_used": "Filesystem/fetch/memory base; el resto del ecosistema (miles de servidores comunitarios) requiere gateway.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Node/Python.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "modelcontextprotocol__servers-E01",
+   "modelcontextprotocol__servers-E02",
+   "modelcontextprotocol__servers-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_read",
+   "fs_write",
+   "net_out"
+  ],
+  "risk_tier": "R2",
+  "isolation": "N/A",
+  "approval_mechanism": "Host.",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 2
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con fs_read, fs_write, net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 31,
+  "commits_90d": 52,
+  "bus_factor_top_share": 0.19,
+  "tags_total": 46,
+  "tests_files": 29,
+  "tests_in_ci": true,
+  "loc": 16277
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "mcp_server"
+  ],
+  "consumes": [],
+  "runtime": "node/python",
+  "transport": [
+   "stdio"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "mcp": 2,
+  "claude_code": 1
+ },
+ "claims": [
+  {
+   "claim": "Oficiales",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": []
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 3,
+  "A2": 4,
+  "A3": 1,
+  "A4": 4,
+  "A5": 5,
+  "A6": 5,
+  "A7": 2,
+  "A8": 4,
+  "A9": 5,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 69.0,
+  "score_track": 77.6,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "31 humanos/90d"
+ ],
+ "cons": [
+  "Funcionalidad básica"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Referencia oficial, activa, básica.",
+ "evidence_ids": [
+  "modelcontextprotocol__servers-E01",
+  "modelcontextprotocol__servers-E02",
+  "modelcontextprotocol__servers-E03",
+  "modelcontextprotocol__servers-E04",
+  "modelcontextprotocol__servers-E05",
+  "modelcontextprotocol__servers-E06",
+  "modelcontextprotocol__servers-E07",
+  "modelcontextprotocol__servers-E08",
+  "modelcontextprotocol__servers-E09",
+  "modelcontextprotocol__servers-E10",
+  "modelcontextprotocol__servers-E11",
+  "modelcontextprotocol__servers-E12",
+  "modelcontextprotocol__servers-E13"
+ ],
+ "tokens_spent": 9000
+}

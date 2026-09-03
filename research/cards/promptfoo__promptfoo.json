@@ -1,0 +1,160 @@
+{
+ "key": "promptfoo/promptfoo",
+ "name": "promptfoo",
+ "url": "https://github.com/promptfoo/promptfoo",
+ "block": "B8",
+ "category": "B8",
+ "archetype": "prompt_eval",
+ "commit_sha_reviewed": "81eac064f05d3534acb633c3874033c7f5fe1c4d",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Evaluación y red-teaming de prompts/agentes/MCP con asserts, regresión y CI; Node.",
+ "problem_solved": "Evaluar y detectar regresiones de prompts/agentes.",
+ "how_it_could_be_used": "Capa de evaluación/regresión del agente (antes/después) y red-team de sus MCP.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "Asserts.",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "cualquiera"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest.",
+  "ci_windows": true,
+  "windows_deps": [
+   "input"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "promptfoo__promptfoo-E01",
+   "promptfoo__promptfoo-E02",
+   "promptfoo__promptfoo-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out",
+   "fs_write",
+   "telemetry"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Red-team.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 2,
+   "telemetry_hits": 206
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out, fs_write, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 9,
+  "commits_90d": 32,
+  "bus_factor_top_share": 0.38,
+  "tags_total": 434,
+  "tests_files": 1237,
+  "tests_in_ci": true,
+  "loc": 991787
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "eval_harness"
+  ],
+  "consumes": [
+   "llm_client",
+   "mcp_server"
+  ],
+  "runtime": "node",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "OTHER",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "prompting": 2,
+  "seguridad": 2,
+  "observabilidad": 2,
+  "calidad": 2
+ },
+ "claims": [
+  {
+   "claim": "Evals con regresión y red-team",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "promptfoo__promptfoo-E01",
+    "promptfoo__promptfoo-E02",
+    "promptfoo__promptfoo-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 0,
+  "A4": 4,
+  "A5": 5,
+  "A6": 5,
+  "A7": 3,
+  "A8": 5,
+  "A9": 5,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 74.6,
+  "score_track": 87.8,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "1.237 tests, activo"
+ ],
+ "cons": [
+  "Telemetría (206 hits) a verificar"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Telemetría por defecto."
+ ],
+ "verdict_factual": "Evaluador de prompts/agentes maduro con red-team; telemetría a verificar.",
+ "evidence_ids": [
+  "promptfoo__promptfoo-E01",
+  "promptfoo__promptfoo-E02",
+  "promptfoo__promptfoo-E03",
+  "promptfoo__promptfoo-E04",
+  "promptfoo__promptfoo-E05",
+  "promptfoo__promptfoo-E06",
+  "promptfoo__promptfoo-E07",
+  "promptfoo__promptfoo-E08",
+  "promptfoo__promptfoo-E09",
+  "promptfoo__promptfoo-E10",
+  "promptfoo__promptfoo-E11",
+  "promptfoo__promptfoo-E12",
+  "promptfoo__promptfoo-E13"
+ ],
+ "tokens_spent": 9000
+}

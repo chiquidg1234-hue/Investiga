@@ -1,0 +1,100 @@
+{
+ "generated": "2026-09-03",
+ "blocks": {
+  "B2": {
+   "slots": {
+    "grounding_model": "solo en models.json (UI-TARS-1.5-7B, Holo2-4B, ZonUI-3B, POINTS-GUI-G-8B, GUI-Owl-1.5): repos K9",
+    "cu_harness": "UFO, Agent-S, cua",
+    "cu_cloud_agent": "anthropic-quickstarts / openai-cua-sample-app PARKED",
+    "screen_parser": "OmniParser, screenpipe",
+    "ocr_light": "RapidOCR/PaddleOCR (models.json), Windows OCR API (Blinky)",
+    "visual_supervisor": "Blinky (+3 eliminados)"
+   }
+  },
+  "B3": {
+   "slots": {
+    "uia_driver": "uiautomation, pywinauto, FlaUI",
+    "input": "pyautogui (muerto), pynput",
+    "screenshot": "mss, dxcam",
+    "browser_dom": "playwright-mcp, browser-use, stagehand, skyvern",
+    "desktop_app_automation": "cubierto por B2 (UFO/Windows-MCP)",
+    "powershell_ahk": "AutoHotkey PARKED; PowerShell vía Windows-MCP/Windows-Use"
+   }
+  },
+  "B4": {
+   "slots": {
+    "graph": "LangGraph",
+    "roles": "crewAI/camel/MetaGPT PARKED",
+    "minimal_runtime": "smolagents PARKED; Claude Agent SDK",
+    "handoff": "OpenAI Agents",
+    "planning": "cubierto por Agent-S/UFO (dominio CU)",
+    "checkpoints": "LangGraph"
+   }
+  },
+  "B5": {
+   "slots": {
+    "deep_research": "gpt-researcher, deer-flow",
+    "web_nav": "browser-use",
+    "search_layer": "firecrawl/searxng PARKED",
+    "citation_verify": "gpt-researcher (E1)"
+   }
+  },
+  "B6": {
+   "slots": {
+    "vector": "mem0",
+    "graph": "graphiti",
+    "temporal_episodic": "graphiti, screenpipe",
+    "procedural": "basic-memory (MD) — SLOT DÉBIL: no se encontró sistema de 'workflows aprendidos' con evidencia",
+    "context_compression": "SLOT VACÍO en repos; cubierto por features nativas (Claude API compaction/context editing; Claude Code skills con carga perezosa)"
+   }
+  },
+  "B7": {
+   "slots": {
+    "official": "modelcontextprotocol/servers, fastmcp",
+    "desktop_mcp": "Windows-MCP, heronwin PARKED",
+    "browser_mcp": "playwright-mcp",
+    "fs_terminal_mcp": "DesktopCommanderMCP (vetado), servers oficiales",
+    "gateway": "mcpgate, mcp-doorman, mcpproxy, mcpfw, toolhive",
+    "client_host": "Claude Code/Desktop (nativo); cua"
+   }
+  },
+  "B8": {
+   "slots": {
+    "optimizer_eval": "DSPy, promptfoo",
+    "context_claudemd": "please-optimize-my-claude (K4) — SLOT DÉBIL: sin herramienta con evaluación",
+    "skills": "anthropics/skills, superpowers",
+    "hooks": "nativo (docs) + hooks-mastery (K4)",
+    "routing": "SLOT VACÍO: no se encontró router de modelos/agentes con evidencia (subagentes nativos permiten model: por agente)",
+    "token_measure": "ccusage"
+   }
+  },
+  "B9": {
+   "slots": {
+    "sandbox": "sandbox-runtime, sandboxrs-windows, convira, landstrip",
+    "permissions_approval": "mcpgate, LangGraph interrupt, hooks nativos",
+    "injection_defense": "AgentDojo (eval); gateways (heurística)",
+    "mcp_security": "mcp-scan, gateways",
+    "secrets": "Phylax; mcp-doorman (redacción)",
+    "supply_chain": "SLOT DÉBIL: solo mcp-scan; evidencia negativa en OpenClaw/claude-flow"
+   }
+  },
+  "B10": {
+   "slots": {
+    "tracing": "Langfuse (Phoenix/Opik PARKED)",
+    "cost": "ccusage, Langfuse",
+    "trajectories": "Langfuse (adjuntos) — no verificado para screenshots",
+    "gui_eval_suites": "OSWorld, WAA (muerto), ScreenSpot-Pro, OSWorld-MCP",
+    "regression": "promptfoo"
+   }
+  }
+ },
+ "empty_or_weak": [
+  "B6.context_compression",
+  "B6.procedural",
+  "B8.context_claudemd",
+  "B8.routing",
+  "B9.supply_chain"
+ ],
+ "budget_exhausted": [],
+ "note": "Cupo G4 ampliado de 32 a 41 fichas para no vaciar slots; 5 bloques con slots débiles justificados arriba."
+}

@@ -1,0 +1,192 @@
+{
+ "key": "cursortouch/windows-mcp",
+ "name": "Windows-MCP",
+ "url": "https://github.com/cursortouch/windows-mcp",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "windows_mcp",
+ "commit_sha_reviewed": "1ea8690a6d9bfa55abb24d534f6a30590acf47d5",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 6900,
+ "what_it_does": "Servidor MCP en Python que expone el escritorio Windows a cualquier cliente MCP: estado de UI por árbol UIA (uiautomation), captura, clic/tecleo, PowerShell, apps.",
+ "problem_solved": "Dar 'manos' Windows a Claude Desktop/Claude Code sin escribir un agente propio.",
+ "how_it_could_be_used": "Capa de acción/percepción Windows conectable directamente a Claude Code o a un orquestador MCP; complementa a Windows-Use (mismo autor) y a un gateway MCP con permisos.",
+ "perception_mechanism": "accessibility_uia",
+ "actuation_mechanism": "input_injection",
+ "verification_mechanism": "Devuelve nuevo estado UIA tras la acción; sin verificación semántica (UNVERIFIED).",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "cualquiera (cliente MCP)"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "189 menciones Windows en README; CI windows-latest con tests; deps uiautomation/pywin32.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 189,
+  "wsl_dependency": true,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "cursortouch__windows-mcp-E01",
+   "cursortouch__windows-mcp-E02",
+   "cursortouch__windows-mcp-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_read",
+   "fs_write",
+   "screen_capture",
+   "input_injection",
+   "clipboard"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Ninguna; README recomienda Windows Sandbox.",
+  "approval_mechanism": "Delegada al cliente MCP (Claude Code pide permiso por tool).",
+  "secret_handling": "No maneja credenciales.",
+  "prompt_injection_defense": "Contenido de pantalla llega al modelo sin filtro; defensa depende del host.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 7
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_read, fs_write, screen_capture, input_injection, clipboard: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 1,
+  "human_committers_90d": 16,
+  "commits_90d": 54,
+  "bus_factor_top_share": 0.44,
+  "tags_total": 15,
+  "tests_files": 45,
+  "tests_in_ci": true,
+  "loc": 31999
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "mcp_server",
+   "action_executor",
+   "screenshot_source"
+  ],
+  "consumes": [],
+  "runtime": "python3.13",
+  "transport": [
+   "stdio"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "computer_use": 3,
+  "percepcion": 2,
+  "mcp": 3,
+  "claude_code": 3,
+  "seguridad": -1,
+  "tokens": 1
+ },
+ "claims": [
+  {
+   "claim": "Controla Windows a nivel GUI vía MCP",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "cursortouch__windows-mcp-E01",
+    "cursortouch__windows-mcp-E02",
+    "cursortouch__windows-mcp-E03"
+   ]
+  },
+  {
+   "claim": "Usa árbol UIA en vez de visión",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "cursortouch__windows-mcp-E01",
+    "cursortouch__windows-mcp-E02",
+    "cursortouch__windows-mcp-E03"
+   ]
+  },
+  {
+   "claim": "Ejecuta PowerShell",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "cursortouch__windows-mcp-E01",
+    "cursortouch__windows-mcp-E02",
+    "cursortouch__windows-mcp-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 4,
+  "A4": 2,
+  "A5": 4,
+  "A6": 5,
+  "A7": 2,
+  "A8": 3,
+  "A9": 3,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 67.4,
+  "score_track": 65.2,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Drop-in para Claude Code/Desktop",
+  "Activo: 16 committers humanos/90d, tests, CI Windows",
+  "Percepción por UIA = barata en tokens"
+ ],
+ "cons": [
+  "Sin verificación de resultado",
+  "Herramienta shell sin allowlist propia",
+  "Sin benchmark"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Comportamiento con DPI/multi-monitor no verificado."
+ ],
+ "verdict_factual": "Servidor MCP Windows activo y probado en CI Windows que expone UIA + input + PowerShell; sin aprobación ni sandbox propios (delegados al host).",
+ "evidence_ids": [
+  "cursortouch__windows-mcp-E01",
+  "cursortouch__windows-mcp-E02",
+  "cursortouch__windows-mcp-E03",
+  "cursortouch__windows-mcp-E04",
+  "cursortouch__windows-mcp-E05",
+  "cursortouch__windows-mcp-E06",
+  "cursortouch__windows-mcp-E07",
+  "cursortouch__windows-mcp-E08",
+  "cursortouch__windows-mcp-E09",
+  "cursortouch__windows-mcp-E10",
+  "cursortouch__windows-mcp-E11",
+  "cursortouch__windows-mcp-E12",
+  "cursortouch__windows-mcp-E13",
+  "cursortouch__windows-mcp-E14",
+  "cursortouch__windows-mcp-E15"
+ ],
+ "tokens_spent": 9000
+}

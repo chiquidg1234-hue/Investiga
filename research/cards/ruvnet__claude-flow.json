@@ -1,0 +1,194 @@
+{
+ "key": "ruvnet/claude-flow",
+ "name": "claude-flow / ruflo",
+ "url": "https://github.com/ruvnet/claude-flow",
+ "block": "B8",
+ "category": "B4",
+ "archetype": "hype_check",
+ "commit_sha_reviewed": "db4991967c45c6f72133dff0bb80b0a492960fc1",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 27000,
+ "what_it_does": "'Plataforma de orquestación' para Claude Code (254 tools MCP, 'neural', 'swarm'); 806k LOC; auditorías independientes (2026) documentan features simuladas, benchmarks fabricados, --dangerously-skip-permissions hardcodeado y un preinstall ofuscado retirado.",
+ "problem_solved": "(declarado) orquestación multi-agente y ahorro de tokens.",
+ "how_it_could_be_used": "Caso de estudio de hype; NO como componente.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "shell",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "Claude"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "cloud"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "CI windows-latest.",
+  "ci_windows": true,
+  "windows_deps": [],
+  "readme_windows_mentions": 5,
+  "wsl_dependency": true,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "ruvnet__claude-flow-E01",
+   "ruvnet__claude-flow-E02",
+   "ruvnet__claude-flow-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_write",
+   "net_out",
+   "net_listen",
+   "telemetry",
+   "env_vars"
+  ],
+  "risk_tier": "R4",
+  "isolation": "Ninguna.",
+  "approval_mechanism": "Desactivada por diseño en subprocesos (E3).",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Sin auth en MCP (E3).",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 16,
+   "telemetry_hits": 174
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_write, net_out, net_listen, telemetry, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": [
+   "V3",
+   "V8"
+  ]
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 5,
+  "commits_90d": 59,
+  "bus_factor_top_share": 0.71,
+  "tags_total": 1636,
+  "tests_files": 575,
+  "tests_in_ci": true,
+  "loc": 806049
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "node",
+  "transport": [
+   "stdio",
+   "ws"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "fork_required"
+ },
+ "impact": {
+  "claude_code": -1,
+  "seguridad": -2,
+  "tokens": -1
+ },
+ "claims": [
+  {
+   "claim": "84.8% SWE-bench",
+   "max_evidence_class": "E3",
+   "supports": "REFUTES",
+   "evidence_ids": [
+    "ruvnet__claude-flow-E13",
+    "ruvnet__claude-flow-E14"
+   ]
+  },
+  {
+   "claim": "30-50% ahorro de tokens",
+   "max_evidence_class": "E3",
+   "supports": "REFUTES",
+   "evidence_ids": [
+    "ruvnet__claude-flow-E13",
+    "ruvnet__claude-flow-E14"
+   ]
+  },
+  {
+   "claim": "Orquesta agentes reales",
+   "max_evidence_class": "E3",
+   "supports": "PARTIAL",
+   "evidence_ids": [
+    "ruvnet__claude-flow-E13",
+    "ruvnet__claude-flow-E14"
+   ]
+  }
+ ],
+ "hype_index": 1.0,
+ "flags": [
+  "HYPE_FLAG",
+  "SECURITY_VETO"
+ ],
+ "scores": {
+  "A1": 2,
+  "A2": 1,
+  "A3": 0,
+  "A4": 0,
+  "A5": 4,
+  "A6": 3,
+  "A7": 0,
+  "A8": 2,
+  "A9": 3,
+  "A10": 1,
+  "caps_applied": [
+   "V3",
+   "V8"
+  ],
+  "score_global": 27.2,
+  "score_track": 32.0,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Mantenedor responde y corrige tras auditorías"
+ ],
+ "cons": [
+  "216 bugs catalogados; 'prototipo disfrazado de release' (auditoría independiente)",
+  "simulate_benchmarks.py con random.uniform (retirado tras auditoría)",
+  "--dangerously-skip-permissions en 5 sitios; MCP sin autenticación (AgentSeal)",
+  "Preinstall ofuscado en v3.5.3 (issue #1261)"
+ ],
+ "contradictions": [
+  "Auditoría AlphaSignal (v3.6.30) vs respuesta del mantenedor (v3.7.0-alpha): 5 de 6 gaps 'remediados'; tool descriptions siguen abiertas."
+ ],
+ "open_questions": [
+  "Estado real de las remediaciones en la versión estable."
+ ],
+ "verdict_factual": "HYPE_FLAG + SECURITY_VETO: popularidad alta con features simuladas y prácticas inseguras documentadas por terceros; el mantenedor corrige, pero la confianza está comprometida.",
+ "evidence_ids": [
+  "ruvnet__claude-flow-E01",
+  "ruvnet__claude-flow-E02",
+  "ruvnet__claude-flow-E03",
+  "ruvnet__claude-flow-E04",
+  "ruvnet__claude-flow-E05",
+  "ruvnet__claude-flow-E06",
+  "ruvnet__claude-flow-E07",
+  "ruvnet__claude-flow-E08",
+  "ruvnet__claude-flow-E09",
+  "ruvnet__claude-flow-E10",
+  "ruvnet__claude-flow-E11",
+  "ruvnet__claude-flow-E12",
+  "ruvnet__claude-flow-E13",
+  "ruvnet__claude-flow-E14",
+  "ruvnet__claude-flow-E15",
+  "ruvnet__claude-flow-E16"
+ ],
+ "tokens_spent": 9000
+}

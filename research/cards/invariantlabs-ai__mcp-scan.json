@@ -1,0 +1,152 @@
+{
+ "key": "invariantlabs-ai/mcp-scan",
+ "name": "mcp-scan",
+ "url": "https://github.com/invariantlabs-ai/mcp-scan",
+ "block": "B7",
+ "category": "B7",
+ "archetype": "mcp_scanner",
+ "commit_sha_reviewed": "f03b76ef396034da0dfed97d9769898b55069de7",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Escáner de configuraciones y servidores MCP: detecta tool poisoning, rug pulls, cross-origin escalation; modo proxy opcional.",
+ "problem_solved": "Auditar servidores MCP antes/durante su uso.",
+ "how_it_could_be_used": "Chequeo previo de cada MCP comunitario que se añada.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": true,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "invariantlabs-ai__mcp-scan-E01",
+   "invariantlabs-ai__mcp-scan-E02",
+   "invariantlabs-ai__mcp-scan-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_read",
+   "net_out"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Detección.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 2
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con fs_read, net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 9,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.47,
+  "tags_total": 150,
+  "tests_files": 92,
+  "tests_in_ci": false,
+  "loc": 55295
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "eval_harness"
+  ],
+  "consumes": [
+   "mcp_server"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "seguridad": 2,
+  "mcp": 1
+ },
+ "claims": [
+  {
+   "claim": "Detecta tool poisoning",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "invariantlabs-ai__mcp-scan-E01",
+    "invariantlabs-ai__mcp-scan-E02",
+    "invariantlabs-ai__mcp-scan-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 3,
+  "A2": 3,
+  "A3": 1,
+  "A4": 4,
+  "A5": 4,
+  "A6": 5,
+  "A7": 2,
+  "A8": 3,
+  "A9": 3,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 61.4,
+  "score_track": 68.7,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Activo (9 humanos)"
+ ],
+ "cons": [
+  "Análisis puede enviar descripciones de tools a la nube de Invariant (verificar)"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Modo local puro."
+ ],
+ "verdict_factual": "Escáner MCP activo; verificar exfiltración de metadatos a su servicio.",
+ "evidence_ids": [
+  "invariantlabs-ai__mcp-scan-E01",
+  "invariantlabs-ai__mcp-scan-E02",
+  "invariantlabs-ai__mcp-scan-E03",
+  "invariantlabs-ai__mcp-scan-E04",
+  "invariantlabs-ai__mcp-scan-E05",
+  "invariantlabs-ai__mcp-scan-E06",
+  "invariantlabs-ai__mcp-scan-E07",
+  "invariantlabs-ai__mcp-scan-E08",
+  "invariantlabs-ai__mcp-scan-E09",
+  "invariantlabs-ai__mcp-scan-E10",
+  "invariantlabs-ai__mcp-scan-E11",
+  "invariantlabs-ai__mcp-scan-E12"
+ ],
+ "tokens_spent": 9000
+}

@@ -1,0 +1,155 @@
+{
+ "key": "stacklok/toolhive",
+ "name": "ToolHive",
+ "url": "https://github.com/stacklok/toolhive",
+ "block": "B7",
+ "category": "B7",
+ "archetype": "mcp_runtime",
+ "commit_sha_reviewed": "7f0d08f8641aaca25dbe4772145703facb518af3",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Runtime que ejecuta servidores MCP en contenedores con permisos declarativos, registro y gestión de secretos (Go).",
+ "problem_solved": "Aislar servidores MCP de terceros a nivel de proceso/contenedor.",
+ "how_it_could_be_used": "Capa de aislamiento de MCPs no confiables; en Windows implica Docker (W4).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W4",
+  "notes": "Contenedores → Docker Desktop en Windows; no aísla MCPs que necesitan el escritorio (Windows-MCP).",
+  "ci_windows": false,
+  "windows_deps": [
+   "screenshot"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "stacklok__toolhive-E01",
+   "stacklok__toolhive-E02",
+   "stacklok__toolhive-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_code",
+   "net_out",
+   "credentials"
+  ],
+  "risk_tier": "R2",
+  "isolation": "Contenedores + perfiles de permisos.",
+  "approval_mechanism": "Políticas.",
+  "secret_handling": "Gestor de secretos integrado.",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 203
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con exec_code, net_out, credentials: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 22,
+  "commits_90d": 55,
+  "bus_factor_top_share": 0.22,
+  "tags_total": 360,
+  "tests_files": 1095,
+  "tests_in_ci": true,
+  "loc": 744268
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "sandbox",
+   "mcp_server"
+  ],
+  "consumes": [
+   "mcp_server"
+  ],
+  "runtime": "go",
+  "transport": [
+   "stdio",
+   "http"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "seguridad": 3,
+  "mcp": 2,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Aísla MCPs en contenedores con permisos",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "stacklok__toolhive-E01",
+    "stacklok__toolhive-E02",
+    "stacklok__toolhive-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 4,
+  "A3": 1,
+  "A4": 5,
+  "A6": 2,
+  "A5": 5,
+  "A7": 2,
+  "A8": 4,
+  "A9": 3,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 67.4,
+  "score_track": 75.8,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "22 humanos/90d, 1.095 tests"
+ ],
+ "cons": [
+  "Docker en Windows; inútil para MCPs de escritorio"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Aislamiento de MCPs maduro pero basado en contenedores (W4).",
+ "evidence_ids": [
+  "stacklok__toolhive-E01",
+  "stacklok__toolhive-E02",
+  "stacklok__toolhive-E03",
+  "stacklok__toolhive-E04",
+  "stacklok__toolhive-E05",
+  "stacklok__toolhive-E06",
+  "stacklok__toolhive-E07",
+  "stacklok__toolhive-E08",
+  "stacklok__toolhive-E09",
+  "stacklok__toolhive-E10",
+  "stacklok__toolhive-E11",
+  "stacklok__toolhive-E12",
+  "stacklok__toolhive-E13"
+ ],
+ "tokens_spent": 9000
+}

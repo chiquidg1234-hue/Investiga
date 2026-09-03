@@ -1,0 +1,163 @@
+{
+ "key": "anthropic-experimental/sandbox-runtime",
+ "name": "sandbox-runtime (srt)",
+ "url": "https://github.com/anthropic-experimental/sandbox-runtime",
+ "block": "B9",
+ "category": "B9",
+ "archetype": "os_sandbox",
+ "commit_sha_reviewed": "3d20bb2e5c11ae0acb21b9d66d224a798d34df75",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 5100,
+ "what_it_does": "Sandbox de proceso a nivel SO (Seatbelt/bubblewrap; Windows alpha con cuenta local dedicada + filtro WFP de egress + ACLs NTFS) con proxy de red allow-only; usado por Claude Code.",
+ "problem_solved": "Restringir filesystem y red de comandos/MCPs sin contenedor.",
+ "how_it_could_be_used": "Aislamiento de las tools de shell/MCP del agente en Windows (alpha).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "Windows alpha: requiere instalación elevada (crea usuario srt-sandbox y filtros WFP); CI windows-latest con tests.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 36,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "anthropic-experimental__sandbox-runtime-E01",
+   "anthropic-experimental__sandbox-runtime-E02",
+   "anthropic-experimental__sandbox-runtime-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "elevated_admin",
+   "fs_write",
+   "net_listen"
+  ],
+  "risk_tier": "R2",
+  "isolation": "Es el aislador.",
+  "approval_mechanism": "N/A",
+  "secret_handling": "Contraseña DPAPI en HKLM.",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 3
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con elevated_admin, fs_write, net_listen: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 7,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.6,
+  "tags_total": 38,
+  "tests_files": 71,
+  "tests_in_ci": true,
+  "loc": 49455
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "sandbox"
+  ],
+  "consumes": [],
+  "runtime": "node",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "seguridad": 3,
+  "claude_code": 2,
+  "autonomia": 1
+ },
+ "claims": [
+  {
+   "claim": "Aísla red y FS en Windows (srt-win.exe, CI windows-latest con tests)",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "anthropic-experimental__sandbox-runtime-E01",
+    "anthropic-experimental__sandbox-runtime-E02",
+    "anthropic-experimental__sandbox-runtime-E03"
+   ]
+  },
+  {
+   "claim": "Filtro WFP bloquea conexiones aunque el proceso ignore el proxy",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "anthropic-experimental__sandbox-runtime-E13"
+   ]
+  }
+ ],
+ "hype_index": 0.5,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 4,
+  "A3": 1,
+  "A4": 5,
+  "A5": 5,
+  "A6": 3,
+  "A7": 3,
+  "A8": 5,
+  "A9": 4,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 73.4,
+  "score_track": 82.8,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Anthropic; activo (60 commits/90d); tests; CI Windows",
+  "Fail-closed en red"
+ ],
+ "cons": [
+  "Windows = alpha, requiere admin en setup",
+  "No aísla el escritorio (UIA/input siguen accesibles)"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Compatibilidad con Windows 11 Home (no requiere Windows Sandbox: OK)."
+ ],
+ "verdict_factual": "Sandbox de proceso con soporte Windows alpha verificado en docs y CI; no cubre el escritorio.",
+ "evidence_ids": [
+  "anthropic-experimental__sandbox-runtime-E01",
+  "anthropic-experimental__sandbox-runtime-E02",
+  "anthropic-experimental__sandbox-runtime-E03",
+  "anthropic-experimental__sandbox-runtime-E04",
+  "anthropic-experimental__sandbox-runtime-E05",
+  "anthropic-experimental__sandbox-runtime-E06",
+  "anthropic-experimental__sandbox-runtime-E07",
+  "anthropic-experimental__sandbox-runtime-E08",
+  "anthropic-experimental__sandbox-runtime-E09",
+  "anthropic-experimental__sandbox-runtime-E10",
+  "anthropic-experimental__sandbox-runtime-E11",
+  "anthropic-experimental__sandbox-runtime-E12",
+  "anthropic-experimental__sandbox-runtime-E13"
+ ],
+ "tokens_spent": 9000
+}

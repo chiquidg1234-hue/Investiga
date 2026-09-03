@@ -1,0 +1,145 @@
+{
+ "key": "ryoppippi/ccusage",
+ "name": "ccusage",
+ "url": "https://github.com/ryoppippi/ccusage",
+ "block": "B8",
+ "category": "B8",
+ "archetype": "token_measure",
+ "commit_sha_reviewed": "c50c85e53541e64aa7128546d5623b0f28dbb7fc",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "CLI que analiza los logs locales de Claude Code y reporta tokens/coste por sesión, día y modelo.",
+ "problem_solved": "Medir consumo de tokens/coste de Claude Code.",
+ "how_it_could_be_used": "Instrumentación básica de coste del agente (observabilidad de tokens).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Node; CI windows-latest.",
+  "ci_windows": true,
+  "windows_deps": [],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "ryoppippi__ccusage-E01",
+   "ryoppippi__ccusage-E02",
+   "ryoppippi__ccusage-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_read"
+  ],
+  "risk_tier": "R0",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 3
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con fs_read: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 1,
+  "commits_90d": 26,
+  "bus_factor_top_share": 1.0,
+  "tags_total": 146,
+  "tests_files": 4,
+  "tests_in_ci": false,
+  "loc": 61904
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "trace_sink"
+  ],
+  "consumes": [],
+  "runtime": "node",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "tokens": 2,
+  "coste": 2,
+  "observabilidad": 1
+ },
+ "claims": [
+  {
+   "claim": "Coste por sesión desde logs locales",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "ryoppippi__ccusage-E01",
+    "ryoppippi__ccusage-E02",
+    "ryoppippi__ccusage-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 3,
+  "A2": 3,
+  "A3": 0,
+  "A4": 5,
+  "A5": 4,
+  "A6": 5,
+  "A7": 2,
+  "A8": 4,
+  "A9": 4,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 63.4,
+  "score_track": 74.6,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Local, R0"
+ ],
+ "cons": [
+  "bus factor 1.0; 4 tests"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Medidor local de tokens de Claude Code; sencillo y seguro; un autor.",
+ "evidence_ids": [
+  "ryoppippi__ccusage-E01",
+  "ryoppippi__ccusage-E02",
+  "ryoppippi__ccusage-E03",
+  "ryoppippi__ccusage-E04",
+  "ryoppippi__ccusage-E05",
+  "ryoppippi__ccusage-E06",
+  "ryoppippi__ccusage-E07",
+  "ryoppippi__ccusage-E08",
+  "ryoppippi__ccusage-E09",
+  "ryoppippi__ccusage-E10",
+  "ryoppippi__ccusage-E11"
+ ],
+ "tokens_spent": 9000
+}

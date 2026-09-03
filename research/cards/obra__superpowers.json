@@ -1,0 +1,140 @@
+{
+ "key": "obra/superpowers",
+ "name": "Superpowers",
+ "url": "https://github.com/obra/superpowers",
+ "block": "B8",
+ "category": "B8",
+ "archetype": "skills_system",
+ "commit_sha_reviewed": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Colección de skills/workflows para Claude Code (brainstorm→plan→TDD→review) en formato SKILL.md; aparece en 5 listas.",
+ "problem_solved": "Procedimientos reutilizables y disciplina de trabajo para Claude Code.",
+ "how_it_could_be_used": "Ejemplo de 'agent fluency' por skills; se instala como plugin.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Markdown/scripts.",
+  "ci_windows": false,
+  "windows_deps": [],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "obra__superpowers-E01",
+   "obra__superpowers-E02",
+   "obra__superpowers-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell"
+  ],
+  "risk_tier": "R2",
+  "isolation": "N/A",
+  "approval_mechanism": "Host.",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Skills = instrucciones: revisarlas.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 7
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con exec_shell: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 21,
+  "human_committers_90d": 7,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.45,
+  "tags_total": 34,
+  "tests_files": 12,
+  "tests_in_ci": false,
+  "loc": 3729
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "skill_registry"
+  ],
+  "consumes": [],
+  "runtime": "markdown",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "claude_code": 2,
+  "prompting": 2,
+  "calidad": 1
+ },
+ "claims": [
+  {
+   "claim": "Mejora resultados de Claude Code",
+   "max_evidence_class": "E0",
+   "supports": "SUPPORTS",
+   "evidence_ids": []
+  }
+ ],
+ "hype_index": 1.0,
+ "flags": [],
+ "scores": {
+  "A1": 3,
+  "A2": 2,
+  "A3": 0,
+  "A4": 3,
+  "A5": 4,
+  "A6": 5,
+  "A7": 0,
+  "A8": 4,
+  "A9": 4,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 50.4,
+  "score_track": 59.3,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "7 humanos/90d, 5 listas"
+ ],
+ "cons": [
+  "Sin evaluación/benchmark de impacto (E0)"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Skills populares sin evidencia medida de mejora.",
+ "evidence_ids": [
+  "obra__superpowers-E01",
+  "obra__superpowers-E02",
+  "obra__superpowers-E03",
+  "obra__superpowers-E04",
+  "obra__superpowers-E05",
+  "obra__superpowers-E06",
+  "obra__superpowers-E07",
+  "obra__superpowers-E08",
+  "obra__superpowers-E09",
+  "obra__superpowers-E10"
+ ],
+ "tokens_spent": 9000
+}

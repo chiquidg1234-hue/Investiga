@@ -1,0 +1,110 @@
+{
+ "hype": [
+  [
+   "microsoft/ufo",
+   [
+    "Resultados en Windows Agent Arena y OSWorld-Windows",
+    "Hasta 51% menos consultas LLM por bundling"
+   ]
+  ],
+  [
+   "microsoft/omniparser",
+   [
+    "Mejor rendimiento en Windows Agent Arena (2024)",
+    "0.6 s/frame en A100, 0.8 s en 4090"
+   ]
+  ],
+  [
+   "simular-ai/agent-s",
+   [
+    "56.6% Windows Agent Arena",
+    "Soporta Windows"
+   ]
+  ],
+  [
+   "openclaw/openclaw",
+   [
+    "Sandbox OpenShell a\u00edsla al agente",
+    "Marketplace de skills seguro"
+   ]
+  ],
+  [
+   "mem0ai/mem0",
+   [
+    "SOTA en LoCoMo (~91-92%)"
+   ]
+  ],
+  [
+   "getzep/graphiti",
+   [
+    "~84% LoCoMo"
+   ]
+  ],
+  [
+   "mempalace/mempalace",
+   [
+    "96.6% R@5 LongMemEval sin API"
+   ]
+  ],
+  [
+   "ruvnet/claude-flow",
+   [
+    "84.8% SWE-bench",
+    "30-50% ahorro de tokens",
+    "Orquesta agentes reales"
+   ]
+  ],
+  [
+   "anthropic-experimental/sandbox-runtime",
+   [
+    "Filtro WFP bloquea conexiones aunque el proceso ignore el proxy"
+   ]
+  ]
+ ],
+ "gems": [],
+ "vetoed": [
+  [
+   "jeomon/windows-use",
+   [
+    "V3"
+   ]
+  ],
+  [
+   "kingsahil/blinky",
+   [
+    "V2"
+   ]
+  ],
+  [
+   "nousresearch/hermes-agent",
+   [
+    "V1"
+   ]
+  ],
+  [
+   "openclaw/openclaw",
+   [
+    "V3",
+    "V6"
+   ]
+  ],
+  [
+   "wonderwhy-er/desktopcommandermcp",
+   [
+    "V3"
+   ]
+  ],
+  [
+   "ruvnet/claude-flow",
+   [
+    "V3",
+    "V8"
+   ]
+  ]
+ ],
+ "n_cards": 41,
+ "n_ledger": 572,
+ "n_triage": 155,
+ "n_kill": 47,
+ "n_parked": 67
+}

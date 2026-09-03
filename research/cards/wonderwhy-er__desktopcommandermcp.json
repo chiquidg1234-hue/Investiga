@@ -1,0 +1,160 @@
+{
+ "key": "wonderwhy-er/desktopcommandermcp",
+ "name": "Desktop Commander MCP",
+ "url": "https://github.com/wonderwhy-er/desktopcommandermcp",
+ "block": "B7",
+ "category": "B3",
+ "archetype": "terminal_fs_mcp",
+ "commit_sha_reviewed": "ea8e9a47440ccffefede7060e0ddb490540f414d",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Servidor MCP popular de terminal + filesystem + edición para Claude Desktop; postinstall script; telemetría.",
+ "problem_solved": "Dar shell y ficheros a Claude Desktop.",
+ "how_it_could_be_used": "Alternativa a las tools nativas de Claude Code; superficie R4.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "shell",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Node; 13 menciones Windows.",
+  "ci_windows": false,
+  "windows_deps": [],
+  "readme_windows_mentions": 13,
+  "wsl_dependency": false,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "wonderwhy-er__desktopcommandermcp-E01",
+   "wonderwhy-er__desktopcommandermcp-E02",
+   "wonderwhy-er__desktopcommandermcp-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_write",
+   "fs_delete",
+   "net_out",
+   "telemetry"
+  ],
+  "risk_tier": "R4",
+  "isolation": "Ninguna.",
+  "approval_mechanism": "Host.",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": true,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 3,
+   "telemetry_hits": 29
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_write, fs_delete, net_out, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": [
+   "V3"
+  ]
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 4,
+  "commits_90d": 47,
+  "bus_factor_top_share": 0.58,
+  "tags_total": 58,
+  "tests_files": 70,
+  "tests_in_ci": true,
+  "loc": 46990
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "mcp_server",
+   "action_executor"
+  ],
+  "consumes": [],
+  "runtime": "node",
+  "transport": [
+   "stdio"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "claude_code": 1,
+  "autonomia": 1,
+  "seguridad": -2
+ },
+ "claims": [
+  {
+   "claim": "Shell y FS completos vía MCP",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "wonderwhy-er__desktopcommandermcp-E01",
+    "wonderwhy-er__desktopcommandermcp-E02",
+    "wonderwhy-er__desktopcommandermcp-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "SECURITY_VETO"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 2,
+  "A4": 1,
+  "A5": 4,
+  "A6": 4,
+  "A7": 1,
+  "A8": 3,
+  "A9": 4,
+  "A10": 4,
+  "caps_applied": [
+   "V3"
+  ],
+  "score_global": 55.0,
+  "score_track": 55,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Activo"
+ ],
+ "cons": [
+  "postinstall script + telemetría (29 hits) + shell sin límites",
+  "Redundante con tools nativas de Claude Code"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Qué hace el postinstall."
+ ],
+ "verdict_factual": "MCP de shell/FS popular con postinstall y telemetría; redundante y R4.",
+ "evidence_ids": [
+  "wonderwhy-er__desktopcommandermcp-E01",
+  "wonderwhy-er__desktopcommandermcp-E02",
+  "wonderwhy-er__desktopcommandermcp-E03",
+  "wonderwhy-er__desktopcommandermcp-E04",
+  "wonderwhy-er__desktopcommandermcp-E05",
+  "wonderwhy-er__desktopcommandermcp-E06",
+  "wonderwhy-er__desktopcommandermcp-E07",
+  "wonderwhy-er__desktopcommandermcp-E08",
+  "wonderwhy-er__desktopcommandermcp-E09",
+  "wonderwhy-er__desktopcommandermcp-E10",
+  "wonderwhy-er__desktopcommandermcp-E11",
+  "wonderwhy-er__desktopcommandermcp-E12"
+ ],
+ "tokens_spent": 9000
+}

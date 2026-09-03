@@ -1,0 +1,182 @@
+{
+ "key": "mem0ai/mem0",
+ "name": "Mem0",
+ "url": "https://github.com/mem0ai/mem0",
+ "block": "B6",
+ "category": "B6",
+ "archetype": "vector_memory",
+ "commit_sha_reviewed": "9a7924befd7026e41e445ba809370009e5e985a6",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 64700,
+ "what_it_does": "Capa de memoria (extracción automática de hechos, vectorial + grafo) para agentes; SDK open source; grafo completo y plataforma gestionada de pago; telemetría PostHog activada por defecto.",
+ "problem_solved": "Memoria de usuario/preferencias con poco esfuerzo de integración.",
+ "how_it_could_be_used": "Memoria semántica 'bolt-on' del agente; benchmarks propios discutidos.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "LLM para extracción + embeddings"
+  ],
+  "min_vram_gb": "0 (Ollama opcional)",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Python; vector store local (Qdrant/Chroma) posible.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "mem0ai__mem0-E01",
+   "mem0ai__mem0-E02",
+   "mem0ai__mem0-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out",
+   "fs_write",
+   "telemetry",
+   "env_vars"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "API keys del LLM",
+  "prompt_injection_defense": "Memorias envenenables (sin control de identidad).",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 2,
+   "telemetry_hits": 142
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out, fs_write, telemetry, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 14,
+  "commits_90d": 58,
+  "bus_factor_top_share": 0.66,
+  "tags_total": 398,
+  "tests_files": 317,
+  "tests_in_ci": true,
+  "loc": 206255
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "memory_store"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python/ts",
+  "transport": [
+   "in-process",
+   "http"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "memoria": 3,
+  "contexto": 1,
+  "tokens": 1,
+  "seguridad": -1
+ },
+ "claims": [
+  {
+   "claim": "SOTA en LoCoMo (~91-92%)",
+   "max_evidence_class": "E3",
+   "supports": "REFUTES",
+   "evidence_ids": [
+    "mem0ai__mem0-E15",
+    "mem0ai__mem0-E16"
+   ]
+  },
+  {
+   "claim": "Telemetría desactivable",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "mem0ai__mem0-E01",
+    "mem0ai__mem0-E02",
+    "mem0ai__mem0-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.5,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 2,
+  "A4": 2,
+  "A5": 5,
+  "A6": 4,
+  "A7": 2,
+  "A8": 4,
+  "A9": 5,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 63.2,
+  "score_track": 67.3,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Comunidad mayor, activo (14 humanos)",
+  "Integración trivial"
+ ],
+ "cons": [
+  "Benchmarks auto-reportados no reproducidos (58-66% independientes; 32.4% OSS en LongMemEval)",
+  "Grafo completo tras plan de pago",
+  "Telemetría por defecto"
+ ],
+ "contradictions": [
+  "Vendor: 91.6-92.5% LoCoMo; independientes: 58-66%; OSS en LongMemEval 32-49% vs 93.4% plataforma."
+ ],
+ "open_questions": [
+  "Configuración exacta de los reruns independientes."
+ ],
+ "verdict_factual": "Memoria más adoptada; sus cifras de precisión no se reproducen; el valor real es coste/latencia; features clave de pago; telemetría por defecto.",
+ "evidence_ids": [
+  "mem0ai__mem0-E01",
+  "mem0ai__mem0-E02",
+  "mem0ai__mem0-E03",
+  "mem0ai__mem0-E04",
+  "mem0ai__mem0-E05",
+  "mem0ai__mem0-E06",
+  "mem0ai__mem0-E07",
+  "mem0ai__mem0-E08",
+  "mem0ai__mem0-E09",
+  "mem0ai__mem0-E10",
+  "mem0ai__mem0-E11",
+  "mem0ai__mem0-E12",
+  "mem0ai__mem0-E13",
+  "mem0ai__mem0-E14",
+  "mem0ai__mem0-E15",
+  "mem0ai__mem0-E16",
+  "mem0ai__mem0-E17",
+  "mem0ai__mem0-E18"
+ ],
+ "tokens_spent": 9000
+}

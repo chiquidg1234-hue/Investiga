@@ -1,0 +1,181 @@
+{
+ "key": "browser-use/browser-use",
+ "name": "browser-use",
+ "url": "https://github.com/browser-use/browser-use",
+ "block": "B3",
+ "category": "B3",
+ "archetype": "browser_agent",
+ "commit_sha_reviewed": "5b50d1f511189c9df93e7f0bcb9da943b2d5780b",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 112200,
+ "what_it_does": "Agente de navegador Python (Playwright/CDP) con extracción DOM + visión opcional, MCP, sandbox cloud propio; telemetría anónima activada por defecto (opt-out por env).",
+ "problem_solved": "Agente web autónomo completo, modelo-agnóstico.",
+ "how_it_could_be_used": "RESEARCH/BROWSER AGENT ya montado; alternativa 'agente' frente a playwright-mcp 'herramienta'.",
+ "perception_mechanism": "hybrid",
+ "actuation_mechanism": "cdp_dom",
+ "verification_mechanism": "Juez LLM de finalización de tarea (UNVERIFIED en detalle).",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "multi-proveedor"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest con tests.",
+  "ci_windows": true,
+  "windows_deps": [
+   "input"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "browser-use__browser-use-E01",
+   "browser-use__browser-use-E02",
+   "browser-use__browser-use-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "browser_profile",
+   "net_out",
+   "fs_write",
+   "exec_shell",
+   "telemetry",
+   "env_vars"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Sandbox cloud opcional (de pago).",
+  "approval_mechanism": "Hooks/eventos; sin gate por defecto.",
+  "secret_handling": "sensitive_data con enmascarado (E1).",
+  "prompt_injection_defense": "Ninguna explícita.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 5,
+   "telemetry_hits": 22
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con browser_profile, net_out, fs_write, exec_shell, telemetry, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 6,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.62,
+  "tags_total": 146,
+  "tests_files": 123,
+  "tests_in_ci": true,
+  "loc": 109714
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "browser_driver",
+   "mcp_server",
+   "action_executor"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python3.11+",
+  "transport": [
+   "stdio",
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "investigacion": 3,
+  "autonomia": 2,
+  "mcp": 1,
+  "seguridad": -1,
+  "tokens": -1
+ },
+ "claims": [
+  {
+   "claim": "WebVoyager 89%",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "browser-use__browser-use-E15",
+    "browser-use__browser-use-E16"
+   ]
+  },
+  {
+   "claim": "Telemetría anónima desactivable",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "browser-use__browser-use-E01",
+    "browser-use__browser-use-E02",
+    "browser-use__browser-use-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 5,
+  "A2": 3,
+  "A3": 3,
+  "A4": 2,
+  "A5": 5,
+  "A6": 4,
+  "A7": 3,
+  "A8": 4,
+  "A9": 5,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 71.2,
+  "score_track": 73.2,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Comunidad enorme; 6 humanos/90d; 123 tests",
+  "Modelo-agnóstico"
+ ],
+ "cons": [
+  "Telemetría PostHog activa por defecto (V5 parcial: eventos, no screenshots)",
+  "5 hits curl|bash en docs de skills",
+  "Empuja hacia su cloud"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Qué campos exactos envía la telemetría."
+ ],
+ "verdict_factual": "Agente de navegador maduro y activo; telemetría por defecto y sin gate de aprobación nativo.",
+ "evidence_ids": [
+  "browser-use__browser-use-E01",
+  "browser-use__browser-use-E02",
+  "browser-use__browser-use-E03",
+  "browser-use__browser-use-E04",
+  "browser-use__browser-use-E05",
+  "browser-use__browser-use-E06",
+  "browser-use__browser-use-E07",
+  "browser-use__browser-use-E08",
+  "browser-use__browser-use-E09",
+  "browser-use__browser-use-E10",
+  "browser-use__browser-use-E11",
+  "browser-use__browser-use-E12",
+  "browser-use__browser-use-E13",
+  "browser-use__browser-use-E14",
+  "browser-use__browser-use-E15",
+  "browser-use__browser-use-E16"
+ ],
+ "tokens_spent": 9000
+}

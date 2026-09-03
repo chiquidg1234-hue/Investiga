@@ -1,0 +1,179 @@
+{
+ "key": "microsoft/omniparser",
+ "name": "OmniParser v2",
+ "url": "https://github.com/microsoft/omniparser",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "screen_parser",
+ "commit_sha_reviewed": "354021201345a96178360b28733573e27269f2de",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 25400,
+ "what_it_does": "Parser de pantalla: YOLOv8 afinado (detección de iconos interactivos) + Florence-2-base (captions) que convierte screenshots en elementos estructurados para cualquier LLM; incluye OmniTool para controlar una VM Windows 11.",
+ "problem_solved": "Grounding visual para modelos sin capacidad nativa de localizar elementos.",
+ "how_it_could_be_used": "Capa de percepción local (modelos pequeños) para el VISION AGENT cuando UIA no expone controles (apps Electron/juegos/Roblox Studio).",
+ "perception_mechanism": "vision_vlm",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [
+   "YOLOv8 (~6M params)",
+   "Florence-2-base (0.23B)"
+  ],
+  "min_vram_gb": "UNVERIFIED (Florence-2-base fp16 ≈0.5 GB pesos; latencia en MX330 desconocida)",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W4",
+  "notes": "OmniTool controla una VM Windows 11 (Docker/VM); el parser en sí corre nativo (PyTorch) en cualquier SO. Latencia publicada 0.8 s/frame en RTX 4090; en MX330 2GB: UNVERIFIED.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win_uia",
+   "input"
+  ],
+  "readme_windows_mentions": 3,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "microsoft__omniparser-E01",
+   "microsoft__omniparser-E02",
+   "microsoft__omniparser-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "screen_capture",
+   "net_out"
+  ],
+  "risk_tier": "R2",
+  "isolation": "N/A (librería)",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 0
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con screen_capture, net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 44,
+  "human_committers_90d": 2,
+  "commits_90d": 2,
+  "bus_factor_top_share": 0.4,
+  "tags_total": 3,
+  "tests_files": 0,
+  "tests_in_ci": false,
+  "loc": 5679
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "vlm_inference"
+  ],
+  "consumes": [
+   "screenshot_source"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "OTHER",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "percepcion": 3,
+  "computer_use": 2,
+  "precision": 1,
+  "coste": 1
+ },
+ "claims": [
+  {
+   "claim": "39.5-39.6% en ScreenSpot-Pro",
+   "max_evidence_class": "E3",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__omniparser-E12",
+    "microsoft__omniparser-E13"
+   ]
+  },
+  {
+   "claim": "Mejor rendimiento en Windows Agent Arena (2024)",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__omniparser-E12"
+   ]
+  },
+  {
+   "claim": "0.6 s/frame en A100, 0.8 s en 4090",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__omniparser-E12"
+   ]
+  }
+ ],
+ "hype_index": 0.67,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 2,
+  "A3": 3,
+  "A4": 3,
+  "A5": 1,
+  "A6": 2,
+  "A7": 4,
+  "A8": 3,
+  "A9": 4,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 56.6,
+  "score_track": 56.0,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Único parser local pequeño con número público en ScreenSpot-Pro",
+  "Modelo-agnóstico"
+ ],
+ "cons": [
+  "Licencia CC-BY-4.0 para código (atípica); pesos con licencias propias (YOLO AGPL upstream: UNVERIFIED)",
+  "44 días sin commits, 2 humanos/90d, 173 issues abiertas, sin tests",
+  "Superado en grounding por VLMs modernos (Qwen3-VL/Holo2)"
+ ],
+ "contradictions": [
+  "HF card dice 39.6 ScreenSpot-Pro; README dice 39.5."
+ ],
+ "open_questions": [
+  "Licencia efectiva de los pesos YOLOv8 afinados (Ultralytics es AGPL-3.0)."
+ ],
+ "verdict_factual": "Parser de pantalla local con benchmark público pero mantenimiento débil y licencia atípica; útil como fallback de percepción cuando no hay UIA.",
+ "evidence_ids": [
+  "microsoft__omniparser-E01",
+  "microsoft__omniparser-E02",
+  "microsoft__omniparser-E03",
+  "microsoft__omniparser-E04",
+  "microsoft__omniparser-E05",
+  "microsoft__omniparser-E06",
+  "microsoft__omniparser-E07",
+  "microsoft__omniparser-E08",
+  "microsoft__omniparser-E09",
+  "microsoft__omniparser-E10",
+  "microsoft__omniparser-E11",
+  "microsoft__omniparser-E12",
+  "microsoft__omniparser-E13"
+ ],
+ "tokens_spent": 9000
+}

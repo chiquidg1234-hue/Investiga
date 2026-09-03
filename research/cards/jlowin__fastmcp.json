@@ -1,0 +1,150 @@
+{
+ "key": "jlowin/fastmcp",
+ "name": "FastMCP",
+ "url": "https://github.com/jlowin/fastmcp",
+ "block": "B7",
+ "category": "B7",
+ "archetype": "mcp_sdk",
+ "commit_sha_reviewed": "75d50ffb683ba502e86bf833411c46234749270b",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Framework Python para construir servidores/clientes MCP con auth, proxy y composición; usado por UFO y muchos servidores.",
+ "problem_solved": "Escribir servidores MCP propios (p. ej. envolver UIA o Blinky) rápido.",
+ "how_it_could_be_used": "SDK para construir los MCP propios del agente.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "input"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "jlowin__fastmcp-E01",
+   "jlowin__fastmcp-E02",
+   "jlowin__fastmcp-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 53
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 13,
+  "commits_90d": 53,
+  "bus_factor_top_share": 0.68,
+  "tags_total": 121,
+  "tests_files": 419,
+  "tests_in_ci": true,
+  "loc": 237275
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "mcp_server"
+  ],
+  "consumes": [],
+  "runtime": "python",
+  "transport": [
+   "stdio",
+   "http"
+  ],
+  "license_spdx": "Apache-2.0",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "mcp": 3,
+  "claude_code": 1
+ },
+ "claims": [
+  {
+   "claim": "SDK MCP completo",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "jlowin__fastmcp-E01",
+    "jlowin__fastmcp-E02",
+    "jlowin__fastmcp-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 1,
+  "A4": 3,
+  "A5": 5,
+  "A6": 5,
+  "A7": 2,
+  "A8": 5,
+  "A9": 5,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 73.0,
+  "score_track": 82.4,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "13 humanos/90d, 419 tests, CI Windows"
+ ],
+ "cons": [],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "SDK MCP maduro y activo.",
+ "evidence_ids": [
+  "jlowin__fastmcp-E01",
+  "jlowin__fastmcp-E02",
+  "jlowin__fastmcp-E03",
+  "jlowin__fastmcp-E04",
+  "jlowin__fastmcp-E05",
+  "jlowin__fastmcp-E06",
+  "jlowin__fastmcp-E07",
+  "jlowin__fastmcp-E08",
+  "jlowin__fastmcp-E09",
+  "jlowin__fastmcp-E10",
+  "jlowin__fastmcp-E11",
+  "jlowin__fastmcp-E12",
+  "jlowin__fastmcp-E13",
+  "jlowin__fastmcp-E14"
+ ],
+ "tokens_spent": 9000
+}

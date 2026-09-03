@@ -1,0 +1,150 @@
+{
+ "key": "tarunkurella/sandboxrs-windows",
+ "name": "sandboxrs-windows",
+ "url": "https://github.com/tarunkurella/sandboxrs-windows",
+ "block": "B9",
+ "category": "B9",
+ "archetype": "windows_sandbox",
+ "commit_sha_reviewed": "81e14e5567fab1b88236e0b89c6741e8aa5f8f58",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Librería Rust para lanzar procesos Windows dentro de AppContainer (sin admin) o del API experimental de sandbox de Windows, con política de FS y Job Objects; fail-closed; CI valida el claim 'no-admin' como usuario estándar.",
+ "problem_solved": "Aislar procesos hijos del agente sin admin, Docker, WSL ni Hyper-V.",
+ "how_it_could_be_used": "Base para ejecutar tools/comandos del agente con autoridad de FS limitada en Windows 11 Home.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Windows 11 / Server 2025; CI windows-latest con tests como usuario estándar.",
+  "ci_windows": true,
+  "windows_deps": [],
+  "readme_windows_mentions": 41,
+  "wsl_dependency": true,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "tarunkurella__sandboxrs-windows-E01",
+   "tarunkurella__sandboxrs-windows-E02",
+   "tarunkurella__sandboxrs-windows-E03"
+  ]
+ },
+ "security": {
+  "permissions": [],
+  "risk_tier": "R0",
+  "isolation": "AppContainer/Job Object.",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 1
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con : un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 22,
+  "human_committers_90d": 1,
+  "commits_90d": 40,
+  "bus_factor_top_share": 1.0,
+  "tags_total": 1,
+  "tests_files": 8,
+  "tests_in_ci": true,
+  "loc": 6925
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "sandbox"
+  ],
+  "consumes": [],
+  "runtime": "rust",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "seguridad": 3,
+  "autonomia": 1
+ },
+ "claims": [
+  {
+   "claim": "Sandbox sin admin",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "tarunkurella__sandboxrs-windows-E07"
+   ]
+  },
+  {
+   "claim": "Fail-closed",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "tarunkurella__sandboxrs-windows-E07"
+   ]
+  }
+ ],
+ "hype_index": 1.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 3,
+  "A2": 4,
+  "A3": 1,
+  "A4": 5,
+  "A5": 3,
+  "A6": 5,
+  "A7": 3,
+  "A8": 4,
+  "A9": 0,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 67.0,
+  "score_track": 75.3,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Diseño honesto (documenta límites), tests en CI como no-admin"
+ ],
+ "cons": [
+  "1 autor (bus 1.0), 22 días",
+  "AppContainer rompe herramientas de desarrollo genéricas (OpenAI documenta por qué lo descartó)"
+ ],
+ "contradictions": [
+  "OpenAI (Codex) descartó AppContainer por incompatibilidad con workflows de desarrollador; sandboxrs lo adopta como mecanismo principal."
+ ],
+ "open_questions": [
+  "Compatibilidad con apps GUI dentro del AppContainer."
+ ],
+ "verdict_factual": "HIDDEN_GEM candidato: sandbox Windows sin admin, fail-closed y probado en CI; muy joven y de un autor.",
+ "evidence_ids": [
+  "tarunkurella__sandboxrs-windows-E01",
+  "tarunkurella__sandboxrs-windows-E02",
+  "tarunkurella__sandboxrs-windows-E03",
+  "tarunkurella__sandboxrs-windows-E04",
+  "tarunkurella__sandboxrs-windows-E05",
+  "tarunkurella__sandboxrs-windows-E06",
+  "tarunkurella__sandboxrs-windows-E07",
+  "tarunkurella__sandboxrs-windows-E08"
+ ],
+ "tokens_spent": 9000
+}

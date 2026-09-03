@@ -1,0 +1,172 @@
+{
+ "key": "openai/openai-agents-python",
+ "name": "OpenAI Agents SDK",
+ "url": "https://github.com/openai/openai-agents-python",
+ "block": "B4",
+ "category": "B4",
+ "archetype": "handoff",
+ "commit_sha_reviewed": "89c02c828ee8510fe9a84ee6675608193aa13b02",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "SDK ligero: agentes, handoffs, guardrails de entrada/salida, tracing integrado, MCP; proveedor-agnóstico vía LiteLLM.",
+ "problem_solved": "Multi-agente con handoffs y guardrails con poca ceremonia.",
+ "how_it_could_be_used": "Alternativa a LangGraph con menos complejidad; guardrails = SECURITY AGENT básico.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "OpenAI por defecto; otros vía LiteLLM"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest con tests.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32",
+   "input"
+  ],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "openai__openai-agents-python-E01",
+   "openai__openai-agents-python-E02",
+   "openai__openai-agents-python-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_out"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "Aprobación de tools MCP (approval 350 hits)",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Guardrails por LLM/regla.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 19
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 5,
+  "human_committers_90d": 20,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.45,
+  "tags_total": 119,
+  "tests_files": 381,
+  "tests_in_ci": true,
+  "loc": 431344
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler",
+   "approval_gate",
+   "trace_sink"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "multi_agent": 3,
+  "seguridad": 2,
+  "observabilidad": 2,
+  "mcp": 2
+ },
+ "claims": [
+  {
+   "claim": "Handoffs y guardrails",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "openai__openai-agents-python-E01",
+    "openai__openai-agents-python-E02",
+    "openai__openai-agents-python-E03"
+   ]
+  },
+  {
+   "claim": "Soporte MCP con aprobación",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "openai__openai-agents-python-E01",
+    "openai__openai-agents-python-E02",
+    "openai__openai-agents-python-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 4,
+  "A3": 2,
+  "A4": 4,
+  "A5": 5,
+  "A6": 5,
+  "A7": 3,
+  "A8": 5,
+  "A9": 5,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 77.6,
+  "score_track": 84.2,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "20 humanos/90d, 381 tests, CI Windows",
+  "Simple"
+ ],
+ "cons": [
+  "Sesgo a OpenAI; tracing por defecto a OpenAI (verificar opt-out)"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Destino por defecto del tracing."
+ ],
+ "verdict_factual": "SDK multi-agente activo, simple, con guardrails y aprobación MCP verificados; sesgo a OpenAI.",
+ "evidence_ids": [
+  "openai__openai-agents-python-E01",
+  "openai__openai-agents-python-E02",
+  "openai__openai-agents-python-E03",
+  "openai__openai-agents-python-E04",
+  "openai__openai-agents-python-E05",
+  "openai__openai-agents-python-E06",
+  "openai__openai-agents-python-E07",
+  "openai__openai-agents-python-E08",
+  "openai__openai-agents-python-E09",
+  "openai__openai-agents-python-E10",
+  "openai__openai-agents-python-E11",
+  "openai__openai-agents-python-E12",
+  "openai__openai-agents-python-E13",
+  "openai__openai-agents-python-E14"
+ ],
+ "tokens_spent": 9000
+}

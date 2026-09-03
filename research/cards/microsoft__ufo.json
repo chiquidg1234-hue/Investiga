@@ -1,0 +1,216 @@
+{
+ "key": "microsoft/ufo",
+ "name": "UFO² / UFO³ (Microsoft)",
+ "url": "https://github.com/microsoft/ufo",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "cu_harness_windows",
+ "commit_sha_reviewed": "364eb7969d392e857299ceaf14bd6057e5b00078",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 9600,
+ "what_it_does": "Agente de escritorio Windows de Microsoft: orquestador HostAgent + AppAgents por aplicación; percibe por árbol UIA (uiautomation/pywinauto) y visión, actúa por APIs nativas y pyautogui; incluye servidor MCP (fastmcp) y evaluación en WAA/OSWorld-Windows.",
+ "problem_solved": "Automatizar tareas multi-aplicación en Windows con percepción híbrida UIA+visión.",
+ "how_it_could_be_used": "Base candidata para el COMPUTER AGENT: percepción y acción nativas en Windows; su modelo de HostAgent/AppAgent es directamente la arquitectura multi-agente que pide el documento.",
+ "perception_mechanism": "hybrid",
+ "actuation_mechanism": "uia_invoke",
+ "verification_mechanism": "Re-observa el estado tras cada acción; bundling de varios pasos validados en vivo (README: 'hasta 51% menos consultas').",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [
+   "GPT-4o/OpenAI por defecto",
+   "cualquier OpenAI-compatible",
+   "Gemini opcional"
+  ],
+  "min_vram_gb": "0 (modelo en cloud)",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Deps con marcador sys_platform=='win32': pywin32, pywinauto, uiautomation, pyautogui. Sin job windows-latest en CI (ci=1, sin tests en CI).",
+  "ci_windows": false,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 33,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "microsoft__ufo-E01",
+   "microsoft__ufo-E02",
+   "microsoft__ufo-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_read",
+   "fs_write",
+   "net_out",
+   "screen_capture",
+   "input_injection",
+   "credentials",
+   "env_vars"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Ninguna nativa; recomienda VM/WAA para evaluación.",
+  "approval_mechanism": "Hooks de confirmación configurables (approval 99 hits); UNVERIFIED que estén activos por defecto.",
+  "secret_handling": "Claves en config YAML/env (msal/azure-identity opcionales).",
+  "prompt_injection_defense": "UNVERIFIED (no se encontró defensa explícita frente a contenido de pantalla).",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 16
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_read, fs_write, net_out, screen_capture, input_injection, credentials, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 4,
+  "commits_90d": 31,
+  "bus_factor_top_share": 0.48,
+  "tags_total": 17,
+  "tests_files": 179,
+  "tests_in_ci": false,
+  "loc": 137655
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "action_executor",
+   "screenshot_source",
+   "mcp_server",
+   "scheduler"
+  ],
+  "consumes": [
+   "vlm_inference",
+   "llm_client"
+  ],
+  "runtime": "python3.10-3.11",
+  "transport": [
+   "stdio",
+   "http",
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "computer_use": 3,
+  "percepcion": 3,
+  "autonomia": 2,
+  "multi_agent": 2,
+  "mcp": 2,
+  "seguridad": -1,
+  "coste": -1
+ },
+ "claims": [
+  {
+   "claim": "Controla aplicaciones Windows vía UIA y visión",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__ufo-E01",
+    "microsoft__ufo-E02",
+    "microsoft__ufo-E03"
+   ]
+  },
+  {
+   "claim": "Resultados en Windows Agent Arena y OSWorld-Windows",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__ufo-E17"
+   ]
+  },
+  {
+   "claim": "Hasta 51% menos consultas LLM por bundling",
+   "max_evidence_class": "E0",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__ufo-E17"
+   ]
+  },
+  {
+   "claim": "Servidor MCP integrado",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "microsoft__ufo-E01",
+    "microsoft__ufo-E02",
+    "microsoft__ufo-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.5,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 5,
+  "A4": 2,
+  "A5": 4,
+  "A6": 4,
+  "A7": 4,
+  "A8": 4,
+  "A9": 3,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 73.0,
+  "score_track": 68.2,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Único harness maduro y activo (4 humanos/90d) nativo Windows con UIA+visión",
+  "Arquitectura Host/App agents = multi-agente por aplicación",
+  "Evaluación pública en WAA"
+ ],
+ "cons": [
+  "Sin CI en Windows; 137k LOC, fuerte acoplamiento a langchain 0.3",
+  "Permisos R3 sin sandbox propio",
+  "Números concretos de WAA/OSWorld solo en docs, no re-verificados"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Cifras actuales de éxito en WAA para UFO³ (README enlaza a fork nice-mee/WindowsAgentArena; no verificado el número)."
+ ],
+ "verdict_factual": "Harness Windows-nativo con percepción híbrida UIA+visión verificada en dependencias y código; activo; sin sandbox propio ni CI Windows; benchmarks propios en WAA/OSWorld-Windows no re-verificados.",
+ "evidence_ids": [
+  "microsoft__ufo-E01",
+  "microsoft__ufo-E02",
+  "microsoft__ufo-E03",
+  "microsoft__ufo-E04",
+  "microsoft__ufo-E05",
+  "microsoft__ufo-E06",
+  "microsoft__ufo-E07",
+  "microsoft__ufo-E08",
+  "microsoft__ufo-E09",
+  "microsoft__ufo-E10",
+  "microsoft__ufo-E11",
+  "microsoft__ufo-E12",
+  "microsoft__ufo-E13",
+  "microsoft__ufo-E14",
+  "microsoft__ufo-E15",
+  "microsoft__ufo-E16",
+  "microsoft__ufo-E17",
+  "microsoft__ufo-E18",
+  "microsoft__ufo-E19"
+ ],
+ "tokens_spent": 9000
+}

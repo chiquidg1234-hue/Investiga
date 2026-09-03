@@ -1,0 +1,192 @@
+{
+ "key": "jeomon/windows-use",
+ "name": "Windows-Use (CursorTouch)",
+ "url": "https://github.com/jeomon/windows-use",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "windows_agent",
+ "commit_sha_reviewed": "0c24f9931feb42e293f49c7cc9c4c920d7e2cc37",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 423,
+ "what_it_does": "Agente Python que controla Windows a nivel GUI leyendo el árbol UIA (uiautomation) y actuando con pyautogui; modelo-agnóstico; opcional visión/anotación; tools de shell, apps, escritorios virtuales.",
+ "problem_solved": "Agente CU Windows completo sin modelo de visión obligatorio.",
+ "how_it_could_be_used": "Referencia de bucle observe→act sobre UIA en Windows; alternativa 'agente completo' frente a Windows-MCP (solo herramientas).",
+ "perception_mechanism": "accessibility_uia",
+ "actuation_mechanism": "input_injection",
+ "verification_mechanism": "max_consecutive_failures y re-lectura del árbol; sin verificación visual (UNVERIFIED).",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "cualquier LLM vía LangChain"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Windows 10 build 17763+ / 11; CI windows-latest con tests.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 62,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "jeomon__windows-use-E01",
+   "jeomon__windows-use-E02",
+   "jeomon__windows-use-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_read",
+   "fs_write",
+   "screen_capture",
+   "input_injection",
+   "env_vars"
+  ],
+  "risk_tier": "R3",
+  "isolation": "README recomienda Windows Sandbox.",
+  "approval_mechanism": "Ninguna nativa (UNVERIFIED hook de confirmación).",
+  "secret_handling": "Parámetro secrets={} inyectado al contexto del agente (riesgo de exfiltración vía prompt).",
+  "prompt_injection_defense": "Ninguna.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 9
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_read, fs_write, screen_capture, input_injection, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": [
+   "V3"
+  ]
+ },
+ "maturity": {
+  "days_since_substantive_commit": 57,
+  "human_committers_90d": 3,
+  "commits_90d": 5,
+  "bus_factor_top_share": 0.87,
+  "tags_total": 6,
+  "tests_files": 23,
+  "tests_in_ci": true,
+  "loc": 32117
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "action_executor",
+   "screenshot_source"
+  ],
+  "consumes": [
+   "llm_client"
+  ],
+  "runtime": "python3.10+",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "computer_use": 2,
+  "percepcion": 2,
+  "autonomia": 2,
+  "seguridad": -2
+ },
+ "claims": [
+  {
+   "claim": "Controla Windows sin modelo de visión",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "jeomon__windows-use-E01",
+    "jeomon__windows-use-E02",
+    "jeomon__windows-use-E03"
+   ]
+  },
+  {
+   "claim": "Soporta Windows 10/11",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "jeomon__windows-use-E14"
+   ]
+  },
+  {
+   "claim": "Memoria persistente entre pasos",
+   "max_evidence_class": "E0",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "jeomon__windows-use-E14"
+   ]
+  }
+ ],
+ "hype_index": 0.67,
+ "flags": [
+  "SECURITY_VETO"
+ ],
+ "scores": {
+  "A1": 3,
+  "A2": 3,
+  "A3": 4,
+  "A4": 1,
+  "A5": 3,
+  "A6": 5,
+  "A7": 2,
+  "A8": 3,
+  "A9": 2,
+  "A10": 4,
+  "caps_applied": [
+   "V3"
+  ],
+  "score_global": 55,
+  "score_track": 55,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Bucle CU Windows completo en 32k LOC",
+  "CI Windows"
+ ],
+ "cons": [
+  "bus factor 0.87, 57 días sin commit",
+  "shell_tool sin control",
+  "secrets en contexto del modelo"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Tasa de éxito real: sin benchmark."
+ ],
+ "verdict_factual": "Agente Windows UIA funcional y probado en CI; seguridad débil (shell libre, secrets en prompt); mantenimiento de un solo autor.",
+ "evidence_ids": [
+  "jeomon__windows-use-E01",
+  "jeomon__windows-use-E02",
+  "jeomon__windows-use-E03",
+  "jeomon__windows-use-E04",
+  "jeomon__windows-use-E05",
+  "jeomon__windows-use-E06",
+  "jeomon__windows-use-E07",
+  "jeomon__windows-use-E08",
+  "jeomon__windows-use-E09",
+  "jeomon__windows-use-E10",
+  "jeomon__windows-use-E11",
+  "jeomon__windows-use-E12",
+  "jeomon__windows-use-E13",
+  "jeomon__windows-use-E14"
+ ],
+ "tokens_spent": 9000
+}

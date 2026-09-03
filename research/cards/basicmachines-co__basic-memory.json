@@ -1,0 +1,155 @@
+{
+ "key": "basicmachines-co/basic-memory",
+ "name": "Basic Memory",
+ "url": "https://github.com/basicmachines-co/basic-memory",
+ "block": "B6",
+ "category": "B6",
+ "archetype": "local_md_memory_mcp",
+ "commit_sha_reviewed": "7d837debb39918592c4075a5b47015e20348e596",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Memoria persistente en ficheros Markdown locales + grafo de conocimiento, expuesta por MCP a Claude Desktop/Code; AGPL.",
+ "problem_solved": "Memoria legible por humanos, local y editable.",
+ "how_it_could_be_used": "Memoria procedural/notas del agente (workflows aprendidos) que el usuario puede leer y corregir.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest con tests.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "basicmachines-co__basic-memory-E01",
+   "basicmachines-co__basic-memory-E02",
+   "basicmachines-co__basic-memory-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_write",
+   "telemetry"
+  ],
+  "risk_tier": "R1",
+  "isolation": "Local.",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Ficheros MD envenenables.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 35
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con fs_write, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 1,
+  "commits_90d": 60,
+  "bus_factor_top_share": 1.0,
+  "tags_total": 108,
+  "tests_files": 601,
+  "tests_in_ci": true,
+  "loc": 367809
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "memory_store",
+   "mcp_server"
+  ],
+  "consumes": [],
+  "runtime": "python",
+  "transport": [
+   "stdio"
+  ],
+  "license_spdx": "AGPL",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "memoria": 2,
+  "claude_code": 2,
+  "contexto": 1,
+  "coste": 1
+ },
+ "claims": [
+  {
+   "claim": "Memoria en Markdown local vía MCP",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "basicmachines-co__basic-memory-E01",
+    "basicmachines-co__basic-memory-E02",
+    "basicmachines-co__basic-memory-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 3,
+  "A2": 3,
+  "A3": 1,
+  "A4": 4,
+  "A5": 3,
+  "A6": 5,
+  "A7": 1,
+  "A8": 4,
+  "A9": 3,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 58.8,
+  "score_track": 65.6,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Transparente y auditable",
+  "CI Windows, 601 tests"
+ ],
+ "cons": [
+  "1 humano/90d (bus 1.0)",
+  "AGPL"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Memoria local en Markdown vía MCP, probada en Windows; un solo mantenedor.",
+ "evidence_ids": [
+  "basicmachines-co__basic-memory-E01",
+  "basicmachines-co__basic-memory-E02",
+  "basicmachines-co__basic-memory-E03",
+  "basicmachines-co__basic-memory-E04",
+  "basicmachines-co__basic-memory-E05",
+  "basicmachines-co__basic-memory-E06",
+  "basicmachines-co__basic-memory-E07",
+  "basicmachines-co__basic-memory-E08",
+  "basicmachines-co__basic-memory-E09",
+  "basicmachines-co__basic-memory-E10",
+  "basicmachines-co__basic-memory-E11",
+  "basicmachines-co__basic-memory-E12"
+ ],
+ "tokens_spent": 9000
+}

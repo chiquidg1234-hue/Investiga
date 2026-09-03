@@ -1,0 +1,179 @@
+{
+ "key": "nousresearch/hermes-agent",
+ "name": "Hermes Agent",
+ "url": "https://github.com/nousresearch/hermes-agent",
+ "block": "B4",
+ "category": "B4",
+ "archetype": "personal_assistant",
+ "commit_sha_reviewed": "63279301bcbdc185c1b07b98a9312eb0c862f26d",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Asistente personal autónomo open source (Nous): tools, memoria, skills, multi-canal; 1.3M LOC; 4.895 tests; instalador curl|bash.",
+ "problem_solved": "Asistente personal 'todo en uno' autohospedado.",
+ "how_it_could_be_used": "Referencia de asistente completo; superficie de permisos muy amplia.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "shell",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "multi-proveedor"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W2",
+  "notes": "CI windows-latest; 15 menciones Windows; 35 hits curl|bash (instalador).",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 15,
+  "wsl_dependency": true,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "nousresearch__hermes-agent-E01",
+   "nousresearch__hermes-agent-E02",
+   "nousresearch__hermes-agent-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "fs_write",
+   "net_out",
+   "credentials",
+   "env_vars",
+   "telemetry"
+  ],
+  "risk_tier": "R4",
+  "isolation": "Sandbox opcional (704 hits) UNVERIFIED por defecto.",
+  "approval_mechanism": "UNVERIFIED",
+  "secret_handling": "Env",
+  "prompt_injection_defense": "UNVERIFIED",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": true,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 35,
+   "telemetry_hits": 167
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, fs_write, net_out, credentials, env_vars, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": [
+   "V1"
+  ]
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 20,
+  "commits_90d": 59,
+  "bus_factor_top_share": 0.37,
+  "tags_total": 37,
+  "tests_files": 4895,
+  "tests_in_ci": true,
+  "loc": 1307392
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler",
+   "memory_store",
+   "skill_registry"
+  ],
+  "consumes": [
+   "llm_client",
+   "mcp_server"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "fork_required"
+ },
+ "impact": {
+  "autonomia": 2,
+  "memoria": 1,
+  "multi_agent": 1,
+  "seguridad": -2
+ },
+ "claims": [
+  {
+   "claim": "Asistente autónomo con memoria y skills",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "nousresearch__hermes-agent-E01",
+    "nousresearch__hermes-agent-E02",
+    "nousresearch__hermes-agent-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [
+  "SECURITY_VETO"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 2,
+  "A4": 1,
+  "A5": 4,
+  "A6": 3,
+  "A7": 1,
+  "A8": 3,
+  "A9": 3,
+  "A10": 3,
+  "caps_applied": [
+   "V1"
+  ],
+  "score_global": 52.0,
+  "score_track": 54.1,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Muy activo (20 humanos/90d)"
+ ],
+ "cons": [
+  "Instalación por curl|bash (V1 si es la única vía: UNVERIFIED)",
+  "R4 sin evidencia de aprobación por defecto",
+  "1.3M LOC"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "¿Existe vía de instalación sin script remoto?",
+  "¿Aprobación de acciones por defecto?"
+ ],
+ "verdict_factual": "Asistente completo y muy activo pero con superficie de permisos máxima y sin evidencia de gates por defecto.",
+ "evidence_ids": [
+  "nousresearch__hermes-agent-E01",
+  "nousresearch__hermes-agent-E02",
+  "nousresearch__hermes-agent-E03",
+  "nousresearch__hermes-agent-E04",
+  "nousresearch__hermes-agent-E05",
+  "nousresearch__hermes-agent-E06",
+  "nousresearch__hermes-agent-E07",
+  "nousresearch__hermes-agent-E08",
+  "nousresearch__hermes-agent-E09",
+  "nousresearch__hermes-agent-E10",
+  "nousresearch__hermes-agent-E11",
+  "nousresearch__hermes-agent-E12",
+  "nousresearch__hermes-agent-E13",
+  "nousresearch__hermes-agent-E14",
+  "nousresearch__hermes-agent-E15",
+  "nousresearch__hermes-agent-E16"
+ ],
+ "tokens_spent": 9000
+}

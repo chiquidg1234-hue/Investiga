@@ -1,0 +1,6 @@
+RapidAI/RapidOCR
+PaddlePaddle/PaddleOCR
+ollama/ollama
+ggml-org/llama.cpp
+openai/codex
+CursorTouch/Windows-MCP

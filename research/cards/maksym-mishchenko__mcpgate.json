@@ -1,0 +1,161 @@
+{
+ "key": "maksym-mishchenko/mcpgate",
+ "name": "mcpgate",
+ "url": "https://github.com/maksym-mishchenko/mcpgate",
+ "block": "B7",
+ "category": "B7",
+ "archetype": "mcp_gateway",
+ "commit_sha_reviewed": "3c02b066701f0a929a791826d5c600071e42a1b8",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Gateway MCP zero-trust en Go: política YAML deny-by-default por tool/recurso/prompt/sampling, aprobación humana en dashboard local, auditoría SQLite write-ahead con cadena HMAC, scanner de injection/tool-poisoning.",
+ "problem_solved": "Poner allow/deny/ask y auditoría delante de cualquier servidor MCP.",
+ "how_it_could_be_used": "SECURITY AGENT/HUMAN APPROVAL mecánico entre el orquestador y Windows-MCP/playwright-mcp/filesystem.",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Binario Go; sin CI Windows (no crítico).",
+  "ci_windows": false,
+  "windows_deps": [],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "maksym-mishchenko__mcpgate-E01",
+   "maksym-mishchenko__mcpgate-E02",
+   "maksym-mishchenko__mcpgate-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "net_listen",
+   "fs_write"
+  ],
+  "risk_tier": "R1",
+  "isolation": "Solo protocolo (no proceso).",
+  "approval_mechanism": "ask → UI local, timeout=deny (E1).",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Scanner determinista opt-in a bloqueo.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 0
+  },
+  "data_exfiltration_paths": [],
+  "what_could_go_wrong": "Con net_listen, fs_write: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 1,
+  "commits_90d": 22,
+  "bus_factor_top_share": 1.0,
+  "tags_total": 10,
+  "tests_files": 22,
+  "tests_in_ci": true,
+  "loc": 7355
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "approval_gate",
+   "trace_sink"
+  ],
+  "consumes": [
+   "mcp_server"
+  ],
+  "runtime": "go",
+  "transport": [
+   "stdio",
+   "http"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "seguridad": 3,
+  "observabilidad": 2,
+  "mcp": 2
+ },
+ "claims": [
+  {
+   "claim": "Deny-by-default con aprobación humana",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "maksym-mishchenko__mcpgate-E11"
+   ]
+  },
+  {
+   "claim": "Fail-closed en auditoría",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "maksym-mishchenko__mcpgate-E11"
+   ]
+  }
+ ],
+ "hype_index": 1.0,
+ "flags": [
+  "ABANDONMENT_RISK"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 1,
+  "A4": 5,
+  "A5": 3,
+  "A6": 4,
+  "A7": 1,
+  "A8": 4,
+  "A9": 0,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 61.0,
+  "score_track": 68.2,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Diseño fail-closed explícito",
+  "Activo hoy (22 commits/90d), 22 tests"
+ ],
+ "cons": [
+  "1 autor",
+  "Un servidor por proceso",
+  "Sin verificación externa"
+ ],
+ "contradictions": [],
+ "open_questions": [
+  "Stars y adopción (no verificadas)."
+ ],
+ "verdict_factual": "HIDDEN_GEM candidato: gateway MCP deny-by-default con aprobación y auditoría; un solo autor.",
+ "evidence_ids": [
+  "maksym-mishchenko__mcpgate-E01",
+  "maksym-mishchenko__mcpgate-E02",
+  "maksym-mishchenko__mcpgate-E03",
+  "maksym-mishchenko__mcpgate-E04",
+  "maksym-mishchenko__mcpgate-E05",
+  "maksym-mishchenko__mcpgate-E06",
+  "maksym-mishchenko__mcpgate-E07",
+  "maksym-mishchenko__mcpgate-E08",
+  "maksym-mishchenko__mcpgate-E09",
+  "maksym-mishchenko__mcpgate-E10",
+  "maksym-mishchenko__mcpgate-E11"
+ ],
+ "tokens_spent": 9000
+}

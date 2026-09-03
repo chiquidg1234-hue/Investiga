@@ -1,0 +1,1166 @@
+{
+ "clusters": [
+  {
+   "cluster_id": "C1",
+   "problem": "Percibir y actuar sobre el escritorio Windows (UIA-first)",
+   "members": [
+    "microsoft/ufo",
+    "cursortouch/windows-mcp",
+    "jeomon/windows-use",
+    "supermarioyl/uia-agent"
+   ],
+   "axes": {
+    "capability": {
+     "microsoft/ufo": "multi-app + visión + MCP",
+     "cursortouch/windows-mcp": "tools MCP completas",
+     "jeomon/windows-use": "agente completo",
+     "supermarioyl/uia-agent": "agente mínimo con verify"
+    },
+    "security": {
+     "microsoft/ufo": "R3 sin sandbox",
+     "cursortouch/windows-mcp": "R3 delegado al host",
+     "jeomon/windows-use": "R3 shell libre + secrets en prompt",
+     "supermarioyl/uia-agent": "R2"
+    },
+    "architecture": {
+     "microsoft/ufo": "Host/App agents",
+     "cursortouch/windows-mcp": "servidor de tools",
+     "jeomon/windows-use": "bucle único",
+     "supermarioyl/uia-agent": "bucle único con verify"
+    },
+    "maintenance": {
+     "microsoft/ufo": "4 humanos/90d",
+     "cursortouch/windows-mcp": "16 humanos/90d",
+     "jeomon/windows-use": "3 humanos, 57d, bus 0.87",
+     "supermarioyl/uia-agent": "3 humanos, 1 star"
+    },
+    "performance": {
+     "microsoft/ufo": "WAA (auto-reportado)",
+     "cursortouch/windows-mcp": "TIE",
+     "jeomon/windows-use": "TIE",
+     "supermarioyl/uia-agent": "target no medido"
+    },
+    "documentation": {
+     "microsoft/ufo": "sitio docs",
+     "cursortouch/windows-mcp": "README",
+     "jeomon/windows-use": "README",
+     "supermarioyl/uia-agent": "README bilingüe"
+    },
+    "integration": {
+     "microsoft/ufo": "adapter/fastmcp",
+     "cursortouch/windows-mcp": "drop_in MCP",
+     "jeomon/windows-use": "adapter",
+     "supermarioyl/uia-agent": "MCP + LangChain"
+    },
+    "complexity": {
+     "microsoft/ufo": "137k LOC",
+     "cursortouch/windows-mcp": "32k",
+     "jeomon/windows-use": "32k",
+     "supermarioyl/uia-agent": "4k"
+    },
+    "windows": {
+     "all": "W1"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": null,
+    "eliminated": [
+     {
+      "key": "jeomon/windows-use",
+      "reason": "dominado por windows-mcp (mismo autor/org, más activo, MCP) en mantenimiento, integración y seguridad; empata en capacidad"
+     }
+    ],
+    "escalate_to_opus": true,
+    "tradeoff_summary": "UFO gana si se quiere multi-app con visión y planificación integrada; Windows-MCP gana si el orquestador es Claude Code/MCP y se quiere mínima superficie; uia-agent gana como patrón barato y verificable si se acepta riesgo de abandono."
+   }
+  },
+  {
+   "cluster_id": "C2",
+   "problem": "Supervisor visual que guía al usuario en pantalla",
+   "members": [
+    "kingsahil/blinky",
+    "mo-tunn/openguider",
+    "r-muresan/screen.vision",
+    "aiagentwithdhruv/screen-sage"
+   ],
+   "axes": {
+    "windows": {
+     "kingsahil/blinky": "W1 nativo",
+     "mo-tunn/openguider": "W1 Electron",
+     "r-muresan/screen.vision": "web",
+     "aiagentwithdhruv/screen-sage": "web"
+    },
+    "maintenance": {
+     "kingsahil/blinky": "3d, 59 commits/90d",
+     "mo-tunn/openguider": "121d",
+     "r-muresan/screen.vision": "224d",
+     "aiagentwithdhruv/screen-sage": "178d"
+    },
+    "capability": {
+     "kingsahil/blinky": "OCR WinRT + UIA + overlay + autopilot",
+     "mo-tunn/openguider": "coordenadas + plugins",
+     "r-muresan/screen.vision": "3 modelos cloud",
+     "aiagentwithdhruv/screen-sage": "Gemini Live"
+    },
+    "security": {
+     "kingsahil/blinky": "local posible",
+     "others": "screenshots a cloud"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": "kingsahil/blinky",
+    "eliminated": [
+     {
+      "key": "mo-tunn/openguider",
+      "reason": "inactivo 121d, sin OCR local"
+     },
+     {
+      "key": "r-muresan/screen.vision",
+      "reason": "inactivo, web-only, todo a cloud"
+     },
+     {
+      "key": "aiagentwithdhruv/screen-sage",
+      "reason": "demo sin licencia"
+     }
+    ],
+    "escalate_to_opus": false,
+    "tradeoff_summary": "Ninguno es producto: Blinky es el único activo y Windows-nativo; OPUS debe decidir si usar como referencia o construir."
+   }
+  },
+  {
+   "cluster_id": "C3",
+   "problem": "Gateway MCP con política y aprobación",
+   "members": [
+    "maksym-mishchenko/mcpgate",
+    "sushank05/mcp-doorman",
+    "hoophq/mcpproxy",
+    "kphatak001/mcpfw",
+    "tonyc973/mcp-shield",
+    "piyushptiwari1/mcpkernel",
+    "niradler/fast-mcp-gateway",
+    "stacklok/toolhive"
+   ],
+   "axes": {
+    "security": {
+     "maksym-mishchenko/mcpgate": "deny-by-default, fail-closed",
+     "sushank05/mcp-doorman": "policy+redaction+pinning+elicitation",
+     "hoophq/mcpproxy": "HTTP + OAuth + approvals",
+     "kphatak001/mcpfw": "YAML + sequence rules",
+     "tonyc973/mcp-shield": "roadmap sin implementar",
+     "piyushptiwari1/mcpkernel": "claims no verificadas",
+     "niradler/fast-mcp-gateway": "admin API sin auth por defecto",
+     "stacklok/toolhive": "contenedores (proceso, no protocolo)"
+    },
+    "maintenance": {
+     "maksym-mishchenko/mcpgate": "activo hoy, 1 autor",
+     "sushank05/mcp-doorman": "56d, 1 autor",
+     "hoophq/mcpproxy": "27d, 1 autor",
+     "kphatak001/mcpfw": "110d",
+     "tonyc973/mcp-shield": "151d, 0 tests",
+     "piyushptiwari1/mcpkernel": "100d",
+     "niradler/fast-mcp-gateway": "73d",
+     "stacklok/toolhive": "22 humanos"
+    },
+    "windows": {
+     "maksym-mishchenko/mcpgate": "W1 (Go)",
+     "sushank05/mcp-doorman": "W1 (Node)",
+     "stacklok/toolhive": "W4 Docker",
+     "others": "W1"
+    },
+    "complexity": {
+     "maksym-mishchenko/mcpgate": "7k LOC",
+     "sushank05/mcp-doorman": "2.4k",
+     "stacklok/toolhive": "744k"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": null,
+    "eliminated": [
+     {
+      "key": "tonyc973/mcp-shield",
+      "reason": "K11 vaporware"
+     },
+     {
+      "key": "piyushptiwari1/mcpkernel",
+      "reason": "K11 claims no verificadas, inactivo"
+     },
+     {
+      "key": "niradler/fast-mcp-gateway",
+      "reason": "admin sin auth por defecto"
+     }
+    ],
+    "escalate_to_opus": true,
+    "tradeoff_summary": "mcpgate gana en diseño fail-closed y actividad; mcp-doorman gana en cobertura (redacción de secretos, pinning, elicitación nativa MCP) pero 0 stars/56d; toolhive gana si se acepta Docker (aísla procesos, no solo protocolo). Todos los gateways de protocolo tienen 1 autor: riesgo compartido."
+   }
+  },
+  {
+   "cluster_id": "C4",
+   "problem": "Memoria persistente para agente personal",
+   "members": [
+    "mem0ai/mem0",
+    "getzep/graphiti",
+    "mempalace/mempalace",
+    "basicmachines-co/basic-memory"
+   ],
+   "axes": {
+    "capability": {
+     "mem0ai/mem0": "extracción automática; grafo de pago",
+     "getzep/graphiti": "grafo temporal",
+     "mempalace/mempalace": "verbatim local",
+     "basicmachines-co/basic-memory": "Markdown local"
+    },
+    "performance": {
+     "mem0ai/mem0": "58-66% LoCoMo independiente; ~120ms/280 tok",
+     "getzep/graphiti": "91% relacional; 310ms/620 tok (E3)",
+     "mempalace/mempalace": "96.6% R@5 auto-reportado",
+     "basicmachines-co/basic-memory": "sin datos"
+    },
+    "security": {
+     "mem0ai/mem0": "telemetría por defecto",
+     "getzep/graphiti": "telemetría hits",
+     "mempalace/mempalace": "local; telemetría a verificar",
+     "basicmachines-co/basic-memory": "local"
+    },
+    "integration": {
+     "mem0ai/mem0": "drop_in",
+     "getzep/graphiti": "needs Neo4j",
+     "mempalace/mempalace": "MCP",
+     "basicmachines-co/basic-memory": "MCP"
+    },
+    "maintenance": {
+     "mem0ai/mem0": "14 humanos",
+     "getzep/graphiti": "15 humanos",
+     "mempalace/mempalace": "5 humanos, 360 issues",
+     "basicmachines-co/basic-memory": "1 humano"
+    },
+    "windows": {
+     "mem0ai/mem0": "W1",
+     "getzep/graphiti": "W2 (Neo4j)",
+     "mempalace/mempalace": "W1 CI",
+     "basicmachines-co/basic-memory": "W1 CI"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": null,
+    "eliminated": [],
+    "escalate_to_opus": true,
+    "tradeoff_summary": "Evidencia E3 clave: en LoCoMo/LongMemEval el contexto largo supera a todas las memorias en 30+ puntos; la memoria se compra por coste/latencia y privacidad, no por precisión. mempalace/basic-memory ganan en privacidad/coste; graphiti gana solo en preguntas temporales; mem0 gana en facilidad pero con telemetría y features de pago."
+   }
+  },
+  {
+   "cluster_id": "C5",
+   "problem": "Orquestación multi-agente con HITL",
+   "members": [
+    "langchain-ai/langgraph",
+    "openai/openai-agents-python",
+    "pydantic/pydantic-ai",
+    "anthropics/claude-agent-sdk-python"
+   ],
+   "axes": {
+    "capability": {
+     "langchain-ai/langgraph": "grafo + checkpoints + interrupt",
+     "openai/openai-agents-python": "handoffs + guardrails",
+     "pydantic/pydantic-ai": "tipado + evals",
+     "anthropics/claude-agent-sdk-python": "harness completo con tools"
+    },
+    "security": {
+     "all": "aprobación nativa (E2 en sondas)"
+    },
+    "integration": {
+     "anthropics/claude-agent-sdk-python": "drop_in con Claude Code",
+     "others": "adapter"
+    },
+    "complexity": {
+     "langchain-ai/langgraph": "alta",
+     "openai/openai-agents-python": "baja",
+     "pydantic/pydantic-ai": "media",
+     "anthropics/claude-agent-sdk-python": "baja si ya se usa Claude Code"
+    },
+    "windows": {
+     "all": "W1"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": null,
+    "eliminated": [],
+    "escalate_to_opus": true,
+    "tradeoff_summary": "Claude Agent SDK gana si el agente es 'Claude Code con manos' (permisos/hooks/MCP ya resueltos, lock-in a Claude); LangGraph gana en durabilidad/checkpoints; OpenAI Agents gana en simplicidad; Pydantic AI gana en fiabilidad tipada y multi-proveedor."
+   }
+  },
+  {
+   "cluster_id": "C6",
+   "problem": "Sandbox de procesos en Windows 11 Home sin Docker/WSL",
+   "members": [
+    "anthropic-experimental/sandbox-runtime",
+    "tarunkurella/sandboxrs-windows",
+    "theuser99-spec/phylax",
+    "convira/convira-sandbox",
+    "jarkkojs/landstrip"
+   ],
+   "axes": {
+    "capability": {
+     "anthropic-experimental/sandbox-runtime": "FS ACL + red WFP (alpha)",
+     "tarunkurella/sandboxrs-windows": "AppContainer sin admin",
+     "theuser99-spec/phylax": "ACL/MIC sobre ficheros",
+     "convira/convira-sandbox": "AppContainer + Job Objects",
+     "jarkkojs/landstrip": "AppContainer/restricted user"
+    },
+    "maintenance": {
+     "anthropic-experimental/sandbox-runtime": "Anthropic, 60 commits",
+     "tarunkurella/sandboxrs-windows": "1 autor",
+     "theuser99-spec/phylax": "1 autor, 2 tests",
+     "convira/convira-sandbox": "2 humanos",
+     "jarkkojs/landstrip": "1 autor, sin LICENSE"
+    },
+    "security": {
+     "anthropic-experimental/sandbox-runtime": "requiere admin en setup",
+     "tarunkurella/sandboxrs-windows": "sin admin",
+     "theuser99-spec/phylax": "admin",
+     "convira/convira-sandbox": "UNVERIFIED"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": null,
+    "eliminated": [
+     {
+      "key": "jarkkojs/landstrip",
+      "reason": "sin LICENSE (V2)"
+     }
+    ],
+    "escalate_to_opus": true,
+    "tradeoff_summary": "sandbox-runtime gana en respaldo y red fail-closed pero exige admin y es alpha en Windows; sandboxrs gana en no-admin pero AppContainer rompe herramientas de desarrollador (OpenAI lo documentó y optó por restricted tokens + usuarios locales: openai/codex, no sondeado en detalle). Ninguno aísla el escritorio: el control de UIA/input queda fuera de todos."
+   }
+  },
+  {
+   "cluster_id": "C7",
+   "problem": "Agente/herramienta de navegador",
+   "members": [
+    "microsoft/playwright-mcp",
+    "browser-use/browser-use",
+    "browserbase/stagehand",
+    "skyvern-ai/skyvern"
+   ],
+   "axes": {
+    "capability": {
+     "microsoft/playwright-mcp": "tools por accesibilidad",
+     "browser-use/browser-use": "agente completo",
+     "browserbase/stagehand": "SDK TS + cloud",
+     "skyvern-ai/skyvern": "agente visual"
+    },
+    "security": {
+     "microsoft/playwright-mcp": "sin telemetría detectada",
+     "browser-use/browser-use": "telemetría por defecto",
+     "browserbase/stagehand": "telemetría 72 hits",
+     "skyvern-ai/skyvern": "AGPL, telemetría 201"
+    },
+    "integration": {
+     "microsoft/playwright-mcp": "drop_in MCP",
+     "browser-use/browser-use": "adapter/MCP"
+    },
+    "complexity": {
+     "microsoft/playwright-mcp": "mínima",
+     "browser-use/browser-use": "110k LOC",
+     "skyvern-ai/skyvern": "800k LOC"
+    }
+   },
+   "dominance": {
+    "mechanical_winner": null,
+    "eliminated": [
+     {
+      "key": "skyvern-ai/skyvern",
+      "reason": "AGPL + complejidad, dominado por browser-use"
+     },
+     {
+      "key": "browserbase/stagehand",
+      "reason": "orientado a cloud propio"
+     }
+    ],
+    "escalate_to_opus": true,
+    "tradeoff_summary": "playwright-mcp gana si el orquestador razona (Claude) y se quiere mínima superficie; browser-use gana si se quiere un sub-agente web autónomo con juez de finalización."
+   }
+  }
+ ],
+ "complementarity": [
+  {
+   "pair": [
+    "langchain-ai/langgraph",
+    "mempalace/mempalace"
+   ],
+   "match": [
+    "memory_store"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "langchain-ai/langgraph",
+    "mem0ai/mem0"
+   ],
+   "match": [
+    "memory_store"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "langchain-ai/langgraph",
+    "mediar-ai/screenpipe"
+   ],
+   "match": [
+    "memory_store"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "langchain-ai/langgraph",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "memory_store"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "langchain-ai/langgraph",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "memory_store"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/playwright-mcp",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/playwright-mcp",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/playwright-mcp",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "promptfoo/promptfoo",
+    "stacklok/toolhive"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "promptfoo/promptfoo",
+    "trycua/cua"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "promptfoo/promptfoo",
+    "supermarioyl/uia-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "promptfoo/promptfoo",
+    "wonderwhy-er/desktopcommandermcp"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/ufo",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/ufo",
+    "stacklok/toolhive"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.2,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/ufo",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.17,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "microsoft/ufo",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.17,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "jlowin/fastmcp",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "jlowin/fastmcp",
+    "maksym-mishchenko/mcpgate"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "jlowin/fastmcp",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "jlowin/fastmcp",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "stacklok/toolhive"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "invariantlabs-ai/mcp-scan"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "maksym-mishchenko/mcpgate"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "bytedance/deer-flow"
+   ],
+   "match": [
+    "browser_driver",
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "browser-use/browser-use",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "microsoft/playwright-mcp"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "microsoft/ufo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.17,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "jlowin/fastmcp"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "browser-use/browser-use"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "modelcontextprotocol/servers"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "cursortouch/windows-mcp"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "stacklok/toolhive"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "trycua/cua"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "mempalace/mempalace"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "getzep/graphiti"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "assafelovic/gpt-researcher"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "supermarioyl/uia-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "basicmachines-co/basic-memory"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "mediar-ai/screenpipe"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "anthropics/claude-agent-sdk-python",
+    "wonderwhy-er/desktopcommandermcp"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "modelcontextprotocol/servers",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "modelcontextprotocol/servers",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "modelcontextprotocol/servers",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "stacklok/toolhive"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "invariantlabs-ai/mcp-scan"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "maksym-mishchenko/mcpgate"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "microsoft/omniparser"
+   ],
+   "match": [
+    "screenshot_source"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "cursortouch/windows-mcp",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "mempalace/mempalace",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "mempalace/mempalace",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "mempalace/mempalace",
+    "openclaw/openclaw"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "getzep/graphiti",
+    "langchain-ai/langgraph"
+   ],
+   "match": [
+    "memory_store"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "getzep/graphiti",
+    "promptfoo/promptfoo"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "getzep/graphiti",
+    "invariantlabs-ai/mcp-scan"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "getzep/graphiti",
+    "maksym-mishchenko/mcpgate"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.0,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  },
+  {
+   "pair": [
+    "getzep/graphiti",
+    "nousresearch/hermes-agent"
+   ],
+   "match": [
+    "mcp_server"
+   ],
+   "role_overlap": 0.25,
+   "runtime_compatible": "UNVERIFIED",
+   "license_compatible": "UNVERIFIED",
+   "evidence_of_joint_use": "UNVERIFIED"
+  }
+ ]
+}

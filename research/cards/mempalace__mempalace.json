@@ -1,0 +1,174 @@
+{
+ "key": "mempalace/mempalace",
+ "name": "MemPalace",
+ "url": "https://github.com/mempalace/mempalace",
+ "block": "B6",
+ "category": "B6",
+ "archetype": "local_verbatim_memory",
+ "commit_sha_reviewed": "d9f059076c866fa6f29195679d75712436986024",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 58800,
+ "what_it_does": "Memoria local-first en Python: almacena conversaciones verbatim y recupera por búsqueda semántica sin llamadas a API; MCP nativo; benchmark propio 96.6% R@5 LongMemEval.",
+ "problem_solved": "Memoria sin cloud ni coste por token.",
+ "how_it_could_be_used": "Memoria episódica/semántica 100% local para el agente personal (privacidad).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "embeddings locales"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "local"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "CI windows-latest con tests; Docker opcional.",
+  "ci_windows": true,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 2,
+  "wsl_dependency": false,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "mempalace__mempalace-E01",
+   "mempalace__mempalace-E02",
+   "mempalace__mempalace-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_write",
+   "telemetry"
+  ],
+  "risk_tier": "R1",
+  "isolation": "Local.",
+  "approval_mechanism": "N/A",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "Memoria envenenable.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 27
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)"
+  ],
+  "what_could_go_wrong": "Con fs_write, telemetry: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 5,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.62,
+  "tags_total": 18,
+  "tests_files": 177,
+  "tests_in_ci": true,
+  "loc": 169501
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "memory_store",
+   "mcp_server"
+  ],
+  "consumes": [],
+  "runtime": "python",
+  "transport": [
+   "stdio",
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "drop_in"
+ },
+ "impact": {
+  "memoria": 3,
+  "coste": 2,
+  "seguridad": 1,
+  "tokens": 1
+ },
+ "claims": [
+  {
+   "claim": "96.6% R@5 LongMemEval sin API",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "mempalace__mempalace-E13"
+   ]
+  },
+  {
+   "claim": "Local-first, MIT",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "mempalace__mempalace-E01",
+    "mempalace__mempalace-E02",
+    "mempalace__mempalace-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.5,
+ "flags": [
+  "HYPE_FLAG"
+ ],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 1,
+  "A4": 4,
+  "A5": 4,
+  "A6": 5,
+  "A7": 2,
+  "A8": 3,
+  "A9": 4,
+  "A10": 5,
+  "caps_applied": [],
+  "score_global": 65.4,
+  "score_track": 73.4,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Local, sin coste por token, MIT, CI Windows",
+  "Crecimiento muy rápido (58.8k stars, v3.9.0)"
+ ],
+ "cons": [
+  "Benchmark auto-reportado (R@5 de recuperación, no QA end-to-end)",
+  "360 issues abiertas: crecimiento supera al mantenimiento",
+  "Telemetría (27 hits) a verificar"
+ ],
+ "contradictions": [
+  "Blogs citan 54.1k y 58.8k stars y v3.4.0/v3.9.0: crecimiento muy rápido en semanas."
+ ],
+ "open_questions": [
+  "¿Telemetría por defecto?",
+  "Verificación independiente del 96.6%."
+ ],
+ "verdict_factual": "Memoria local activa y popular con benchmark propio de recuperación; sin verificación independiente; backlog de issues alto.",
+ "evidence_ids": [
+  "mempalace__mempalace-E01",
+  "mempalace__mempalace-E02",
+  "mempalace__mempalace-E03",
+  "mempalace__mempalace-E04",
+  "mempalace__mempalace-E05",
+  "mempalace__mempalace-E06",
+  "mempalace__mempalace-E07",
+  "mempalace__mempalace-E08",
+  "mempalace__mempalace-E09",
+  "mempalace__mempalace-E10",
+  "mempalace__mempalace-E11",
+  "mempalace__mempalace-E12",
+  "mempalace__mempalace-E13",
+  "mempalace__mempalace-E14"
+ ],
+ "tokens_spent": 9000
+}

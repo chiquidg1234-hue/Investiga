@@ -1,0 +1,159 @@
+{
+ "key": "langchain-ai/langgraph",
+ "name": "LangGraph",
+ "url": "https://github.com/langchain-ai/langgraph",
+ "block": "B4",
+ "category": "B4",
+ "archetype": "graph",
+ "commit_sha_reviewed": "81bf17b23123e4ef8b9d5f49fa09a0122fc2edd1",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Orquestación de agentes como grafo de estado con checkpoints persistentes, interrupciones human-in-the-loop, reintentos y time-travel.",
+ "problem_solved": "Coordinar agentes con estado durable y puntos de aprobación.",
+ "how_it_could_be_used": "Núcleo de orquestación del MAIN AGENT (checkpoints + interrupt() para acciones sensibles).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "none",
+ "verification_mechanism": "none",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "cualquiera"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Python puro.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32"
+  ],
+  "readme_windows_mentions": 0,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "langchain-ai__langgraph-E01",
+   "langchain-ai__langgraph-E02",
+   "langchain-ai__langgraph-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "fs_write",
+   "net_out"
+  ],
+  "risk_tier": "R1",
+  "isolation": "N/A",
+  "approval_mechanism": "interrupt()/Command nativos (E2 approval 72 hits)",
+  "secret_handling": "N/A",
+  "prompt_injection_defense": "N/A",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 0,
+   "telemetry_hits": 5
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con fs_write, net_out: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 11,
+  "commits_90d": 24,
+  "bus_factor_top_share": 0.42,
+  "tags_total": 572,
+  "tests_files": 220,
+  "tests_in_ci": true,
+  "loc": 187929
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler",
+   "approval_gate"
+  ],
+  "consumes": [
+   "llm_client",
+   "memory_store"
+  ],
+  "runtime": "python",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "adapter"
+ },
+ "impact": {
+  "multi_agent": 3,
+  "autonomia": 2,
+  "seguridad": 2,
+  "observabilidad": 1,
+  "contexto": 1
+ },
+ "claims": [
+  {
+   "claim": "Checkpoints e interrupciones HITL",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "langchain-ai__langgraph-E01",
+    "langchain-ai__langgraph-E02",
+    "langchain-ai__langgraph-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 2,
+  "A4": 4,
+  "A5": 5,
+  "A6": 4,
+  "A7": 3,
+  "A8": 5,
+  "A9": 5,
+  "A10": 4,
+  "caps_applied": [],
+  "score_global": 78.6,
+  "score_track": 85.4,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "11 humanos/90d, 220 tests",
+  "HITL y persistencia de primera clase"
+ ],
+ "cons": [
+  "Ecosistema LangChain pesado",
+  "Curva de aprendizaje"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Orquestador de grafo maduro con HITL y checkpoints verificados en código.",
+ "evidence_ids": [
+  "langchain-ai__langgraph-E01",
+  "langchain-ai__langgraph-E02",
+  "langchain-ai__langgraph-E03",
+  "langchain-ai__langgraph-E04",
+  "langchain-ai__langgraph-E05",
+  "langchain-ai__langgraph-E06",
+  "langchain-ai__langgraph-E07",
+  "langchain-ai__langgraph-E08",
+  "langchain-ai__langgraph-E09",
+  "langchain-ai__langgraph-E10",
+  "langchain-ai__langgraph-E11",
+  "langchain-ai__langgraph-E12"
+ ],
+ "tokens_spent": 9000
+}

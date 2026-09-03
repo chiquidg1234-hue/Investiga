@@ -1,0 +1,163 @@
+{
+ "key": "bytedance/deer-flow",
+ "name": "DeerFlow",
+ "url": "https://github.com/bytedance/deer-flow",
+ "block": "B5",
+ "category": "B5",
+ "archetype": "deep_research",
+ "commit_sha_reviewed": "83cb6767b3624669b98509dc3670280c95f49f4e",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": "UNVERIFIED",
+ "what_it_does": "Framework de deep research (LangGraph) de ByteDance con búsqueda, crawling, ejecución de código, MCP; 40 humanos/90d; despliegue centrado en Docker (64 menciones).",
+ "problem_solved": "Deep research con orquestación explícita y ejecución de código.",
+ "how_it_could_be_used": "Alternativa a GPT Researcher basada en LangGraph (encaja si el orquestador es LangGraph).",
+ "perception_mechanism": "none",
+ "actuation_mechanism": "shell",
+ "verification_mechanism": "UNVERIFIED",
+ "models": {
+  "model_agnostic": false,
+  "required_models": [
+   "multi-proveedor"
+  ],
+  "min_vram_gb": "0",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W3",
+  "notes": "Guías Docker/WSL; sin CI Windows.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win32",
+   "input"
+  ],
+  "readme_windows_mentions": 7,
+  "wsl_dependency": true,
+  "docker_dependency": true,
+  "evidence_ids": [
+   "bytedance__deer-flow-E01",
+   "bytedance__deer-flow-E02",
+   "bytedance__deer-flow-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_code",
+   "net_out",
+   "fs_write",
+   "env_vars"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Docker recomendado.",
+  "approval_mechanism": "UNVERIFIED",
+  "secret_handling": "Env",
+  "prompt_injection_defense": "Ninguna.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 4,
+   "telemetry_hits": 7
+  },
+  "data_exfiltration_paths": [
+   "telemetry (PostHog u otro)",
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_code, net_out, fs_write, env_vars: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": []
+ },
+ "maturity": {
+  "days_since_substantive_commit": 0,
+  "human_committers_90d": 40,
+  "commits_90d": 60,
+  "bus_factor_top_share": 0.1,
+  "tags_total": 8,
+  "tests_files": 849,
+  "tests_in_ci": true,
+  "loc": 568975
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "scheduler"
+  ],
+  "consumes": [
+   "llm_client",
+   "browser_driver",
+   "mcp_server"
+  ],
+  "runtime": "python + node",
+  "transport": [
+   "http"
+  ],
+  "license_spdx": "MIT",
+  "integration_effort": "fork_required"
+ },
+ "impact": {
+  "investigacion": 3,
+  "multi_agent": 1,
+  "seguridad": -1
+ },
+ "claims": [
+  {
+   "claim": "Deep research con ejecución de código",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "bytedance__deer-flow-E01",
+    "bytedance__deer-flow-E02",
+    "bytedance__deer-flow-E03"
+   ]
+  }
+ ],
+ "hype_index": 0.0,
+ "flags": [],
+ "scores": {
+  "A1": 4,
+  "A2": 3,
+  "A3": 1,
+  "A4": 2,
+  "A5": 5,
+  "A6": 2,
+  "A7": 1,
+  "A8": 3,
+  "A9": 3,
+  "A10": 3,
+  "caps_applied": [],
+  "score_global": 52.0,
+  "score_track": 57.6,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Muy activo (40 humanos, bus 0.10)"
+ ],
+ "cons": [
+  "Docker-céntrico (W3)",
+  "Ejecución de código sin sandbox nativo"
+ ],
+ "contradictions": [],
+ "open_questions": [],
+ "verdict_factual": "Deep research muy activo pero orientado a Docker; ejecución de código sin aislamiento nativo.",
+ "evidence_ids": [
+  "bytedance__deer-flow-E01",
+  "bytedance__deer-flow-E02",
+  "bytedance__deer-flow-E03",
+  "bytedance__deer-flow-E04",
+  "bytedance__deer-flow-E05",
+  "bytedance__deer-flow-E06",
+  "bytedance__deer-flow-E07",
+  "bytedance__deer-flow-E08",
+  "bytedance__deer-flow-E09",
+  "bytedance__deer-flow-E10",
+  "bytedance__deer-flow-E11",
+  "bytedance__deer-flow-E12",
+  "bytedance__deer-flow-E13",
+  "bytedance__deer-flow-E14",
+  "bytedance__deer-flow-E15"
+ ],
+ "tokens_spent": 9000
+}

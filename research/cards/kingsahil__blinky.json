@@ -1,0 +1,199 @@
+{
+ "key": "kingsahil/blinky",
+ "name": "Blinky",
+ "url": "https://github.com/kingsahil/blinky",
+ "block": "B2",
+ "category": "B2",
+ "archetype": "visual_supervisor_windows",
+ "commit_sha_reviewed": "f5c525aaef876d1c3ae192d133d62bea148a311a",
+ "reviewed_at": "2026-09-03",
+ "stars_observed": 12,
+ "what_it_does": "Tutor de escritorio Windows offline-first (Tauri 2 + Python): captura con dxcam, OCR con Windows OCR API (WinRT) + UIA (pywinauto), LLM local (Ollama gemma4:e4b) o cloud, overlay transparente que resalta dónde clicar; modo autopilot acotado (≤5 intentos).",
+ "problem_solved": "Exactamente el 'AI supervisor visual' del §4 del documento: observa la pantalla y guía paso a paso, en Windows y en local.",
+ "how_it_could_be_used": "Prueba de concepto más cercana al caso de uso 'guíame en Roblox Studio/VS Code'; su overlay y su preflight classifier (evita capturar pantalla si no hace falta) son patrones reutilizables.",
+ "perception_mechanism": "hybrid",
+ "actuation_mechanism": "input_injection",
+ "verification_mechanism": "Bucle autopilot re-lee la pantalla; SetWindowDisplayAffinity excluye su overlay de la captura.",
+ "models": {
+  "model_agnostic": true,
+  "required_models": [
+   "Ollama gemma4:e4b local",
+   "Groq llama-4-scout opcional"
+  ],
+  "min_vram_gb": "gemma4:e4b ≈ 4B efectivos → L3 en GPU o L1 en CPU (UNVERIFIED en MX330)",
+  "requires_cuda": "UNVERIFIED",
+  "cpu_viable": "UNVERIFIED",
+  "local_cloud": "hybrid"
+ },
+ "windows": {
+  "level": "W1",
+  "notes": "Windows-first (WinRT OCR, dxcam, pywinauto); Docker solo para SearXNG opcional.",
+  "ci_windows": false,
+  "windows_deps": [
+   "win_uia",
+   "win32",
+   "screenshot",
+   "input"
+  ],
+  "readme_windows_mentions": 23,
+  "wsl_dependency": false,
+  "docker_dependency": false,
+  "evidence_ids": [
+   "kingsahil__blinky-E01",
+   "kingsahil__blinky-E02",
+   "kingsahil__blinky-E03"
+  ]
+ },
+ "security": {
+  "permissions": [
+   "exec_shell",
+   "screen_capture",
+   "input_injection",
+   "net_out",
+   "fs_write"
+  ],
+  "risk_tier": "R3",
+  "isolation": "Ninguna.",
+  "approval_mechanism": "Autopilot limitado a 'safe clicks' y 5 intentos (E1).",
+  "secret_handling": "API keys opcionales.",
+  "prompt_injection_defense": "Ninguna.",
+  "supply_chain": {
+   "lockfile": "UNVERIFIED",
+   "postinstall_scripts": false,
+   "install_method": "pip/npm/cargo (ver README)",
+   "curl_bash_install_hits": 1,
+   "telemetry_hits": 1
+  },
+  "data_exfiltration_paths": [
+   "prompts/screenshots al proveedor LLM"
+  ],
+  "what_could_go_wrong": "Con exec_shell, screen_capture, input_injection, net_out, fs_write: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
+  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
+  "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
+  "vetoes": [
+   "V2"
+  ]
+ },
+ "maturity": {
+  "days_since_substantive_commit": 3,
+  "human_committers_90d": 3,
+  "commits_90d": 59,
+  "bus_factor_top_share": 0.83,
+  "tags_total": 1,
+  "tests_files": 41,
+  "tests_in_ci": false,
+  "loc": 42806
+ },
+ "benchmarks": [],
+ "interfaces": {
+  "provides": [
+   "screenshot_source",
+   "action_executor"
+  ],
+  "consumes": [
+   "llm_client",
+   "vlm_inference"
+  ],
+  "runtime": "python3.11 + bun + rust",
+  "transport": [
+   "in-process"
+  ],
+  "license_spdx": "UNVERIFIED",
+  "integration_effort": "fork_required"
+ },
+ "impact": {
+  "computer_use": 2,
+  "percepcion": 2,
+  "investigacion": 1,
+  "coste": 2,
+  "autonomia": 1
+ },
+ "claims": [
+  {
+   "claim": "Guía visual con overlay en Windows",
+   "max_evidence_class": "E2",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "kingsahil__blinky-E01",
+    "kingsahil__blinky-E02",
+    "kingsahil__blinky-E03"
+   ]
+  },
+  {
+   "claim": "OCR con Windows OCR API",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "kingsahil__blinky-E17"
+   ]
+  },
+  {
+   "claim": "Funciona offline con Ollama",
+   "max_evidence_class": "E1",
+   "supports": "SUPPORTS",
+   "evidence_ids": [
+    "kingsahil__blinky-E17"
+   ]
+  }
+ ],
+ "hype_index": 0.67,
+ "flags": [
+  "SECURITY_VETO"
+ ],
+ "scores": {
+  "A1": 3,
+  "A2": 2,
+  "A3": 4,
+  "A4": 2,
+  "A5": 2,
+  "A6": 4,
+  "A7": 1,
+  "A8": 3,
+  "A9": 0,
+  "A10": 4,
+  "caps_applied": [
+   "V2"
+  ],
+  "score_global": 50,
+  "score_track": 46.6,
+  "low_confidence_axes": []
+ },
+ "pros": [
+  "Único proyecto encontrado que implementa el 'supervisor visual' en Windows nativo y local",
+  "Activo (59 commits/90d), 41 tests"
+ ],
+ "cons": [
+  "12 estrellas, bus factor 0.83, sin CI, sin fichero LICENSE (badge MIT sin fichero)",
+  "Proyecto de hackathon: 3 lenguajes/runtimes",
+  "Sin evaluación de precisión"
+ ],
+ "contradictions": [
+  "README muestra badge MIT pero el clon no contiene fichero LICENSE (license_file=None)."
+ ],
+ "open_questions": [
+  "Latencia real del bucle en hardware i7-1065G7/MX330."
+ ],
+ "verdict_factual": "Prototipo activo que demuestra el supervisor visual Windows-local; inmaduro (sin licencia efectiva, sin CI, un autor). Valioso como referencia de diseño, no como dependencia.",
+ "evidence_ids": [
+  "kingsahil__blinky-E01",
+  "kingsahil__blinky-E02",
+  "kingsahil__blinky-E03",
+  "kingsahil__blinky-E04",
+  "kingsahil__blinky-E05",
+  "kingsahil__blinky-E06",
+  "kingsahil__blinky-E07",
+  "kingsahil__blinky-E08",
+  "kingsahil__blinky-E09",
+  "kingsahil__blinky-E10",
+  "kingsahil__blinky-E11",
+  "kingsahil__blinky-E12",
+  "kingsahil__blinky-E13",
+  "kingsahil__blinky-E14",
+  "kingsahil__blinky-E15",
+  "kingsahil__blinky-E16",
+  "kingsahil__blinky-E17",
+  "kingsahil__blinky-E18"
+ ],
+ "tokens_spent": 9000
+}
