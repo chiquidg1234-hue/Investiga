@@ -48,9 +48,13 @@
    "exec_shell",
    "fs_read",
    "fs_write",
+   "fs_delete",
    "screen_capture",
    "input_injection",
-   "clipboard"
+   "clipboard",
+   "system_modify_registry",
+   "net_out",
+   "telemetry"
   ],
   "risk_tier": "R3",
   "isolation": "Ninguna; README recomienda Windows Sandbox.",
@@ -62,13 +66,15 @@
    "postinstall_scripts": false,
    "install_method": "pip/npm/cargo (ver README)",
    "curl_bash_install_hits": 0,
-   "telemetry_hits": 7
+   "telemetry_hits": 7,
+   "telemetry_default_on": true
   },
   "data_exfiltration_paths": [
-   "telemetry (PostHog u otro)"
+   "PostHog (clave embebida phc_uxdC...; host us.i.posthog.com; opt-out con ANONYMIZED_TELEMETRY=false)",
+   "contenido de pantalla al proveedor LLM"
   ],
-  "what_could_go_wrong": "Con exec_shell, fs_read, fs_write, screen_capture, input_injection, clipboard: un prompt injection desde pantalla/web puede ejecutar acciones o exfiltrar datos con los permisos del usuario.",
-  "how_to_isolate": "Cuenta Windows dedicada + sandbox-runtime/AppContainer para procesos; gateway MCP deny-by-default; sin credenciales en env.",
+  "what_could_go_wrong": "21 tools, entre ellas registry_tool con modos set/delete sobre HKCU/HKLM y PowerShell autodescrito como 'full access to the underlying operating system capabilities' (destructiveHint=True, sin allowlist). Un prompt injection desde pantalla o web puede modificar el registro o ejecutar cualquier comando.",
+  "how_to_isolate": "Denegar registry_tool y PowerShell desde los permisos de Claude Code; permitir solo snapshot/input/app/display/clipboard/scrape; ANONYMIZED_TELEMETRY=false; cuenta Windows dedicada.",
   "how_to_revoke": "Eliminar entrada MCP/config, revocar API keys, cerrar procesos; borrar cuenta sandbox.",
   "how_to_uninstall": "pip/npm uninstall + borrar directorios de datos indicados en README.",
   "vetoes": []
@@ -162,8 +168,10 @@
   "Percepción por UIA = barata en tokens"
  ],
  "cons": [
-  "Sin verificación de resultado",
-  "Herramienta shell sin allowlist propia",
+  "Telemetría PostHog ACTIVADA por defecto con clave embebida (verificado en infrastructure/analytics.py y README)",
+  "registry_tool permite set/delete sobre HKCU y HKLM: modificación del sistema",
+  "PowerShell sin allowlist, destructiveHint=True",
+  "Sin verificación semántica del resultado de la acción",
   "Sin benchmark"
  ],
  "contradictions": [],
@@ -188,5 +196,14 @@
   "cursortouch__windows-mcp-E14",
   "cursortouch__windows-mcp-E15"
  ],
- "tokens_spent": 9000
+ "tokens_spent": 9000,
+ "audit_opus": {
+  "date": "2026-09-03",
+  "findings": [
+   "F2: ficha original omitía registry/filesystem/notification/process/vdm y subestimaba la superficie (21 tools reales)",
+   "F3: telemetría no detectada por la sonda automática"
+  ],
+  "verified_by": "lectura de src/windows_mcp/tools/*.py e infrastructure/analytics.py en clon --depth 1",
+  "decision": "CORE con configuración defensiva obligatoria (tools recortadas + telemetría off)"
+ }
 }

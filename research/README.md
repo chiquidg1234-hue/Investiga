@@ -16,3 +16,8 @@ Artefactos generados: `ledger.jsonl`, `triage.jsonl`, `rejected.md`, `cards/` (4
 Regenerables con `python3 research/tools/build_artifacts.py && python3 research/tools/build_meta.py` (sin red). Datos brutos en `raw/`.
 
 Separación pedida por el usuario: ecosystem → `ecosystem-map.json`; candidates → `triage.jsonl`; computer-use/multi-agent/memory/research/MCP/Claude Code → `cards/` por `block` (B2/B4/B6/B5/B7/B8) y `SUMMARY.jsonl`; Windows → `windows-matrix.md`; security → `cards/*.security` + `clusters.json` C3/C6; evaluation → `models.json` + `papers.jsonl`; evidence → `evidence/`; rejected → `rejected.md`.
+
+## Estado FASE 3 (2026-09-03)
+`PHASE3-DECISION.md` — auditoría de FABLE, decisión arquitectónica y plan de implementación.
+Correcciones de auditoría aplicadas: ficha de `cursortouch/windows-mcp` (permisos reales + telemetría),
+campo `audit_opus` en la ficha afectada. Hallazgos F1–F8 documentados en la sección 1.2 de la decisión.
