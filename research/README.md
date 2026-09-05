@@ -21,3 +21,8 @@ Separación pedida por el usuario: ecosystem → `ecosystem-map.json`; candidate
 `PHASE3-DECISION.md` — auditoría de FABLE, decisión arquitectónica y plan de implementación.
 Correcciones de auditoría aplicadas: ficha de `cursortouch/windows-mcp` (permisos reales + telemetría),
 campo `audit_opus` en la ficha afectada. Hallazgos F1–F8 documentados en la sección 1.2 de la decisión.
+
+## Estado FASE 0 (siguiente paso, sin instalación)
+`PHASE0-BASELINE.md` — banco de 20 tareas, hoja de medición con umbrales de retirada,
+protocolo del experimento crítico (árbol UIA + DPI) y configuración de referencia documentada
+sin aplicar. Plantilla de resultados en `baseline/PLANTILLA.md`.
