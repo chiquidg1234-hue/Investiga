@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collage Maker</title>
+<style>
+  :root {
+    --bg: #f6f6f8; --card: #ffffff; --ink: #18181b; --muted: #6b6b76; --line: #e4e4ea;
+    --accent: #3d5afe; --accent-ink: #ffffff; --soft: #eef1ff; --warn: #9a5b00; --warn-bg: #fff4e0;
+    --radius: 16px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111114; --card: #1b1b20; --ink: #f2f2f5; --muted: #a0a0ab; --line: #2d2d35;
+      --accent: #6c83ff; --soft: #23264a; --warn: #ffcf80; --warn-bg: #3a2c12;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 48px; }
+  header { text-align: center; margin-bottom: 24px; }
+  h1 { font-size: clamp(30px, 6vw, 44px); letter-spacing: -0.03em; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 auto; max-width: 520px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 20px; margin-bottom: 16px; }
+  h2 { font-size: 17px; margin: 0 0 14px; display: flex; align-items: center; gap: 10px; }
+  h2 small { color: var(--muted); font-weight: 500; font-size: 14px; }
+  .n { width: 26px; height: 26px; border-radius: 50%; background: var(--soft); color: var(--accent);
+    display: inline-grid; place-items: center; font-size: 13px; font-weight: 700; flex: none; }
+
+  .btn { font: inherit; font-weight: 600; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    border-radius: 12px; padding: 10px 16px; cursor: pointer; transition: transform .08s, background .15s, opacity .15s; }
+  .btn:hover { background: var(--soft); }
+  .btn:active { transform: scale(.98); }
+  .btn:disabled { opacity: .5; cursor: default; transform: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.big { font-size: 18px; padding: 16px 32px; border-radius: 14px; }
+  .btn.ghost { border-color: transparent; background: transparent; color: var(--muted); }
+  .btn.ghost:hover { color: var(--ink); background: var(--soft); }
+
+  .templates { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+  .tpl { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 10px;
+    border: 2px solid var(--line); border-radius: 14px; background: var(--card); cursor: pointer;
+    font: inherit; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .tpl canvas { width: 100%; aspect-ratio: 1; border-radius: 8px; display: block; }
+  .tpl[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); }
+
+  .drop { border: 2px dashed var(--line); border-radius: 14px; padding: 32px 16px; text-align: center;
+    transition: border-color .15s, background .15s; cursor: pointer; }
+  .drop.over { border-color: var(--accent); background: var(--soft); }
+  .drop .hint { color: var(--muted); margin: 12px 0 0; }
+  .countrow { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .count { font-weight: 700; font-size: 16px; }
+  .count span { color: var(--muted); font-weight: 500; }
+  .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .notice { background: var(--warn-bg); color: var(--warn); border-radius: 12px; padding: 10px 14px; margin: 12px 0 0; font-size: 14px; }
+  .notice label { display: flex; gap: 8px; align-items: center; margin-top: 6px; cursor: pointer; font-weight: 600; }
+  .msg { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+
+  .settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px 24px; }
+  .field > .lbl { display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+  .field output { color: var(--muted); font-weight: 500; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .swatches { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .sw { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--line); cursor: pointer; padding: 0; }
+  .sw[aria-pressed="true"] { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .custom { position: relative; width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid var(--line);
+    background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red); }
+  .custom input { position: absolute; inset: -8px; width: 48px; height: 48px; opacity: 0; cursor: pointer; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
+  .seg button { font: inherit; font-weight: 600; border: 0; background: transparent; color: var(--muted);
+    padding: 7px 18px; border-radius: 9px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+
+  .reshead { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .reshead h2 { margin: 0; }
+  .results { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .col { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--bg); }
+  .col canvas { width: 100%; aspect-ratio: 1; display: block; }
+  .col .bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; background: var(--card); }
+  .col .bar b { font-size: 14px; }
+  .col .bar span { color: var(--muted); font-size: 13px; font-weight: 500; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Collage Maker</h1>
+    <p class="sub">Collages de 9 fotos en segundos. Todo se procesa en tu navegador: tus fotos no se suben a ningún servidor.</p>
+  </header>
+
+  <section class="card">
+    <h2><span class="n">1</span> Elige una plantilla</h2>
+    <div id="templates" class="templates"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="n">2</span> Añade tus fotos</h2>
+    <div id="drop" class="drop">
+      <input id="file" type="file" accept="image/*" multiple hidden>
+      <button id="pick" class="btn primary big" type="button">Seleccionar fotos</button>
+      <p class="hint">o arrastra aquí tus imágenes · de 1 a 100 fotos · se agrupan de 9 en 9 en el orden en que las eliges</p>
+    </div>
+    <div class="countrow">
+      <div id="count" class="count">0 fotos seleccionadas</div>
+      <div class="actions">
+        <button id="add" class="btn" type="button" hidden>Añadir más</button>
+        <button id="clear" class="btn ghost" type="button" hidden>Vaciar</button>
+      </div>
+    </div>
+    <p id="msg" class="msg" hidden></p>
+    <div id="notice" class="notice" hidden>
+      <div id="noticeText"></div>
+      <label><input id="incomplete" type="checkbox" checked> Crear también el último collage incompleto</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="n">3</span> Ajustes</h2>
+    <div class="settings">
+      <div class="field">
+        <div class="lbl">Espacio entre fotos <output id="gapOut">12 px</output></div>
+        <input id="gap" type="range" min="0" max="60" step="1" value="12">
+      </div>
+      <div class="field">
+        <div class="lbl">Fondo</div>
+        <div id="swatches" class="swatches">
+          <label class="custom" title="Color personalizado"><input id="bgCustom" type="color" value="#ffffff"></label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="lbl">Formato de descarga</div>
+        <div class="seg" id="fmt">
+          <button type="button" data-fmt="jpeg" aria-pressed="true">JPG</button>
+          <button type="button" data-fmt="png" aria-pressed="false">PNG</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultsCard" class="card" hidden>
+    <div class="reshead">
+      <h2><span class="n">4</span> Tus collages <small id="resCount"></small></h2>
+      <button id="dlAll" class="btn primary" type="button">Descargar todos (.zip)</button>
+    </div>
+    <div id="results" class="results"></div>
+  </section>
+
+  <footer>Sin registro · Sin servidores · 100 % gratis · Exporta a 2400 × 2400 px</footer>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s) => document.querySelector(s);
+  const PER = 9, MAX_PHOTOS = 100;
+  const OUT = 2400;         // tamaño final de descarga (px)
+  const PREVIEW = 900;      // tamaño de la vista previa (px)
+  const THUMB_MAX = 700;    // lado máximo de las copias reducidas usadas en la vista previa
+  const REF = 1080;         // el espacio entre fotos se expresa en px sobre un lienzo de 1080
+
+  // ---------- Plantillas (coordenadas normalizadas 0..1, en orden de lectura) ----------
+  const units = (n, list) => list.map(([x, y, w, h]) => ({ x: x / n, y: y / n, w: w / n, h: h / n }));
+  const grid = (c, r) => { const o = []; for (let j = 0; j < r; j++) for (let i = 0; i < c; i++) o.push({ x: i / c, y: j / r, w: 1 / c, h: 1 / r }); return o; };
+  const rows = (counts) => { const o = [], rh = 1 / counts.length; counts.forEach((c, r) => { for (let i = 0; i < c; i++) o.push({ x: i / c, y: r * rh, w: 1 / c, h: rh }); }); return o; };
+
+  const TEMPLATES = [
+    { id: 'grid', name: 'Cuadrícula 3×3', cells: grid(3, 3) },
+    { id: 'mosaic', name: 'Mosaico', cells: units(4, [[0,0,2,2],[2,0,2,1],[2,1,1,1],[3,1,1,1],[0,2,1,2],[1,2,1,1],[1,3,1,1],[2,2,1,2],[3,2,1,2]]) },
+    { id: 'focus', name: 'Foco central', cells: units(4, [[0,0,1,1],[1,0,2,1],[3,0,1,1],[0,1,1,2],[1,1,2,2],[3,1,1,2],[0,3,1,1],[1,3,2,1],[3,3,1,1]]) },
+    { id: 'rows', name: 'Filas 2·3·4', cells: rows([2, 3, 4]) },
+    { id: 'scrap', name: 'Scrapbook', scrap: true, cells: [
+      { x: .20, y: .19, r: -6 }, { x: .51, y: .17, r: 4 }, { x: .81, y: .20, r: -3 },
+      { x: .18, y: .50, r: 5 },  { x: .50, y: .51, r: -2 }, { x: .82, y: .49, r: 6 },
+      { x: .21, y: .81, r: -4 }, { x: .49, y: .83, r: 3 },  { x: .80, y: .80, r: -5 } ] },
+  ];
+
+  const BGS = [['#ffffff', 'Blanco'], ['#f4ede2', 'Crema'], ['#f7dde6', 'Rosa'], ['#dde8f5', 'Azul'], ['#1c1c1f', 'Negro']];
+
+  const state = { tpl: TEMPLATES[0], photos: [], gap: 12, bg: '#ffffff', fmt: 'jpeg', incomplete: true, busy: false };
+
+  // ---------- Dibujo ----------
+  function drawCover(ctx, img, x, y, w, h) {
+    const iw = img.width, ih = img.height;
+    const s = Math.max(w / iw, h / ih), sw = w / s, sh = h / s;
+    ctx.drawImage(img, (iw - sw) / 2, (ih - sh) / 2, sw, sh, x, y, w, h);
+  }
+
+  function render(ctx, S, tpl, imgs, o) {
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.fillStyle = o.bg;
+    ctx.fillRect(0, 0, S, S);
+    const g = o.gap * S / REF;
+
+    if (tpl.scrap) {
+      const w = S * 0.28, b = w * 0.035 + g * 0.35, ph = w - 2 * b, h = b + ph + b * 3.2;
+      tpl.cells.forEach((c, i) => {
+        const img = imgs[i];
+        if (!img && !o.placeholder) return;
+        ctx.save();
+        ctx.translate(c.x * S, c.y * S);
+        ctx.rotate(c.r * Math.PI / 180);
+        ctx.shadowColor = 'rgba(0,0,0,.28)'; ctx.shadowBlur = S * 0.015; ctx.shadowOffsetY = S * 0.006;
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(-w / 2, -h / 2, w, h);
+        ctx.shadowColor = 'transparent';
+        const px = -w / 2 + b, py = -h / 2 + b;
+        if (img) drawCover(ctx, img, px, py, ph, ph);
+        else { ctx.fillStyle = o.placeholder; ctx.fillRect(px, py, ph, ph); }
+        if (i % 2 === 0) { // cinta adhesiva
+          ctx.fillStyle = 'rgba(255,236,190,.8)';
+          ctx.rotate((i % 4 ? 4 : -4) * Math.PI / 180);
+          ctx.fillRect(-w * 0.14, -h / 2 - w * 0.035, w * 0.28, w * 0.075);
+        }
+        ctx.restore();
+      });
+    } else {
+      const A = S - g;
+      tpl.cells.forEach((c, i) => {
+        const x0 = Math.round(g + c.x * A), y0 = Math.round(g + c.y * A);
+        const x1 = Math.round((c.x + c.w) * A), y1 = Math.round((c.y + c.h) * A);
+        const img = imgs[i];
+        if (img) drawCover(ctx, img, x0, y0, x1 - x0, y1 - y0);
+        else if (o.placeholder) { ctx.fillStyle = o.placeholder; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); }
+      });
+    }
+    ctx.restore();
+  }
+
+  // ---------- Carga de imágenes ----------
+  async function decode(file) {
+    if ('createImageBitmap' in window) {
+      try { return await createImageBitmap(file, { imageOrientation: 'from-image' }); } catch (e) { /* se intenta con <img> */ }
+    }
+    const url = URL.createObjectURL(file);
+    const im = new Image();
+    im._url = url;
+    im.src = url;
+    try { await im.decode(); } catch (e) { URL.revokeObjectURL(url); throw e; }
+    return im;
+  }
+  function release(img) {
+    if (img && img.close) img.close();
+    if (img && img._url) URL.revokeObjectURL(img._url);
+  }
+  async function makeThumb(img) {
+    const s = Math.min(1, THUMB_MAX / Math.max(img.width, img.height));
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, Math.round(img.width * s));
+    c.height = Math.max(1, Math.round(img.height * s));
+    const ctx = c.getContext('2d');
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+    if ('createImageBitmap' in window) {
+      try { const bmp = await createImageBitmap(c); c.width = c.height = 0; return bmp; } catch (e) { /* se usa el canvas */ }
+    }
+    return c;
+  }
+  async function loadOne(file) {
+    const img = await decode(file);
+    try { return { file, thumb: await makeThumb(img) }; } finally { release(img); }
+  }
+
+  const isImage = (f) => f.type.startsWith('image/') || /\.(jpe?g|png|gif|webp|bmp|avif|heic|heif)$/i.test(f.name);
+
+  async function addFiles(fileList, replace) {
+    if (state.busy) return;
+    let files = [...fileList].filter(isImage);
+    if (!files.length) { showMsg('No se encontraron imágenes en la selección.'); return; }
+    if (replace) clearPhotos();
+    const room = MAX_PHOTOS - state.photos.length;
+    const skipped = Math.max(0, files.length - room);
+    files = files.slice(0, room);
+    setBusy(true);
+    let failed = 0, done = 0;
+    const CONC = 4;
+    for (let i = 0; i < files.length; i += CONC) {
+      const res = await Promise.all(files.slice(i, i + CONC).map((f) => loadOne(f).catch(() => null)));
+      for (const r of res) { if (r) state.photos.push(r); else failed++; }
+      done += res.length;
+      $('#count').innerHTML = `Cargando fotos… <span>${done} / ${files.length}</span>`;
+    }
+    setBusy(false);
+    const notes = [];
+    if (skipped) notes.push(`Máximo ${MAX_PHOTOS} fotos: se han ignorado ${skipped}.`);
+    if (failed) notes.push(`${failed} archivo(s) no se pudieron leer (formato no compatible con este navegador).`);
+    showMsg(notes.join(' '));
+    refresh(true);
+  }
+
+  function clearPhotos() {
+    state.photos.forEach((p) => release(p.thumb));
+    state.photos = [];
+  }
+
+  // ---------- Grupos y vista previa ----------
+  function groups() {
+    const out = [];
+    for (let i = 0; i < state.photos.length; i += PER) {
+      const chunk = state.photos.slice(i, i + PER);
+      if (chunk.length < PER && !state.incomplete) break;
+      out.push(chunk);
+    }
+    return out;
+  }
+
+  const opts = () => ({ gap: state.gap, bg: state.bg });
+  const ext = () => (state.fmt === 'png' ? 'png' : 'jpg');
+  const fileName = (i) => `collage-${String(i + 1).padStart(2, '0')}.${ext()}`;
+
+  let cards = [];
+  function refresh(rebuild) {
+    const n = state.photos.length, rest = n % PER;
+    const full = Math.floor(n / PER);
+    const gs = groups();
+
+    $('#count').innerHTML = n
+      ? `${n} foto${n === 1 ? '' : 's'} seleccionada${n === 1 ? '' : 's'} <span>· ${gs.length} collage${gs.length === 1 ? '' : 's'}</span>`
+      : '0 fotos seleccionadas';
+    $('#add').hidden = $('#clear').hidden = !n;
+    $('#pick').textContent = n ? 'Seleccionar otras fotos' : 'Seleccionar fotos';
+
+    if (n && rest) {
+      $('#noticeText').textContent = full
+        ? `Tienes ${n} fotos: salen ${full} collage${full === 1 ? '' : 's'} completo${full === 1 ? '' : 's'} y sobran ${rest}. El último collage tendría ${rest} foto${rest === 1 ? '' : 's'} y ${PER - rest} hueco${PER - rest === 1 ? '' : 's'} vacío${PER - rest === 1 ? '' : 's'}.`
+        : `Tienes ${n} foto${n === 1 ? '' : 's'}: faltan ${PER - rest} para completar un collage de 9.`;
+      $('#notice').hidden = false;
+    } else $('#notice').hidden = true;
+
+    $('#resultsCard').hidden = !gs.length;
+    $('#resCount').textContent = gs.length ? `(${gs.length})` : '';
+
+    if (rebuild || cards.length !== gs.length) {
+      const box = $('#results');
+      box.textContent = '';
+      cards = gs.map((g, i) => {
+        const el = document.createElement('div');
+        el.className = 'col';
+        const cv = document.createElement('canvas');
+        cv.width = cv.height = PREVIEW;
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.innerHTML = `<b>Collage ${i + 1} <span>· ${g.length} foto${g.length === 1 ? '' : 's'}</span></b>`;
+        const btn = document.createElement('button');
+        btn.className = 'btn'; btn.type = 'button'; btn.textContent = 'Descargar';
+        btn.addEventListener('click', () => downloadOne(i, btn));
+        bar.append(btn);
+        el.append(cv, bar);
+        box.append(el);
+        return cv;
+      });
+    }
+    drawPreviews();
+  }
+
+  let raf = 0;
+  function drawPreviews() {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const gs = groups();
+      cards.forEach((cv, i) => render(cv.getContext('2d'), PREVIEW, state.tpl, gs[i].map((p) => p.thumb), opts()));
+    });
+  }
+
+  // ---------- Exportación ----------
+  async function buildFull(i) {
+    const chunk = groups()[i];
+    const decoded = [];
+    try {
+      const imgs = [];
+      for (const p of chunk) {
+        let img;
+        try { img = await decode(p.file); decoded.push(img); } catch (e) { img = p.thumb; }
+        imgs.push(img);
+      }
+      const c = document.createElement('canvas');
+      c.width = c.height = OUT;
+      render(c.getContext('2d'), OUT, state.tpl, imgs, opts());
+      const mime = state.fmt === 'png' ? 'image/png' : 'image/jpeg';
+      const blob = await new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('toBlob'))), mime, 0.92));
+      c.width = c.height = 0;
+      return blob;
+    } finally {
+      decoded.forEach(release);
+    }
+  }
+
+  function saveBlob(blob, name) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+  }
+
+  async function downloadOne(i, btn) {
+    if (state.busy) return;
+    setBusy(true);
+    const label = btn.textContent;
+    btn.textContent = 'Generando…';
+    try { saveBlob(await buildFull(i), fileName(i)); }
+    catch (e) { showMsg('No se pudo generar el collage. Prueba de nuevo.'); }
+    finally { btn.textContent = label; setBusy(false); }
+  }
+
+  async function downloadAll() {
+    if (state.busy) return;
+    const n = groups().length;
+    if (!n) return;
+    const btn = $('#dlAll'), label = btn.textContent;
+    setBusy(true);
+    try {
+      const files = [];
+      for (let i = 0; i < n; i++) {
+        btn.textContent = `Generando ${i + 1} / ${n}…`;
+        const blob = await buildFull(i);
+        files.push({ name: fileName(i), data: new Uint8Array(await blob.arrayBuffer()) });
+      }
+      saveBlob(makeZip(files), 'collages.zip');
+    } catch (e) {
+      showMsg('No se pudieron generar los collages. Prueba de nuevo.');
+    } finally { btn.textContent = label; setBusy(false); }
+  }
+
+  // ZIP sin compresión (las imágenes ya están comprimidas)
+  const CRC_TABLE = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+  function crc32(d) { let c = 0xffffffff; for (let i = 0; i < d.length; i++) c = CRC_TABLE[(c ^ d[i]) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; }
+  function makeZip(files) {
+    const now = new Date();
+    const time = (now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1);
+    const date = ((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate();
+    const enc = new TextEncoder();
+    const parts = [], central = [];
+    let offset = 0;
+    for (const f of files) {
+      const name = enc.encode(f.name), crc = crc32(f.data), size = f.data.length;
+      const lh = new DataView(new ArrayBuffer(30));
+      lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0, true); lh.setUint16(8, 0, true);
+      lh.setUint16(10, time, true); lh.setUint16(12, date, true); lh.setUint32(14, crc, true);
+      lh.setUint32(18, size, true); lh.setUint32(22, size, true); lh.setUint16(26, name.length, true); lh.setUint16(28, 0, true);
+      parts.push(lh, name, f.data);
+      const ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0, true);
+      ch.setUint16(10, 0, true); ch.setUint16(12, time, true); ch.setUint16(14, date, true); ch.setUint32(16, crc, true);
+      ch.setUint32(20, size, true); ch.setUint32(24, size, true); ch.setUint16(28, name.length, true);
+      ch.setUint32(42, offset, true);
+      central.push(ch, name);
+      offset += 30 + name.length + size;
+    }
+    const cdSize = central.reduce((s, p) => s + p.byteLength, 0);
+    const end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0, 0x06054b50, true); end.setUint16(8, files.length, true); end.setUint16(10, files.length, true);
+    end.setUint32(12, cdSize, true); end.setUint32(16, offset, true);
+    return new Blob([...parts, ...central, end], { type: 'application/zip' });
+  }
+
+  // ---------- UI ----------
+  function setBusy(b) {
+    state.busy = b;
+    document.querySelectorAll('#pick, #add, #clear, #dlAll, .col .btn').forEach((el) => (el.disabled = b));
+  }
+  function showMsg(t) { const m = $('#msg'); m.textContent = t; m.hidden = !t; }
+
+  // Selector de plantillas con miniaturas dibujadas por el mismo motor
+  const tplBox = $('#templates');
+  TEMPLATES.forEach((t) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'tpl';
+    b.setAttribute('aria-pressed', String(t === state.tpl));
+    const cv = document.createElement('canvas');
+    cv.width = cv.height = 200;
+    render(cv.getContext('2d'), 200, t, [], { gap: 40, bg: '#eceef3', placeholder: '#aeb6c6' });
+    b.append(cv, document.createTextNode(t.name));
+    b.addEventListener('click', () => {
+      state.tpl = t;
+      tplBox.querySelectorAll('.tpl').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      drawPreviews();
+    });
+    tplBox.append(b);
+  });
+
+  // Fondo
+  const swBox = $('#swatches'), custom = $('#bgCustom');
+  function setBg(color, fromCustom) {
+    state.bg = color;
+    swBox.querySelectorAll('.sw').forEach((s) => s.setAttribute('aria-pressed', String(!fromCustom && s.dataset.c === color)));
+    if (!fromCustom) custom.value = color;
+    drawPreviews();
+  }
+  BGS.forEach(([c, name]) => {
+    const s = document.createElement('button');
+    s.type = 'button'; s.className = 'sw'; s.dataset.c = c; s.title = name; s.style.background = c;
+    s.setAttribute('aria-pressed', String(c === state.bg));
+    s.addEventListener('click', () => setBg(c, false));
+    swBox.insertBefore(s, swBox.lastElementChild);
+  });
+  custom.addEventListener('input', () => setBg(custom.value, true));
+
+  // Espacio
+  $('#gap').addEventListener('input', (e) => {
+    state.gap = +e.target.value;
+    $('#gapOut').textContent = `${state.gap} px`;
+    drawPreviews();
+  });
+
+  // Formato
+  $('#fmt').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    state.fmt = b.dataset.fmt;
+    $('#fmt').querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  });
+
+  $('#incomplete').addEventListener('change', (e) => { state.incomplete = e.target.checked; refresh(true); });
+
+  // Archivos
+  const input = $('#file');
+  let replaceMode = true;
+  const openPicker = (replace) => { if (state.busy) return; replaceMode = replace; input.click(); };
+  $('#pick').addEventListener('click', (e) => { e.stopPropagation(); openPicker(true); });
+  $('#add').addEventListener('click', () => openPicker(false));
+  $('#drop').addEventListener('click', () => openPicker(!state.photos.length));
+  input.addEventListener('change', () => { if (input.files.length) addFiles(input.files, replaceMode); input.value = ''; });
+  $('#clear').addEventListener('click', () => { clearPhotos(); showMsg(''); refresh(true); });
+  $('#dlAll').addEventListener('click', downloadAll);
+
+  // Arrastrar y soltar (en cualquier parte de la página)
+  const drop = $('#drop');
+  let depth = 0;
+  window.addEventListener('dragenter', (e) => { e.preventDefault(); depth++; drop.classList.add('over'); });
+  window.addEventListener('dragleave', () => { if (--depth <= 0) { depth = 0; drop.classList.remove('over'); } });
+  window.addEventListener('dragover', (e) => e.preventDefault());
+  window.addEventListener('drop', (e) => {
+    e.preventDefault(); depth = 0; drop.classList.remove('over');
+    if (e.dataTransfer && e.dataTransfer.files.length) addFiles(e.dataTransfer.files, false);
+  });
+
+  refresh(true);
+})();
+</script>
+</body>
+</html>
